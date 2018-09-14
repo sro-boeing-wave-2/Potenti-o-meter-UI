@@ -25,6 +25,7 @@ import { HomeComponent } from './home/home.component';
 import { UserSignUpComponent } from './user-sign-up/user-sign-up.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardHeaderComponent } from './dashboard-header/dashboard-header.component';
+import { HttpModule } from '@angular/http';
 
 
 
@@ -52,6 +53,7 @@ import { DashboardHeaderComponent } from './dashboard-header/dashboard-header.co
     BrowserAnimationsModule,
     FormsModule,
     MatToolbarModule,
+    HttpModule,
     MatRadioModule,
     FormsModule,
     MatMenuModule,
