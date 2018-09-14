@@ -1,4 +1,3 @@
-
 <!-- <div class="player">
   <h3>Quiz</h3>
    <h4>Time: {{ellapsedTime}} / {{duration}}</h4>
@@ -8,12 +7,11 @@
 <button class="btn-player" (click)="endQuiz()">Submit</button> -->
 <app-header></app-header>
 <div class="card">
-    <div class="card-body">
-        <h4 class="card-title">Quiz</h4>
-        <app-mcq (onResponse)="onResponseReceived($event)" [question]="question"></app-mcq>
-        <button type="button" class="btn btn-primary" (click)="getNextQuestion()">Next</button>
-        <button type="button" class="btn btn-warning" (click)="endQuiz()">Submit</button>
-    </div>
+  <div class="card-body">
+    <h4 class="card-title">Question {{count}}/10</h4>
+    <app-mcq (onResponse)="onResponseReceived($event)" [question]="question"></app-mcq>
+    <button type="button" class="btn btn-primary" (click)="getNextQuestion()">Next</button>
+    <button type="button" class="btn btn-warning" (click)="endQuiz()">Submit</button>
+  </div>
 </div>
 <app-footer></app-footer>
-

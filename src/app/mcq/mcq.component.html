@@ -1,15 +1,15 @@
 <mat-card class="example-card">
-  <mat-card-content>
-    <h2 class="question" >{{question.questionText}}</h2>
-    <h3>
-      <mat-radio-group class="example-radio-group" [(ngModel)]="response">
-        <mat-radio-button class="example-radio-button" *ngFor="let q of question.optionList" [value]="q.option">
-          {{q.option}}
-        </mat-radio-button>
-      </mat-radio-group>
-      <div class="example-selected-value" >Your selected option is : {{response}}</div>
-    </h3>
-  </mat-card-content>
-</mat-card>
+    <mat-card-content>
+      <h2 class="question" >{{question.questionText}}</h2>
+      <h3>
+        <mat-radio-group class="example-radio-group" [(ngModel)]="response">
+          <mat-radio-button class="example-radio-button" *ngFor="let q of question.optionList" [value]="q.option">
+            {{q.option}}
+          </mat-radio-button>
+        </mat-radio-group>
+        <div class="example-selected-value" >Your selected option is : {{response}}</div>
+      </h3>
+    </mat-card-content>
+  </mat-card>
 
 

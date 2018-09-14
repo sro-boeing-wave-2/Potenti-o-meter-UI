@@ -20,6 +20,7 @@ export class PlayerComponent implements OnInit {
   constructor(private componentFactoryResolver: ComponentFactoryResolver,private playerService: PlayerService, private activatedRoute: ActivatedRoute) { }
   userId: number;
   domainName: string;
+  count: number;
   // timer: any = null;
   // startTime: Date;
   // endTime: Date;
@@ -30,6 +31,7 @@ export class PlayerComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((params: ParamMap)=> {
       let id = parseInt(params.get('id'));
       this.userId = id;
+      this.count = 1;
     });
     this.activatedRoute.paramMap.subscribe((params: ParamMap)=> {
       let d = params.get('domain');
@@ -71,6 +73,7 @@ export class PlayerComponent implements OnInit {
   }
 
   getNextQuestion() {
+    this.count = this.count + 1;
     return this.playerService.getNextQuestion(this.question);
     // this.loadComponent();
   }
