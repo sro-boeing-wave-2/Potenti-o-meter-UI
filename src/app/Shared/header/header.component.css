@@ -1,0 +1,16 @@
+.container-fluid{
+  /* background-color: #212F3D; */
+  /* background-color: #4267b2; */
+  /* background-color: #154360; */
+
+  background-color: #1B2631;
+  color: white;
+}
+
+
+nav{
+  color: white;
+}
+ul{
+  float: right;
+}
