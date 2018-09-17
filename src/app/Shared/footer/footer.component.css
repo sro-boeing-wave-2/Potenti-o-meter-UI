@@ -1,14 +1,26 @@
+@import 'https://fonts.googleapis.com/css?family=Montserrat|Open+Sans';
+
+.page-footer{
+  font-family: 'Montserrat', sans-serif;
+}
+
+ul{
+  font-family: 'Open Sans', sans-serif;
+}
+
 .container-fluid{
   /* background-color: #212F3D; */
   /* background-color: #4267b2; */
-  background-color: #154360;
+  background-color: #000000;
   color: white;
 }
 
 .footer-copyright
 {
 
-  background-color: #1A5276;
+  /* background-color: #1A5276; */
+  background-color: #454545;
+  color: whitesmoke;
 
 }
 

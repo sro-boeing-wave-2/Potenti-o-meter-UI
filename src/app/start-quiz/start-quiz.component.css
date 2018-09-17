@@ -1,4 +1,10 @@
 .card{
-  background-color: aliceblue;
+  margin-top: 52px;
+  /* background-color: #FBFCFC; */
+  background-color: #ECF0F1;
   text-align: center;
+}
+
+.list-group-item{
+  background-color: #FBFCFC;
 }
