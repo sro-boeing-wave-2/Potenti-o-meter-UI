@@ -26,7 +26,7 @@ private url="";
 
   startQuiz(userId: number, domain: string)
   {
-    this._connection = new HubConnectionBuilder().withUrl("http://172.23.238.232:9100/question").build();
+    this._connection = new HubConnectionBuilder().withUrl("http://172.23.238.155:9100/question").build();
     this._connection.on('NextQuestion', this.onNextQuestionHandler.bind(this));
     // this._connection.on('EndQuiz', this.onQuizEnded.bind(this));
     console.log("this is the front end domain" + domain);
