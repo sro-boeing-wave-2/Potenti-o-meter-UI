@@ -10,7 +10,7 @@ import { FooterComponent } from './Shared/footer/footer.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import {MatToolbarModule, MatDialog, MatDialogModule} from '@angular/material';
+import {MatToolbarModule, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material';
 import {MatIconModule} from '@angular/material/icon';
 import { AppRoutingModule } from './/app-routing.module';
 import { PlayerService } from './player.service';

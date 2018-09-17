@@ -1,4 +1,1 @@
-<div >
-  <h1> <a  type="button" (click)="LogIn()" >LogIn</a></h1>
-  <h1> <a  type="button" (click)="SignUp()" >SignUp</a></h1>
- </div>
+<app-header (notifyLogIn)='onLoginNotify($event)' (notifySignIn)='onSignInNotify($event)'></app-header>

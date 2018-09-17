@@ -4,6 +4,9 @@ import { MatDialogRef,MatDialog } from '@angular/material';
 import {UserLoginComponent} from '../user-login/user-login.component';
 import { SignUpService} from '../sign-up.service';
 import { User } from '../User';
+import {MAT_DIALOG_DATA} from '@angular/material';
+import { Inject } from '@angular/core';
+
 @Component({
   selector: 'app-user-sign-up',
   templateUrl: './user-sign-up.component.html',
@@ -12,10 +15,13 @@ import { User } from '../User';
 export class UserSignUpComponent implements OnInit {
 
   constructor( private fb: FormBuilder,private dialog: MatDialog,
-    public dialogRef: MatDialogRef<UserSignUpComponent>,private UserSignUpService :SignUpService) { }
-
+  public dialogRef: MatDialogRef<UserSignUpComponent>,private UserSignUpService :SignUpService,
+  @Inject(MAT_DIALOG_DATA) public data: any) { }
+  //constructor(private UserSignUpService :SignUpService, private fb: FormBuilder){}
   ngOnInit() {
   }
+  public prop = !this.data.disabled;
+
   CreateSignUpForm = this.fb.group({
     FirstName:[''],
     LastName:[''],
@@ -23,16 +29,20 @@ export class UserSignUpComponent implements OnInit {
     Email : [''],
     Password: ['']
   });
-  onSubmit():void{
-    this.UserSignUpService.USerSignUp(this.CreateSignUpForm.value as User)
-    .subscribe(result=> result.status == 201?this.GoBack(): this.Message(result.toString()));
+  tabSwitch() {
+    this.prop = !this.prop;
   }
- 
 
-  GoBack(){
-    this.dialogRef.close();
-  }
-  Message(result:string){  
-  }
- 
+  // onSubmit():void{
+  //   this.UserSignUpService.USerSignUp(this.CreateSignUpForm.value as User)
+  //   .subscribe(result=> result.status == 201?this.GoBack(): this.Message(result.toString()));
+  // }
+
+
+  // GoBack(){
+  //   this.dialogRef.close();
+  // }
+  // Message(result:string){
+  // }
+
 }
