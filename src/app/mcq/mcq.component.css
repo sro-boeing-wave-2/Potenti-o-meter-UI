@@ -1,7 +1,8 @@
 .example-card
 {
   text-align: left;
-  background-color: #154360;
+  /* background-color: #154360; */
+  background-color: #4C586F;
 }
 
 .example-radio-group {

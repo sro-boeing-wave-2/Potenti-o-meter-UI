@@ -1,4 +1,9 @@
 .card{
   background-color: aliceblue;
   text-align: center;
+  margin-top: 80px;
+}
+
+.progress-bar{
+  background-color: gray;
 }

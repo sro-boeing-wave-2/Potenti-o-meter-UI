@@ -21,17 +21,19 @@ export class PlayerComponent implements OnInit {
   userId: number;
   domainName: string;
   count: number;
-  // timer: any = null;
-  // startTime: Date;
-  // endTime: Date;
-  // ellapsedTime = '00:00';
-  // duration = '';
+  progress: number;
+  timer: any = null;
+  startTime: Date;
+  endTime: Date;
+  ellapsedTime = '00:00';
+  duration = '';
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((params: ParamMap)=> {
       let id = parseInt(params.get('id'));
       this.userId = id;
       this.count = 1;
+      this.progress = 10;
     });
     this.activatedRoute.paramMap.subscribe((params: ParamMap)=> {
       let d = params.get('domain');
@@ -45,27 +47,27 @@ export class PlayerComponent implements OnInit {
         error => console.log(error)
       );
 
-      // this.startTime = new Date();
-      // this.timer = setInterval(() => { this.tick(); }, 1000);
-      // this.duration = this.parseTime(10);
+      this.startTime = new Date();
+      this.timer = setInterval(() => { this.tick(); }, 1000);
+      this.duration = this.parseTime(600);
   }
 
-  // tick() {
-  //   const now = new Date();
-  //   const diff = (now.getTime() - this.startTime.getTime()) / 1000;
-  //   if (diff >= 10) {
-  //     this.endQuiz();
-  //   }
-  //   this.ellapsedTime = this.parseTime(diff);
-  // }
+  tick() {
+    const now = new Date();
+    const diff = (now.getTime() - this.startTime.getTime()) / 1000;
+    if (diff >= 600 && diff< 601) {
+      this.endQuiz();
+    }
+    this.ellapsedTime = this.parseTime(diff);
+  }
 
-  // parseTime(totalSeconds: number) {
-  //   let mins: string | number = Math.floor(totalSeconds / 60);
-  //   let secs: string | number = Math.round(totalSeconds % 60);
-  //   mins = (mins < 10 ? '0' : '') + mins;
-  //   secs = (secs < 10 ? '0' : '') + secs;
-  //   return `${mins}:${secs}`;
-  // }
+  parseTime(totalSeconds: number) {
+    let mins: string | number = Math.floor(totalSeconds / 60);
+    let secs: string | number = Math.round(totalSeconds % 60);
+    mins = (mins < 10 ? '0' : '') + mins;
+    secs = (secs < 10 ? '0' : '') + secs;
+    return `${mins}:${secs}`;
+  }
   question : QuestionModel;
 
   onResponseReceived(response) {
@@ -74,6 +76,7 @@ export class PlayerComponent implements OnInit {
 
   getNextQuestion() {
     this.count = this.count + 1;
+    this.progress = this.progress + 10;
     return this.playerService.getNextQuestion(this.question);
     // this.loadComponent();
   }
