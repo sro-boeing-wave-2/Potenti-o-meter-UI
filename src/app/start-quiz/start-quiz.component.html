@@ -1,14 +1,17 @@
 <app-header></app-header>
 <div class="card">
-  <h3 class="card-header">Welcome {{userId}} on {{domain}} test</h3>
+  <h3 class="card-header">{{domain}} test</h3>
   <div class="card-body">
       <h4 class="card-title">Instructions</h4>
       <ul class="list-group">
-        <li class="list-group-item">Cras justo odio</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Morbi leo risus</li>
-        <li class="list-group-item">Porta ac consectetur ac</li>
-        <li class="list-group-item">Vestibulum at eros</li>
+        <li class="list-group-item">The test consists of 10 question</li>
+        <li class="list-group-item">Click on the 'Next' button after submiting your response to get the next question</li>
+        <li class="list-group-item">Clicking on 'Next' button without providing any response will be considered as an incorect response</li>
+        <li class="list-group-item">You can not get back and change responses of previous questions atteempted</li>
+        <li class="list-group-item">The test makes use of an Adaptive Algorithm and the next question you get is based on your response of the previous question</li>
+        <li class="list-group-item">Click on the 'Submit' button after finishing all the questions</li>
+        <li class="list-group-item">Clicking on the 'Submit' button during the test will end your quiz and only the questions attempted till then will be considered</li>
+
       </ul>
       <p class="card-text">Click on the "Start Quiz" button to start your quiz</p>
       <a class="btn btn-primary" (click)="startQuiz()">Start Quiz</a>

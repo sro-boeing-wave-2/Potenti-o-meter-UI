@@ -1,9 +1,10 @@
 .card{
-  background-color: aliceblue;
+  background-color: #FBFCFC;
   text-align: center;
   margin-top: 80px;
+  padding: 25px 50px 75px 50px;
 }
 
 .progress-bar{
-  background-color: gray;
+  background-color: #89cff0;
 }
