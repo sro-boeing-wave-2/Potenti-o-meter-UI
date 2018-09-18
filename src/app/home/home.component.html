@@ -1,1 +1,4 @@
-<app-header (notifyLogIn)='onLoginNotify($event)' (notifySignIn)='onSignInNotify($event)'></app-header>
+<app-header [homePage]="true" [validSignup]="true" [userDetail]="false" (notifyLogIn)='onLoginNotify($event)' (notifySignIn)='onSignInNotify($event)'></app-header>
+<div class="alert alert-success alert-dismissible fade in" *ngIf="signup" role="alert" data-auto-dismiss="2000">
+  Successfully registered!
+</div>

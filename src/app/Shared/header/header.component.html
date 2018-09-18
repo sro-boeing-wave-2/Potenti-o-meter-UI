@@ -10,7 +10,7 @@
       <a href="./" class="navbar-brand">Potenti-o-meter</a>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-      <ul class="nav navbar-nav navbar-left">
+      <ul class="nav navbar-nav navbar-left" *ngIf="homePage">
         <li>
           <a href="#">Home</a>
         </li>
@@ -21,13 +21,28 @@
           <a href="#">Contact</a>
         </li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right" *ngIf="validSignup">
         <li>
           <a type="button" (click)="SignUp()">Sign Up</a>
         </li>
         <li>
           <a type="button" (click)="LogIn()">Login</a>
         </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf="userDetail">
+        <li>
+          <a type="button" (click)="SignUp()">Result</a>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-user-circle"></i>
+              {{FirstName}} <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">View Profile</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a (click)="Logout()">Logout</a></li>
+            </ul>
+          </li>
       </ul>
     </nav>
   </div>

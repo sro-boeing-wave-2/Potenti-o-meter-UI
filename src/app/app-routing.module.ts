@@ -13,7 +13,6 @@ const routes: Routes = [
   {path:'player/:id', component:PlayerComponent},
   {  path: 'home', component: HomeComponent },
   { path: 'dashboard', component: DashboardComponent }
-  // { path: 'login/:id', component: UserSignUpComponent }
 ];
 
 @NgModule({

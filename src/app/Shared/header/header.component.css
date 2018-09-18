@@ -32,7 +32,7 @@
 }
 
 .dropdown-menu {
-  background-color: #006B00
+  background-color: #000000
 }
 
 .dropdown-menu>li>a:hover,
@@ -83,7 +83,7 @@
 }
 
 .dropdown-menu>li>a {
-  color: #FFFFFF
+  color: #ffffff
 }
 
 .dropdown-menu>li>a:hover,
@@ -105,4 +105,10 @@
 
 .navbar-inverse .navbar-nav>.dropdown>a:hover .caret {
   border-bottom-color: #FFFFFF
+}
+
+@media only screen and (min-width: 768px) {
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
 }
