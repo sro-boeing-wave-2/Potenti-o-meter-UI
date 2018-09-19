@@ -1,21 +1,19 @@
 <app-header></app-header>
 <div class="card">
-<mat-toolbar color = "primary">
-    <section id="result">
-      <div id="userResult">User Result</div>
-      <div id="userId">
-        <i class="far fa-user"></i> User id
+    <div class="panel panel-success">
+        <div class="panel-heading">Results for Current Quiz</div>
+        <div class="panel-body">
+            <ul class="list-inline">
+                <li>Domain : {{_result?.domainName}}</li>
+                <li>Your Score: {{_result?.quizResults[length].obtainedScore}}/{{_result?.quizResults[length].totalScore}}</li>
+                <li>Percentage obtained: {{_result?.quizResults[length]?.percentageScore}}</li>
+              </ul>
+              <p>This is how much you improved from your previous attempt: {{((_result?.quizResults[length]?.percentageScore - _result?.quizResults[length-1]?.percentageScore)/_result?.quizResults[length-1]?.percentageScore)*100}}</p>
+              <p>This is how much you improved from your first attempt: {{((_result?.quizResults[length]?.percentageScore - _result?.quizResults[0]?.percentageScore)/_result?.quizResults[0]?.percentageScore)*100}}</p>
+              <button type="button" class="btn btn-primary" (click)="viewResponse()">Click here to view your responses</button>
+              <h4>Your overall score in this domain now stands at: {{_result?.averagePercentage}} </h4>
+        </div>
       </div>
-    </section>
-  </mat-toolbar>
-<!--
-<div class="table-part">
-<app-result-table></app-result-table>
-</div>
-<div class="result-part">
-<app-overall-result></app-overall-result>
-</div> -->
-
 <div class = user_domain>
 <h4> User Id : {{_result?.userId}}</h4>
 <h4>Domain Name : {{_result?.domainName}}</h4>

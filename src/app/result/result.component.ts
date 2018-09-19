@@ -42,6 +42,8 @@ export class ResultComponent implements OnInit {
     });
 
 
+
+
     this.resultService.getUserResult(this.quizId).subscribe(data => {
       this._result = data.json();
       this.length = this._result.quizResults.length - 1;
@@ -130,10 +132,7 @@ export class ResultComponent implements OnInit {
       });
 
       this._questions = this._result.quizResults[this.length].questionsAttempted;
-      // Detail of all the Quizes for a domain given by a user
-      //const quizResultArray =this._result.quizResults;
-      //console.log(this._result.quizResults[0]._id);
-      // this.quizResultArray.push(...quizResultList);
+
     });
   }
 }
@@ -142,59 +141,3 @@ export class ResultComponent implements OnInit {
 
 
 
-//     this.resultService.getUserResult(this.quizId).subscribe(data => {
-//       this._result = data.json();
-//       const questionsListArray = this._result.quizResults[this._result.quizResults.length-1].questionsAttempted
-//       this.question.push(...questionsListArray);
-//       //this._result = data.json();
-//       console.log(this._result.quizResults.length);
-//       this.length = this._result.quizResults.length-1;
-//       this.firstQuizElement = this._result.quizResults[0];
-//       console.log(this.question[0]);
-//       // Added
-//       const tagList  = this._result.quizResults[this.length].tagWiseResults;
-//       this.tags.push(...tagList);
-//       // first Quiz
-//      const tagListFirstElement = this.firstQuizElement.tagWiseResults;
-//      this.tagListofFirstElement.push(...tagListFirstElement);
-//      //  let firstTagNames = this.tagListofFirstElement.map(res => res.tagName);
-//      let firstTagPc = this.tagListofFirstElement.map(res => res.tagCorrectPercentage);
-//       this._questions = this._result.quizResults[this.length].questionsAttempted;
-//       //Last Quiz
-//       let tagNames = this.tags.map(res => res.tagName); //extract the tagNames to label the chart
-//      // console.log(tagNames);
-//       var tagCorrectPc = this.tags.map(res => res.tagCorrectPercentage);
-//       //code to start numbering from Zero in the radar chart
-//       var options = {
-//         responsive: true,
-//         maintainAspectRatio: true,
-//         scale: {
-//             ticks: {
-//                 beginAtZero: true,
-//                 max: 100
-//             }
-//         }
-//     };
-//     this.chart = new Chart('canvas',{
-//       type:'radar',
-//       options : options,
-//       data: {
-//         labels: tagNames,
-//         datasets: [{
-//           label: "Latest Quiz Result",
-//           data: tagCorrectPc,
-//           backgroundColor :"rgba(200,0,0,0.2)"
-//         },
-//        {
-//          label: "First QUiz Result",
-//           data: firstTagPc,
-//           backgroundColor :"rgba(0,0,200,0.2)"
-//        }],
-//       fill: false
-
-
-//       }
-//     });
-//    });
-//   }
-// }
