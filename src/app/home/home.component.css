@@ -1,6 +1,200 @@
+/* @import "bourbon"; */
+
 .alert {
   margin-top:50px;
   width: 50%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.hero{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  margin: 0 auto;
+  background: #392f28;
+  position: relative;
+  color: #392f28;
+
+}
+
+img {
+  opacity: 0.4;
+  height: 100%;
+  width: 100%;
+  object-fit: contain
+}
+
+.herotext {
+  color:#FFFFFF;
+  visibility: hidden;
+  font-size: 28px;
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+}
+
+.herobutton {
+  width:100%;
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  top: 70%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+}
+
+
+h2 {font-size: 3em;}
+
+#first {
+  animation: fade-first 14s linear infinite;
+}
+
+#second {
+  animation: fade-second 14s linear infinite;
+}
+#third {
+  animation: fade-third 14s linear infinite;
+}
+
+@keyframes fade-first {
+  0% {opacity:0; visibility:hidden;}
+  3% {opacity:1; visibility:visible;}
+  30% {opacity:1; visibility:visible;}
+  33% {opacity:0; visibility:hidden;}
+  100% {opacity:0; visibility:hidden;}
+}
+
+@keyframes fade-second {
+  0% {opacity:0; visibility:hidden;}
+  33% {opacity:0; visibility:hidden;}
+  36% {opacity:1; visibility:visible;}
+  63% {opacity:1; visibility:visible;}
+  66% {opacity:0; visibility:hidden;}
+  100% {opacity:0; visibility:hidden;}
+}
+
+@keyframes fade-third {
+  0% {opacity:0; visibility:hidden;}
+  66% {opacity:0; visibility:hidden;}
+  69% {opacity:1; visibility:visible;}
+  96% {opacity:1; visibility:visible;}
+  100% {opacity:0; visibility:hidden;}
+}
+
+@media all and (max-width: 1158px) {
+  .herotext{
+    font-size: 26px;
+  }
+}
+
+@media all and (max-width: 1075px) {
+  .herotext{
+    font-size: 22px;
+  }
+}
+
+@media all and (max-width: 912px) {
+  .herotext{
+    font-size: 20px;
+  }
+}
+
+@media all and (max-width: 827px) {
+  .herotext{
+    font-size: 18px;
+  }
+  .herobutton{
+    top:75%;
+  }
+}
+
+@media all and (max-width: 745px) {
+  .herotext{
+    font-size: 16px;
+  }
+}
+
+@media all and (max-width: 662px) {
+  .herotext{
+    font-size: 14px;
+  }
+  .btn {
+    width: 80px;
+  }
+}
+
+@media all and (max-width: 579px) {
+  .herotext{
+    font-size: 12px;
+  }
+  .btn {
+    width: 60px;
+  }
+}
+
+@media all and (max-width: 497px) {
+  .herotext{
+    font-size: 10px;
+  }
+  .btn {
+    width: 40px;
+  }
+  .herobutton{
+    top:80%;
+  }
+}
+
+@media all and (max-width: 414px) {
+  .herotext{
+    font-size: 8px;
+  }
+  .btn {
+    width: 20px;
+  }
+}
+
+@media all and (max-width: 331px) {
+  .herotext{
+    font-size: 6px;
+  }
+  .btn {
+    width: 10px;
+  }
+}
+
+.btn {
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 120px
+}
+
+.btn.btn-outline {
+  background: 0 0
+}
+
+.btn-outline.btn-primary {
+  border-color: #ffffff;
+  color: #ffffff
+}
+
+.btn-outline.btn-primary:focus,
+.btn-outline.btn-primary:hover {
+  color: #000000;
+  border: color #000000;
+  background-color: #ffffff;
+}
+
+#Signup{
+  margin-right: 1%;
+}
+
+#Signin{
+  margin-left: 1%;
 }
