@@ -1,22 +1,21 @@
-<!-- <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <title>Result</title>
-</head> -->
 <app-header></app-header>
+<div class="card">
+<mat-toolbar color = "primary">
+    <section id="result">
+      <div id="userResult">User Result</div>
+      <div id="userId">
+        <i class="far fa-user"></i> User id
+      </div>
+    </section>
+  </mat-toolbar>
 <!--
 <div class="table-part">
 <app-result-table></app-result-table>
 </div>
-
 <div class="result-part">
 <app-overall-result></app-overall-result>
 </div> -->
-<div class="card">
+
 <div class = user_domain>
 <h4> User Id : {{_result?.userId}}</h4>
 <h4>Domain Name : {{_result?.domainName}}</h4>
@@ -48,7 +47,7 @@
 </div>
 
 
-<div class="w3-padding-44 w3-blue w3-circle w3-center circle-width">
+<div class="w3-padding-44 w3-blue  w3-center circle-width">
     <!-- hardcoded as of now, need to get the latest entry and for that we need to get the last element of this array -->
     <!-- int length = _result.quizResults.Count -->
    <h2>Your Score: {{_result?.quizResults[length].obtainedScore}}/{{_result?.quizResults[length].totalScore}} </h2>
@@ -73,11 +72,15 @@
     </tr>
   </table>
 </div>
+
 <h2>Radar Chart of First and Last Quiz</h2>
+<hr />
 <div *ngIf="chart">
   <canvas id="canvas">{{ chart }}</canvas>
 </div>
+<h2>Cumulative Result</h2>
+<div *ngIf="cumulativeChart">
+  <canvas id="canva">{{ cumulativeChart }}</canvas>
+</div>
 </div>
 <app-footer></app-footer>
-
-
