@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AppComponent } from './app.component';
 import { StartQuizComponent } from './start-quiz/start-quiz.component';
 import { PlayerComponent } from './player/player.component';

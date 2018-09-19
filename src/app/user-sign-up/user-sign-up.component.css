@@ -53,10 +53,12 @@ ul.switcher li{
 .second{
   right:0;
 }
+
 .login-container-wrapper {
   max-width: 400px;
   margin: 2% auto 5%;
   padding: 40px;
+  padding-top: 0px;
   box-sizing: border-box;
   background: rgba(57, 89, 116, 0.8);
   position: relative;
@@ -136,6 +138,8 @@ ul.switcher li{
 
 .login input[type="email"],
 .login input[type="password"],
+.login input[type="text"],
+.login input[type="number"],
 .login input:focus {
   background-color: rgba(40, 52, 67, 0.75);
   border: 0px solid #4a525f;

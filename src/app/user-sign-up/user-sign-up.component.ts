@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormArray } from '@angular/forms';
-import { MatDialogRef,MatDialog } from '@angular/material';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, FormArray, FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatDialogRef,MatDialog, MatSnackBar } from '@angular/material';
 import {UserLoginComponent} from '../user-login/user-login.component';
 import { SignUpService} from '../sign-up.service';
 import { User } from '../User';
 import {MAT_DIALOG_DATA} from '@angular/material';
 import { Inject } from '@angular/core';
+import { HomeComponent } from '../home/home.component';
+import { Login } from '../Login';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-sign-up',
@@ -13,36 +16,61 @@ import { Inject } from '@angular/core';
   styleUrls: ['./user-sign-up.component.css']
 })
 export class UserSignUpComponent implements OnInit {
+  public dialogForm: FormGroup;
+  public loginForm: FormGroup;
+  @Output() success = new EventEmitter<boolean>();
+
 
   constructor( private fb: FormBuilder,private dialog: MatDialog,
   public dialogRef: MatDialogRef<UserSignUpComponent>,private UserSignUpService :SignUpService,
-  @Inject(MAT_DIALOG_DATA) public data: any) { }
-  //constructor(private UserSignUpService :SignUpService, private fb: FormBuilder){}
+  @Inject(MAT_DIALOG_DATA) public data: any, private router: Router,private loginservice :SignUpService) {
+    this.dialogForm = this.fb.group({
+      FirstName : new FormControl('',Validators.required),
+      LastName: new FormControl('',Validators.required),
+      Contact: new FormControl('',[Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
+      Email: new FormControl('',[Validators.required, Validators.email]),
+      Password: new FormControl('',[Validators.required,Validators.minLength(6)])
+    });
+    this.loginForm = this.fb.group({
+      Email: new FormControl('',[Validators.required, Validators.email]),
+      Password: new FormControl('',[Validators.required,Validators.minLength(6)])
+    });
+   }
+
   ngOnInit() {
   }
   public prop = !this.data.disabled;
 
-  CreateSignUpForm = this.fb.group({
-    FirstName:[''],
-    LastName:[''],
-    Contact:[''],
-    Email : [''],
-    Password: ['']
-  });
   tabSwitch() {
     this.prop = !this.prop;
   }
 
-  // onSubmit():void{
-  //   this.UserSignUpService.USerSignUp(this.CreateSignUpForm.value as User)
-  //   .subscribe(result=> result.status == 201?this.GoBack(): this.Message(result.toString()));
-  // }
+  onSubmit():void{
 
+  this.UserSignUpService.USerSignUp(this.dialogForm.value as User)
+  .subscribe(result=>
+    result.status == 201?this.GoBack(): this.Message(result.toString()))
+  }
 
-  // GoBack(){
-  //   this.dialogRef.close();
-  // }
-  // Message(result:string){
-  // }
+  LoginSubmit(): void {
+    this.loginservice.USerLogIn(this.loginForm.value as Login)
+    .subscribe(result=> result.status == 200?this.AfterLogin(): this.Message(result.toString()));
+  }
+
+  GoBack(){
+  this.dialogRef.close();
+  this.success.emit(true);
+  setTimeout(() => {
+    this.success.emit(false);
+  },2000)
+  }
+
+  AfterLogin(){
+  this.router.navigate(['dashboard']);
+  this.dialogRef.close();
+  }
+
+  Message(result:string){
+  }
 
 }

@@ -15,13 +15,16 @@ export class SignUpService {
   }
 
   USerSignUp(user: User) {
-    return this.http.post("https://localhost:44397/api/Users/Register", user);
+    return this.http.post("http://localhost:5050/api/Users/Register", user);
   }
   USerLogIn(user: Login) {
-    return this.http.post("https://localhost:44397/api/Users/Login", user);
+    return this.http.post("http://localhost:5050/api/Users/Login", user, {withCredentials: true});
   }
   UserLogOut(){
-    return this.http.post("https://localhost:44397/api/Users/Logout","");
+    return this.http.post("http://localhost:5050/api/Users/Logout","");
+  }
+  getName(){
+    return this.http.get("http://localhost:5050/api/Users/firstname", {withCredentials: true});
   }
   GetDomain(){
     type ArrayOfTypeDomain = Array<{name: string}>;
