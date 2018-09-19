@@ -5,8 +5,12 @@ import { Subject, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ResponseModel } from './responseModel';
-import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { AdItem } from './ad-item';
+import { McqComponent } from './mcq/mcq.component';
+import { FillInTheBlanksComponent } from './fill-in-the-blanks/fill-in-the-blanks.component';
+import { PlayerComponent } from './player/player.component';
 
 @Injectable()
 export class PlayerService {
@@ -56,12 +60,16 @@ private url="";
     this._connection.on('EndQuiz', msg => {
          this.result = msg;
          console.log("result is " +  JSON.stringify(this.result));
+
+        //  this.router.navigate(['result/abcd']);
+
+
          //this.router.navigate("localhost:4200/")
 
         //  this.url = `${this.quizurl}/${this.selectedUser.id}/${DomainName}`;
-         this.url = `http://172.23.238.183:4301/start/77/maths`;
+        //  this.url = `http://172.23.238.183:4301/start/77/maths`;
 
-          this.document.location.href = this.url;
+        //   this.document.location.href = this.url;
           });
 
   }
@@ -102,5 +110,14 @@ shuffleArray(array) : void{
   //     new AdComponents(FillInTheBlanksComponent,"hello sddc")
   //   ];
   // }
+
+  getComponents() {
+    return [
+      new AdItem(McqComponent),
+      new AdItem(FillInTheBlanksComponent)
+
+    ];
+
+   }
 }
 

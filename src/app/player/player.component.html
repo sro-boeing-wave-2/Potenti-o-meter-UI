@@ -24,7 +24,7 @@
 
 
 
-    <app-mcq (onResponse)="onResponseReceived($event) " [question]="question "></app-mcq>
+    <ng-template question-host ></ng-template>
     <div *ngIf="count < 10; then activeQuiz; else lastQuestion"> </div>
       <ng-template #activeQuiz>
         <button type="button " class="btn btn-primary " (click)="getNextQuestion() ">Next</button>

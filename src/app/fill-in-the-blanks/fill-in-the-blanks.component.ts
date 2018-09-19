@@ -1,14 +1,13 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input ,Output, EventEmitter} from '@angular/core';
 import { QuestionModel } from '../questionModule';
-//import {PlayerService} from '../player.service';
 import { AdComponents } from '../adComponent';
 import { LocalStorageService } from 'ngx-webstorage';
 @Component({
-  selector: 'app-mcq',
-  templateUrl: './mcq.component.html',
-  styleUrls: ['./mcq.component.css']
+  selector: 'app-fill-in-the-blanks',
+  templateUrl: './fill-in-the-blanks.component.html',
+  styleUrls: ['./fill-in-the-blanks.component.css']
 })
-export class McqComponent implements OnInit, AdComponents {
+export class FillInTheBlanksComponent implements OnInit , AdComponents{
 
   private _response: string;
   public options : string[];
@@ -23,11 +22,8 @@ export class McqComponent implements OnInit, AdComponents {
     this.localStorage.store("response", responseValue);
     this.onResponse.emit(responseValue);
   }
-
-  constructor(private localStorage: LocalStorageService) { }
-
   ngOnInit() {}
-
+  constructor(private localStorage: LocalStorageService) { }
   @Input() question: QuestionModel;
   @Output() onResponse = new EventEmitter<any>();
 }

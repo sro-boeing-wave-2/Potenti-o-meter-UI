@@ -1,0 +1,83 @@
+<!-- <html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <title>Result</title>
+</head> -->
+<app-header></app-header>
+<!--
+<div class="table-part">
+<app-result-table></app-result-table>
+</div>
+
+<div class="result-part">
+<app-overall-result></app-overall-result>
+</div> -->
+<div class="card">
+<div class = user_domain>
+<h4> User Id : {{_result?.userId}}</h4>
+<h4>Domain Name : {{_result?.domainName}}</h4>
+<h4>Your Percentage Score of this domain : {{_result?.averagePercentage}}</h4>
+
+</div>
+<div>
+<h1 class = question >Questions</h1>
+<table >
+  <tr>
+    <th>QNo.</th>
+    <th>Question</th>
+    <th>Marks</th>
+    <th>Response</th>
+    <th>Correct Answer</th>
+    <th>Is Correct</th>
+
+  </tr>
+  <tr *ngFor="let quest of question">
+    <td>{{quest.questionNumber}}</td>
+    <td>{{quest.questionText}}</td>
+    <td>{{quest.difficultyLevel}}</td>
+    <td>{{quest.response}}</td>
+    <td>{{quest.correctAns}}</td>
+    <td>{{quest.isCorrect}}</td>
+
+</tr>
+</table>
+</div>
+
+
+<div class="w3-padding-44 w3-blue w3-circle w3-center circle-width">
+    <!-- hardcoded as of now, need to get the latest entry and for that we need to get the last element of this array -->
+    <!-- int length = _result.quizResults.Count -->
+   <h2>Your Score: {{_result?.quizResults[length].obtainedScore}}/{{_result?.quizResults[length].totalScore}} </h2>
+   <h2>  Percentage obtained: {{_result?.quizResults[length]?.percentageScore}}</h2>
+</div>
+<div>
+  <h1>Concept Wise Results</h1>
+  <table>
+    <tr>
+      <th>Concepts</th>
+      <th>Correct Count</th>
+      <th>Total Count</th>
+      <th>Percentage</th>
+      <th>Strength</th>
+    </tr>
+    <tr *ngFor="let tag of tags">
+       <td>{{tag.tagName }}</td>
+       <td>{{tag.tagCorrectAnsCount}}</td>
+       <td>{{tag.tagTotalQuestCount}}</td>
+       <td>{{tag.tagCorrectPercentage}}</td>
+       <td>{{tag.tagRating}}</td>
+    </tr>
+  </table>
+</div>
+<h2>Radar Chart of First and Last Quiz</h2>
+<div *ngIf="chart">
+  <canvas id="canvas">{{ chart }}</canvas>
+</div>
+</div>
+<app-footer></app-footer>
+
+

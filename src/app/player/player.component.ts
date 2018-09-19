@@ -4,7 +4,10 @@ import { AdComponents } from '../adComponent';
 import { QuestionModel } from '../questionModule';
 import { PlayerService } from '../player.service';
 import { McqComponent} from '../mcq/mcq.component';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { AdItem } from '../ad-item';
+import { FillInTheBlanksComponent } from '../fill-in-the-blanks/fill-in-the-blanks.component';
+import { LocalStorageService } from 'ngx-webstorage';
 
 
 @Component({
@@ -13,11 +16,11 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./player.component.css']
 })
 export class PlayerComponent implements OnInit {
-  @Input() questionComponents: AdComponents[];
+  @Input() questionComponents: AdItem[];
   @ViewChild(QuestionDirective) questionHost: QuestionDirective;
 
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver,private playerService: PlayerService, private activatedRoute: ActivatedRoute) { }
+  constructor(private componentFactoryResolver: ComponentFactoryResolver, private playerService: PlayerService, private activatedRoute: ActivatedRoute, private router: Router, private localStorage: LocalStorageService) { }
   userId: number;
   domainName: string;
   count: number;
@@ -36,26 +39,32 @@ export class PlayerComponent implements OnInit {
       this.progress = 10;
     });
     this.activatedRoute.paramMap.subscribe((params: ParamMap)=> {
-      let d = params.get('domain');
-      this.domainName = d;
+      let domain = params.get('domain');
+      this.domainName = domain;
     });
 
     this.playerService
       .getQuestionStream()
       .subscribe(
-        question => this.question = question,
+        question => {
+          this.question = question;
+          this.loadComponent(this.question);
+        },
         error => console.log(error)
       );
+      this.questionComponents = this.playerService.getComponents();
 
-      this.startTime = new Date();
-      this.timer = setInterval(() => { this.tick(); }, 1000);
-      this.duration = this.parseTime(600);
+      console.log("all the dwie " + this.questionComponents[1].component);
+    this.startTime = new Date();
+    this.timer = setInterval(() => { this.tick(); }, 1000);
+    this.duration = this.parseTime(600);
   }
+
 
   tick() {
     const now = new Date();
     const diff = (now.getTime() - this.startTime.getTime()) / 1000;
-    if (diff >= 600 && diff< 601) {
+    if (diff >= 600 && diff < 601) {
       this.endQuiz();
     }
     this.ellapsedTime = this.parseTime(diff);
@@ -68,46 +77,52 @@ export class PlayerComponent implements OnInit {
     secs = (secs < 10 ? '0' : '') + secs;
     return `${mins}:${secs}`;
   }
-  question : QuestionModel;
+  question: QuestionModel;
 
   onResponseReceived(response) {
+    console.log("this is the user response " + response);
     this.question.userResponse = response;
   }
 
   getNextQuestion() {
+    console.log("Testing ", this.localStorage.retrieve("response"));
+    this.question.userResponse = this.localStorage.retrieve("response");
+    console.log("this is the response attachde " , this.question.userResponse);
     this.count = this.count + 1;
     this.progress = this.progress + 10;
-    return this.playerService.getNextQuestion(this.question);
+     return this.playerService.getNextQuestion(this.question).then(()=>this.loadComponent(this.question));
     // this.loadComponent();
   }
 
   endQuiz() {
     //this.playerService.sendResponse(this.question);
     console.log("inside end quiz of player component");
-    //this.playerService.shuffleArray(this.numbers);
+    this.question.userResponse = this.localStorage.retrieve("response");
+    this.router.navigate(['result/abcd']);
     return this.playerService.endQuiz(this.question);
 
   }
 
-  //numbers = [1,2,3,4,5,6,7,8,9,0];
+  loadComponent(question:QuestionModel) {
+    let adItem;
+    console.log("type is " + question.questionText);
+    switch(question.questionType) {
+      case "MCQType":
+      adItem = this.questionComponents[0];
+      break;
+      case "FillBlanks":
+      adItem = this.questionComponents[1];
+      break;
+
+    }
+    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(adItem.component);
+    let viewContainerRef = this.questionHost.viewContainerRef;
+    viewContainerRef.clear();
+    let componentRef = viewContainerRef.createComponent(componentFactory);
+    (<AdComponents>componentRef.instance).question = question;
 
 
 
-  // loadComponent() {
-
-  //   console.log("printiing question compoennt"+this.questionComponents);
-  //   let adItem = this.questionComponents[0];
-  //   //this.count++;
-  //   //console.log("inside load component" + adItem.component);
-  //   let componentFactory = this.componentFactoryResolver.resolveComponentFactory(adItem.component);
-
-  //   let viewContainerRef = this.questionHost.viewContainerRef;
-  //   viewContainerRef.clear();
-
-  //   let componentRef = viewContainerRef.createComponent(componentFactory);
-  //   (<AdComponents>componentRef.instance).data = this.question;
-  // }
+  }
 
 }
-
-
