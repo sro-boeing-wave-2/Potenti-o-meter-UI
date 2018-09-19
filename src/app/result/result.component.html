@@ -1,0 +1,84 @@
+<app-header></app-header>
+<div class="card">
+    <div class="panel panel-success">
+        <div class="panel-heading">Results for Current Quiz</div>
+        <div class="panel-body">
+            <ul class="list-inline">
+                <li>Domain : {{_result?.domainName}}</li>
+                <li>Your Score: {{_result?.quizResults[length].obtainedScore}}/{{_result?.quizResults[length].totalScore}}</li>
+                <li>Percentage obtained: {{_result?.quizResults[length]?.percentageScore}}</li>
+              </ul>
+              <p>This is how much you improved from your previous attempt: {{((_result?.quizResults[length]?.percentageScore - _result?.quizResults[length-1]?.percentageScore)/_result?.quizResults[length-1]?.percentageScore)*100}}</p>
+              <p>This is how much you improved from your first attempt: {{((_result?.quizResults[length]?.percentageScore - _result?.quizResults[0]?.percentageScore)/_result?.quizResults[0]?.percentageScore)*100}}</p>
+              <button type="button" class="btn btn-primary" (click)="viewResponse()">Click here to view your responses</button>
+              <h4>Your overall score in this domain now stands at: {{_result?.averagePercentage}} </h4>
+        </div>
+      </div>
+<div class = user_domain>
+<h4> User Id : {{_result?.userId}}</h4>
+<h4>Domain Name : {{_result?.domainName}}</h4>
+<h4>Your Percentage Score of this domain : {{_result?.averagePercentage}}</h4>
+
+</div>
+<div>
+<h1 class = question >Questions</h1>
+<table >
+  <tr>
+    <th>QNo.</th>
+    <th>Question</th>
+    <th>Marks</th>
+    <th>Response</th>
+    <th>Correct Answer</th>
+    <th>Is Correct</th>
+
+  </tr>
+  <tr *ngFor="let quest of question">
+    <td>{{quest.questionNumber}}</td>
+    <td>{{quest.questionText}}</td>
+    <td>{{quest.difficultyLevel}}</td>
+    <td>{{quest.response}}</td>
+    <td>{{quest.correctAns}}</td>
+    <td>{{quest.isCorrect}}</td>
+
+</tr>
+</table>
+</div>
+
+
+<div class="w3-padding-44 w3-blue  w3-center circle-width">
+    <!-- hardcoded as of now, need to get the latest entry and for that we need to get the last element of this array -->
+    <!-- int length = _result.quizResults.Count -->
+   <h2>Your Score: {{_result?.quizResults[length].obtainedScore}}/{{_result?.quizResults[length].totalScore}} </h2>
+   <h2>  Percentage obtained: {{_result?.quizResults[length]?.percentageScore}}</h2>
+</div>
+<div>
+  <h1>Concept Wise Results</h1>
+  <table>
+    <tr>
+      <th>Concepts</th>
+      <th>Correct Count</th>
+      <th>Total Count</th>
+      <th>Percentage</th>
+      <th>Strength</th>
+    </tr>
+    <tr *ngFor="let tag of tags">
+       <td>{{tag.tagName }}</td>
+       <td>{{tag.tagCorrectAnsCount}}</td>
+       <td>{{tag.tagTotalQuestCount}}</td>
+       <td>{{tag.tagCorrectPercentage}}</td>
+       <td>{{tag.tagRating}}</td>
+    </tr>
+  </table>
+</div>
+
+<h2>Radar Chart of First and Last Quiz</h2>
+<hr />
+<div *ngIf="chart">
+  <canvas id="canvas">{{ chart }}</canvas>
+</div>
+<h2>Cumulative Result</h2>
+<div *ngIf="cumulativeChart">
+  <canvas id="canva">{{ cumulativeChart }}</canvas>
+</div>
+</div>
+<app-footer></app-footer>

@@ -14,25 +14,20 @@
     <h4 class="card-title">Question {{count}}/10</h4>
 
     <div class="progress">
-      <div class="progress-bar progress-bar-striped" role="progressbar" [attr.aria-valuenow]="progress" aria-valuemin="0"
-        aria-valuemax="100" style="min-width: 2em;" [style.width]="(progress/100)*100 + '%'">
+      <div class="progress-bar progress-bar-striped" role="progressbar" [attr.aria-valuenow]="progress" aria-valuemin="0" aria-valuemax="100"
+        style="min-width: 2em;" [style.width]="(progress/100)*100 + '%'">
         Question {{count}}/10
       </div>
     </div>
-
-
-
-
-
-    <app-mcq (onResponse)="onResponseReceived($event) " [question]="question "></app-mcq>
+    <ng-template question-host></ng-template>
     <div *ngIf="count < 10; then activeQuiz; else lastQuestion"> </div>
-      <ng-template #activeQuiz>
-        <button type="button " class="btn btn-primary " (click)="getNextQuestion() ">Next</button>
-      </ng-template>
-      <ng-template #lastQuestion>
-        <button type="button " class="btn btn-primary " disabled (click)="getNextQuestion() ">Next</button>
-      </ng-template>
-      <button type="button " class="btn btn-warning " (click)="endQuiz() ">Submit</button>
-    </div>
+    <ng-template #activeQuiz>
+      <button type="button " class="btn btn-primary " (click)="getNextQuestion() ">Next</button>
+    </ng-template>
+    <ng-template #lastQuestion>
+      <button type="button " class="btn btn-primary " disabled (click)="getNextQuestion() ">Next</button>
+    </ng-template>
+    <button type="button " class="btn btn-warning " (click)="endQuiz() ">Submit</button>
   </div>
-  <app-footer></app-footer>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,7 @@
+<mat-card class="fill-in-the-blanks-card">
+    <mat-card-content>
+      <p>{{question.questionText}}</p>
+        <textarea matInput [(ngModel)]="response"> </textarea>
+      <div class="example-selected-value">Your selected option is : {{response}}</div>
+    </mat-card-content>
+   </mat-card>

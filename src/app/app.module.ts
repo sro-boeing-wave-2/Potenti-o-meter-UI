@@ -26,6 +26,10 @@ import { UserSignUpComponent } from './user-sign-up/user-sign-up.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardHeaderComponent } from './dashboard-header/dashboard-header.component';
 import { HttpModule } from '@angular/http';
+import { ResultComponent } from './result/result.component';
+import { QuestionDirective } from './question.directive';
+import { Ng2Webstorage } from 'ngx-webstorage';
+import { FillInTheBlanksComponent } from './fill-in-the-blanks/fill-in-the-blanks.component';
 
 
 
@@ -42,7 +46,10 @@ import { HttpModule } from '@angular/http';
     UserSignUpComponent,
     DashboardComponent,
     DashboardHeaderComponent,
-    DashboardBodyComponent
+    DashboardBodyComponent,
+    ResultComponent,
+    QuestionDirective,
+    FillInTheBlanksComponent
   ],
   imports: [
     BrowserModule,
@@ -61,10 +68,10 @@ import { HttpModule } from '@angular/http';
     ReactiveFormsModule,
     MatIconModule,
     MaterialModule,
-    MatSnackBarModule
+    Ng2Webstorage
   ],
   providers: [PlayerService, MatDialog],
   bootstrap: [AppComponent],
-  entryComponents: [UserLoginComponent,UserSignUpComponent],
+  entryComponents: [UserLoginComponent,UserSignUpComponent,McqComponent,FillInTheBlanksComponent]
 })
 export class AppModule { }

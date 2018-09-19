@@ -1,16 +1,17 @@
 export class QuestionModel {
-  public QuestionId : string;
-  public Domain : string;
-  public QuestionText : string;
-  public OptionList : Options[];
-  public QuestionType : string;
-  public ConceptTags : string[];
+  public questionId : string;
+  public domain : string;
+  public questionText : string;
+  public optionList : Options[];
+  public questionType : string;
+  public conceptTags : string[];
   public userResponse : string;
-  public DifficultyLevel : number;
-  public IsCorrect : boolean;
+  public difficultyLevel : number;
+  public isCorrect : boolean;
+
 }
 
 class Options{
-  public Option : string;
+  public option : string;
 }
 
