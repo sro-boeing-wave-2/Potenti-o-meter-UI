@@ -5,6 +5,10 @@
   padding: 25px 50px 75px 50px;
 }
 
+.increasedPrevious{
+  color: green;
+}
+
 
 .question , .totalscore {
   text-align: center;

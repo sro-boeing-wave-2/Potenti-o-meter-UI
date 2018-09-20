@@ -24,9 +24,12 @@ export class ResultComponent implements OnInit {
   tagListofFirstElement = [];
   quizResultArray: QuizResult[];
   chart = [];
+  lineGraph = [];
   firstQuizElement: QuizResult;
   cumulativeTagWiseResult: CumulativeTagScore[] = [];
   cumulativeChart = [];
+  changePrevious: number;
+  changeFirst: number;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private resultService: ResultService) { }
 
@@ -38,6 +41,7 @@ export class ResultComponent implements OnInit {
       // this.domain = Domain;
       let quizId = params.get('quizId');
       this.quizId = quizId;
+
 
     });
 
@@ -58,6 +62,7 @@ export class ResultComponent implements OnInit {
       this.cumulativeTagWiseResult.push(...cumulativeTagWiseList);
       let cumulativeConcept = this.cumulativeTagWiseResult.map(res => res.tagName);
       let cumulativeScore = this.cumulativeTagWiseResult.map(res => res.tagRating);
+      console.log(cumulativeScore);
       let sortedcumulative = cumulativeScore.sort().reverse();
       // Added
       const tagList = this._result.quizResults[this.length].tagWiseResults;
@@ -132,7 +137,12 @@ export class ResultComponent implements OnInit {
       });
 
       this._questions = this._result.quizResults[this.length].questionsAttempted;
+      this.changePrevious = Math.round(this._result.quizResults[this.length].percentageScore - this._result.quizResults[this.length-1].percentageScore)/this._result.quizResults[this.length-1].percentageScore;
+      this.changeFirst = Math.round(this._result.quizResults[this.length].percentageScore - this._result.quizResults[0].percentageScore)/this._result.quizResults[0].percentageScore;
 
+
+      //_result?.quizResults[length].obtainedScore
+      //(_result?.quizResults[length]?.percentageScore - _result?.quizResults[length-1]?.percentageScore)/_result?.quizResults[length-1]?.percentageScore)*100
     });
   }
 }

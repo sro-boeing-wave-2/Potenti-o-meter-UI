@@ -3,17 +3,45 @@
     <div class="panel panel-success">
         <div class="panel-heading">Results for Current Quiz</div>
         <div class="panel-body">
-            <ul class="list-inline">
+            <div class="panel panel-default">
+          <ul class="list-inline">
                 <li>Domain : {{_result?.domainName}}</li>
                 <li>Your Score: {{_result?.quizResults[length].obtainedScore}}/{{_result?.quizResults[length].totalScore}}</li>
                 <li>Percentage obtained: {{_result?.quizResults[length]?.percentageScore}}</li>
               </ul>
-              <p>This is how much you improved from your previous attempt: {{((_result?.quizResults[length]?.percentageScore - _result?.quizResults[length-1]?.percentageScore)/_result?.quizResults[length-1]?.percentageScore)*100}}</p>
-              <p>This is how much you improved from your first attempt: {{((_result?.quizResults[length]?.percentageScore - _result?.quizResults[0]?.percentageScore)/_result?.quizResults[0]?.percentageScore)*100}}</p>
+              </div>
+              <div *ngIf="changePrevious >= 0; then increasedPrevious; else decreasedPrevious"> </div>
+              <ng-template #increasedPrevious>
+              <div class="panel panel-default">
+              <p style="color: green">Progress from your previous attempt: <i class="fa fa-arrow-up"></i>{{changePrevious * 100}}%</p>
+              </div>
+              </ng-template>
+              <ng-template #decreasedPrevious>
+                  <div class="panel panel-default">
+                  <p style="color: red">Progress from your previous attempt: <i class="fa fa-arrow-down"></i>{{changePrevious * 100}}%</p>
+                  </div>
+                  </ng-template>
+                  <div *ngIf="changeFirst >= 0; then increasedFirst; else decreasedFirst"> </div>
+                  <ng-template #increasedFirst>
+              <div class="panel panel-default">
+              <p style="color: green">Progress from your first attempt: <i class="fa fa-arrow-up"></i>{{changeFirst * 100}}%</p>
+            </div>
+            </ng-template>
+            <ng-template #decreasedFirst>
+                <div class="panel panel-default">
+                <p style="color: red">Progress from your first attempt: <i class="fa fa-arrow-down"></i>{{changeFirst * 100}}%</p>
+              </div>
+              </ng-template>
               <button type="button" class="btn btn-primary" (click)="viewResponse()">Click here to view your responses</button>
               <h4>Your overall score in this domain now stands at: {{_result?.averagePercentage}} </h4>
         </div>
       </div>
+
+      <div *ngIf="lineGraph">
+          <canvas>{{ lineGraph }}</canvas>
+        </div>
+
+
 <div class = user_domain>
 <h4> User Id : {{_result?.userId}}</h4>
 <h4>Domain Name : {{_result?.domainName}}</h4>
