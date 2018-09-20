@@ -1,4 +1,4 @@
-.domain{
+/* .domain{
 margin-top: -8rem;
 }
 .selected {
@@ -21,7 +21,7 @@ margin-top: -8rem;
     padding: .3em 0;
     height: 1.6em;
     border-radius: 4px;
-   
+
   }
   .domain-item li.selected:hover {
     background-color: #BBD8DC !important;
@@ -55,4 +55,58 @@ margin-top: -8rem;
     grid-template-columns: auto auto auto auto;
     grid-gap: 10px;
     padding: 10px;
+  } */
+
+  .card-panel.hoverable {
+    overflow: hidden;
+    position: relative;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+    color: white;
+    height: 400px;
+  }
+  .card-panel.hoverable.small {
+    height: 300px;
+  }
+  .card-panel.hoverable.medium {
+    height: 400px;
+  }
+  .card-panel.hoverable.large {
+    height: 500px;
+  }
+  .card-panel.hoverable .card-panel-header {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%) scale(1.5);
+            transform: translateY(-50%) scale(1.5);
+    transition: top 0.25s 0.1s, -webkit-transform 0.25s ease 0.1s;
+    transition: top 0.25s 0.1s, transform 0.25s ease 0.1s;
+    transition: top 0.25s 0.1s, transform 0.25s ease 0.1s, -webkit-transform 0.25s ease 0.1s;
+  }
+  .card-panel.hoverable .card-panel-icon {
+    display: block;
+    text-align: center;
+  }
+  .card-panel.hoverable .card-panel-caption {
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+  }
+  .card-panel.hoverable .card-panel-content {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+            transform: translateY(20px);
+    transition: opacity 0.8s, -webkit-transform 0.25s;
+    transition: transform 0.25s, opacity 0.8s;
+    transition: transform 0.25s, opacity 0.8s, -webkit-transform 0.25s;
+  }
+  .card-panel.hoverable:hover .card-panel-header {
+    -webkit-transform: translateY(0) scale(1);
+            transform: translateY(0) scale(1);
+    top: 0;
+  }
+  .card-panel.hoverable:hover .card-panel-content {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
   }
