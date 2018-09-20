@@ -1,4 +1,7 @@
-/* @import "bourbon"; */
+@import url('https://fonts.googleapis.com/css?family=Signika');
+
+@import url('https://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.css');
+@import url('https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css');
 
 .alert {
   margin-top:50px;
@@ -35,6 +38,7 @@ img {
   top: 50%;
   z-index: 0;
   transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%,-50%);
 }
 
 .herobutton {
@@ -45,6 +49,19 @@ img {
   top: 70%;
   z-index: 1;
   transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%,-50%);
+}
+
+.arrowbutton {
+  height: 50px;
+  width:100%;
+  left: 50%;
+  margin: 0 auto;
+  position: absolute;
+  top: 60%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%,-50%);
 }
 
 
@@ -198,3 +215,84 @@ h2 {font-size: 3em;}
 #Signin{
   margin-left: 1%;
 }
+
+/* a.arrow{
+  color: white;
+  text-align: center;
+  font-size: 3em;
+  text-decoration: none;
+  padding-bottom:30px;
+  -webkit-transition: color 0.2s ease-out;
+  -moz-transition: color 0.2s ease-out;
+  -o-transition: color 0.2s ease-out;
+   transition: color 0.2s ease-out;
+}
+a.arrow:hover {color: #FFC52F;} */
+
+/* @media only screen and (min-width: 767px) {
+  body {
+        font-size: 1.125em;
+    }
+    .container {
+        background-size: 100%;
+    }
+    .container h1 {
+        font-size: 3.25em;
+    }
+    a.button {
+        padding: .75em 1.5em;
+    }
+} */
+
+.fa {
+  width: 60px;
+  display: block;
+  text-align: center;
+  color:#ffffff;
+  font:normal 45px 'FontAwesome';
+  line-height:60px;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+ }
+ .fa-angle-double-down:before {content: "\f103";}
+
+ .bounce {
+  position: absolute;
+  bottom: 30px;
+  left: 50% ;
+  width: 60px;
+  height: 60px ;
+  margin-left:-30px;
+  border: 2px solid #ffffff;
+  -webkit-border-radius:50%;
+  -moz-border-radius:50%;
+  -ms-border-radius:50%;
+  border-radius:50%;
+  animation: bounce 2s infinite;
+  -webkit-animation: bounce 2s infinite;
+  -moz-animation: bounce 2s infinite;
+  -o-animation: bounce 2s infinite;
+ }
+
+ @-webkit-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);}
+  40% {-webkit-transform: translateY(-30px);}
+  60% {-webkit-transform: translateY(-15px);}
+ }
+
+ @-moz-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {-moz-transform: translateY(0);}
+  40% {-moz-transform: translateY(-30px);}
+  60% {-moz-transform: translateY(-15px);}
+ }
+
+ @-o-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {-o-transform: translateY(0);}
+  40% {-o-transform: translateY(-30px);}
+  60% {-o-transform: translateY(-15px);}
+ }
+ @keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+  40% {transform: translateY(-30px);}
+  60% {transform: translateY(-15px);}
+ }
