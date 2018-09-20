@@ -113,3 +113,20 @@
     display: block;
   }
 }
+
+.container {
+  width:100%;
+}
+
+header {
+  height: 40px;
+}
+
+nav {
+  background-color: transparent;
+  overflow: hidden;
+}
+
+a.dropdown-toggle{
+  height: 50px;
+}

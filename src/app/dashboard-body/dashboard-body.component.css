@@ -110,3 +110,7 @@ margin-top: -8rem;
             transform: translateY(0);
     opacity: 1;
   }
+
+  .card-panel-content {
+    font-size: 16px;
+  }

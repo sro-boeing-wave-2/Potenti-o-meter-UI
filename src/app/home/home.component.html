@@ -1,9 +1,10 @@
 <app-header [homePage]="true" [validSignup]="true" [userDetail]="false" (notifyLogIn)='onLoginNotify($event)' (notifySignIn)='onSignInNotify($event)'></app-header>
-<div class="alert alert-success alert-dismissible fade in" *ngIf="signup" role="alert" data-auto-dismiss="2000">
-  Successfully registered!
-</div>
 <div class="hero">
     <img src="../../assets/images/Potential-of-Change.jpg" class="overlay"/>
+    <div class="heroalert alert alert-success alert-dismissible fade in" *ngIf="signup"
+    role="alert" data-auto-dismiss="2000" id="fifth">
+      Successfully registered!
+    </div>
       <div class="herotext" id="first">
         <h2>Potenti-o-meter</h2>
         <p>Diagnosis of each candidate, rather than the group.</p>
