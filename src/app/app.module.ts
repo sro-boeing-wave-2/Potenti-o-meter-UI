@@ -30,7 +30,8 @@ import { ResultComponent } from './result/result.component';
 import { QuestionDirective } from './question.directive';
 import { Ng2Webstorage } from 'ngx-webstorage';
 import { FillInTheBlanksComponent } from './fill-in-the-blanks/fill-in-the-blanks.component';
-import { DomainComponent } from './domain/domain.component';
+import { ResultdomainComponent } from './resultdomain/resultdomain.component';
+
 
 
 
@@ -51,7 +52,8 @@ import { DomainComponent } from './domain/domain.component';
     ResultComponent,
     QuestionDirective,
     FillInTheBlanksComponent,
-    DomainComponent
+    ResultdomainComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DomainService } from './domain.service';
+import { ResultDomainService } from './result-domain.service';
 
-describe('DomainService', () => {
+describe('ResultDomainService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: DomainService = TestBed.get(DomainService);
+    const service: ResultDomainService = TestBed.get(ResultDomainService);
     expect(service).toBeTruthy();
   });
 });

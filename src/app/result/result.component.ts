@@ -44,7 +44,7 @@ export class ResultComponent implements OnInit {
 
 
 
-    this.resultService.getUserResult(this.quizId).subscribe(data => {
+      this.resultService.getUserResult(this.quizId).subscribe(data => {
       this._result = data.json();
       this.length = this._result.quizResults.length - 1;
       this.firstQuizElement = this._result.quizResults[0];
