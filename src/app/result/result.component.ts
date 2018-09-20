@@ -62,8 +62,8 @@ export class ResultComponent implements OnInit {
       this.cumulativeTagWiseResult.push(...cumulativeTagWiseList);
       let cumulativeConcept = this.cumulativeTagWiseResult.map(res => res.tagName);
       let cumulativeScore = this.cumulativeTagWiseResult.map(res => res.tagRating);
-      console.log(cumulativeScore);
-      let sortedcumulative = cumulativeScore.sort().reverse();
+
+     // let sortedcumulative = cumulativeScore.sort().reverse();
       // Added
       const tagList = this._result.quizResults[this.length].tagWiseResults;
       this.tags.push(...tagList);

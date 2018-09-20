@@ -7,6 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ResultComponent } from './result/result.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserSignUpComponent } from './user-sign-up/user-sign-up.component';
+import { DomainComponent } from './domain/domain.component';
 
 const routes: Routes = [
   { path: '',redirectTo: '/start:id/:domain',  pathMatch: 'full'},
@@ -14,8 +15,8 @@ const routes: Routes = [
   {path:'player/:id', component:PlayerComponent},
   {  path: 'home', component: HomeComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'result/:quizId', component: ResultComponent }
-  // { path: 'login/:id', component: UserSignUpComponent }
+  { path: 'result/:quizId', component: ResultComponent },
+  { path: 'app',component: DomainComponent}
 ];
 
 @NgModule({
