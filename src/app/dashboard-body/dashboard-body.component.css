@@ -90,7 +90,7 @@ margin-top: -8rem;
   .card-panel.hoverable .card-panel-caption {
     display: block;
     text-align: center;
-    font-size: 1rem;
+    font-size: 2rem;
   }
   .card-panel.hoverable .card-panel-content {
     opacity: 0;
@@ -112,5 +112,11 @@ margin-top: -8rem;
   }
 
   .card-panel-content {
-    font-size: 16px;
+    font-size: 18px;
+    text-align: center;
   }
+
+  .card-panel-content button:hover{
+    cursor: pointer;
+    margin: 0 auto;
+    }
