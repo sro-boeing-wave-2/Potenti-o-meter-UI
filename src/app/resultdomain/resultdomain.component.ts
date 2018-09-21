@@ -15,7 +15,7 @@ export class ResultdomainComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
-      this.userId = +params.get('userId'); // '+' is to convert string to integer
+      this.userId = +params.get('userId'); // '+' is to convert string to integer since the params are y default string
       // console.log(typeof(this.userId))   ;
     });
 
@@ -23,6 +23,10 @@ export class ResultdomainComponent implements OnInit {
       this.domainsOfUser = data.json();
 
     });
+  }
+  showResult(domain)
+  {
+    this.router.navigate(['domainWisequiz','userId','domainName']);
   }
 
 }

@@ -30,9 +30,14 @@ import { ResultComponent } from './result/result.component';
 import { QuestionDirective } from './question.directive';
 import { Ng2Webstorage } from 'ngx-webstorage';
 import { FillInTheBlanksComponent } from './fill-in-the-blanks/fill-in-the-blanks.component';
+<<<<<<< HEAD
 import { ResultdomainComponent } from './resultdomain/resultdomain.component';
 import { QuizInDomainComponent } from './quiz-in-domain/quiz-in-domain.component';
 
+=======
+import { DomainComponent } from './domain/domain.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+>>>>>>> 5088e7e0505f5fdccf73b66308928e3522c4da5b
 
 
 
@@ -53,9 +58,14 @@ import { QuizInDomainComponent } from './quiz-in-domain/quiz-in-domain.component
     ResultComponent,
     QuestionDirective,
     FillInTheBlanksComponent,
+<<<<<<< HEAD
     ResultdomainComponent,
     QuizInDomainComponent,
 
+=======
+    DomainComponent,
+    UserProfileComponent,
+>>>>>>> 5088e7e0505f5fdccf73b66308928e3522c4da5b
   ],
   imports: [
     BrowserModule,

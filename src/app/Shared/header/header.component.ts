@@ -6,7 +6,7 @@ import { SignUpService } from '../../sign-up.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-header',
+  selector: '                                                   ',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
