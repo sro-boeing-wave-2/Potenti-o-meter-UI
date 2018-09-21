@@ -35,6 +35,7 @@ import { ResultdomainComponent } from './resultdomain/resultdomain.component';
 import { QuizInDomainComponent } from './quiz-in-domain/quiz-in-domain.component';
 import { ResultHistoryComponent } from './result-history/result-history.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { QuestionmcqComponent } from './questionmcq/questionmcq.component';
 
 
 
@@ -55,6 +56,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     ResultComponent,
     QuestionDirective,
     FillInTheBlanksComponent,
+    UserProfileComponent,
+    QuestionmcqComponent,
     ResultHistoryComponent,
     ResultdomainComponent,
     QuizInDomainComponent,

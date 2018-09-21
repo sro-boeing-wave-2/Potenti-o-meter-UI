@@ -7,6 +7,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ResultComponent } from './result/result.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserSignUpComponent } from './user-sign-up/user-sign-up.component';
+
+import { QuestionmcqComponent } from './questionmcq/questionmcq.component';
 import { ResultHistoryComponent } from './result-history/result-history.component';
 import { ResultdomainComponent } from './resultdomain/resultdomain.component';
 import { QuizInDomainComponent } from './quiz-in-domain/quiz-in-domain.component';
@@ -18,6 +20,7 @@ const routes: Routes = [
   {  path: 'home', component: HomeComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'result/:quizId', component: ResultComponent },
+  { path: 'question',component: QuestionmcqComponent},
   { path: 'result/:id/:domain', component:ResultHistoryComponent},
   {path: 'resultdomain/:userId',component : ResultdomainComponent},
   {path :'domainWisequiz/:userId/:domainName',component : QuizInDomainComponent}
