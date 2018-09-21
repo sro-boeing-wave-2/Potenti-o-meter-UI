@@ -52,6 +52,17 @@ img {
   -ms-transform: translate(-50%,-50%);
 }
 
+.heroalert{
+  width:30%;
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%,-50%);
+}
+
 .arrowbutton {
   height: 50px;
   width:100%;
@@ -261,6 +272,7 @@ a.arrow:hover {color: #FFC52F;} */
   bottom: 30px;
   left: 50% ;
   width: 60px;
+  top: 80%;
   height: 60px ;
   margin-left:-30px;
   border: 2px solid #ffffff;

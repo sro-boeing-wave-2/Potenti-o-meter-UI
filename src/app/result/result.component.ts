@@ -221,6 +221,10 @@ export class ResultComponent implements OnInit {
       this.changePrevious = Math.fround((this._result.quizResults[this.length].percentageScore - this._result.quizResults[this.length - 1].percentageScore) / this._result.quizResults[this.length - 1].percentageScore) * 100;
       this.changeFirst = Math.fround((this._result.quizResults[this.length].percentageScore - this._result.quizResults[0].percentageScore) / this._result.quizResults[0].percentageScore) * 100;
 
+      for (var j= 1; i <= this._result.quizResults.length; j++) {
+
+        console.log(i);
+    }
 
       //_result?.quizResults[length].obtainedScore
       //(_result?.quizResults[length]?.percentageScore - _result?.quizResults[length-1]?.percentageScore)/_result?.quizResults[length-1]?.percentageScore)*100

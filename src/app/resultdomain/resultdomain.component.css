@@ -1,3 +1,7 @@
+  .domainButton{
+    text-align: center;
+  }
+
   .card-panel.hoverable {
     overflow: hidden;
     position: relative;
@@ -31,7 +35,7 @@
   .card-panel.hoverable .card-panel-caption {
     display: block;
     text-align: center;
-    font-size: 1.4rem;
+    font-size: 2rem;
   }
   .card-panel.hoverable .card-panel-content {
     opacity: 0;
@@ -60,18 +64,4 @@
   .card-panel-content button:hover{
     cursor: pointer;
     margin: 0 auto;
-  }
-
-  .card-content{
-    width: 90%;
-    position: absolute;
-    bottom: 5%;
-  }
-
-  .material-icons {
-    font-size: 48px;
-  }
-
-  #showResult {
-    margin-bottom: 2%;
-  }
+    }

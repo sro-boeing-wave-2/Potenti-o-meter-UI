@@ -63,7 +63,7 @@ ul.switcher li{
   background: rgba(57, 89, 116, 0.8);
   position: relative;
   box-shadow: 0px 30px 60px -5px #000;
-  background-image:url('../../assets/images/form.jpeg');
+  background-image:url('../../assets/images/form.jpg');
   background-size:cover;
   background-blend-mode:saturation;
 }
