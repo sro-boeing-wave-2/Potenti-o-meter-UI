@@ -13,7 +13,7 @@ export class ResultComponent implements OnInit {
   // userId : number;
   // domain : string;
   quizId: string;
-
+  Math: any;
   _result: UserResult;
   quizResult: QuizResult;
   questionList: QuestionsAttempted[];
@@ -22,11 +22,19 @@ export class ResultComponent implements OnInit {
   tags = [];
   length: number;
   tagListofFirstElement = [];
+  tagListofPrevElement = [];
   quizResultArray: QuizResult[];
   chart = [];
+  chartPrev = [];
+  lineGraph = [];
   firstQuizElement: QuizResult;
+  prevQuizElement: QuizResult;
   cumulativeTagWiseResult: CumulativeTagScore[] = [];
   cumulativeChart = [];
+  changePrevious: number;
+  changeFirst: number;
+  labelsArray = [];
+  scoreArray = [];
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private resultService: ResultService) { }
 
@@ -39,26 +47,32 @@ export class ResultComponent implements OnInit {
       let quizId = params.get('quizId');
       this.quizId = quizId;
 
+
+
     });
 
 
 
-
+    this.Math = Math;
     this.resultService.getUserResult(this.quizId).subscribe(data => {
       this._result = data.json();
       this.length = this._result.quizResults.length - 1;
       this.firstQuizElement = this._result.quizResults[0];
+      this.prevQuizElement = this._result.quizResults[this.length - 1];
       const questionsListArray = this._result.quizResults[length].questionsAttempted
       this.question.push(...questionsListArray);
 
       //console.log(this._result.quizResults.length);
       //console.log(this.question[0]);
       const cumulativeTagWiseList = this._result.tagWiseCumulativeScore;
-      console.log(cumulativeTagWiseList);
+      //console.log("Result" + JSON.stringify(this._result));
+      console.log("cumulativeTagWiseList:" + cumulativeTagWiseList);
       this.cumulativeTagWiseResult.push(...cumulativeTagWiseList);
       let cumulativeConcept = this.cumulativeTagWiseResult.map(res => res.tagName);
       let cumulativeScore = this.cumulativeTagWiseResult.map(res => res.tagRating);
-     // let sortedcumulative = cumulativeScore.sort().reverse();
+      console.log("cumalative scores:" + cumulativeScore);
+
+      // let sortedcumulative = cumulativeScore.sort().reverse();
       // Added
       const tagList = this._result.quizResults[this.length].tagWiseResults;
       this.tags.push(...tagList);
@@ -66,13 +80,55 @@ export class ResultComponent implements OnInit {
       // first Quiz
       const tagListFirstElement = this.firstQuizElement.tagWiseResults;
       this.tagListofFirstElement.push(...tagListFirstElement)
-      //  let firstTagNames = this.tagListofFirstElement.map(res => res.tagName);
       let firstTagPc = this.tagListofFirstElement.map(res => res.tagRating);
+      // previous Quiz
+      const tagListPrevElement = this.prevQuizElement.tagWiseResults;
+      this.tagListofPrevElement.push(...tagListPrevElement)
+      let prevTagPc = this.tagListofPrevElement.map(res => res.tagRating);
       //Last Quiz
       let tagNames = this.tags.map(res => res.tagName); //extract the tagNames to label the chart
       // console.log(tagNames);
       var tagCorrectPc = this.tags.map(res => res.tagRating);
       //code to start numbering from Zero in the radar chart
+
+      // this.labelsArray.length = this._result.quizResults.length;
+
+      console.log("Quiz taken:" + this.labelsArray.length);
+
+        for (var i = 1; i <= this._result.quizResults.length; i++) {
+          this.labelsArray.push(i);
+          console.log(i);
+      }
+      console.log(this.labelsArray);
+
+      ////Score Array
+      this.scoreArray.push(...this._result.quizResults.map(res => res.percentageScore));
+      console.log(this.scoreArray);
+
+
+
+
+      this.lineGraph = new Chart('canvasLine', {
+        type: 'line',
+        data: {
+          labels: this.labelsArray,
+          datasets: [{
+            data: this.scoreArray,
+            label: this._result.domainName,
+            borderColor: "#3e95cd",
+            fill: false
+          }
+          ]
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'Progress Graph'
+          }
+        }
+      });
+
+
       var options = {
         responsive: true,
         maintainAspectRatio: true,
@@ -87,6 +143,9 @@ export class ResultComponent implements OnInit {
       console.log("last" + tagCorrectPc);
       console.log("first" + firstTagPc);
       //console.log(Math.max.apply(null,tagCorrectPc));
+
+
+
       this.chart = new Chart('canvas', {
         type: 'radar',
 
@@ -110,6 +169,33 @@ export class ResultComponent implements OnInit {
         }
 
       });
+      //Comparison with previous Quiz
+
+      this.chartPrev = new Chart('canvas1', {
+        type: 'radar',
+
+        options: options,
+        data: {
+          labels: tagNames,
+          datasets: [{
+            label: "Latest Quiz Result",
+            data: tagCorrectPc,
+            backgroundColor: "rgba(200,0,0,0.2)"
+          },
+          {
+            label: "Previous QUiz Result",
+            data: prevTagPc,
+            backgroundColor: "rgba(0,0,200,0.2)"
+          }],
+          fill: false
+
+
+
+        }
+
+      });
+
+
       //  //Cumulative chart
       this.cumulativeChart = new Chart('canva', {
         type: 'radar',
@@ -132,7 +218,16 @@ export class ResultComponent implements OnInit {
       });
 
       this._questions = this._result.quizResults[this.length].questionsAttempted;
+      this.changePrevious = Math.fround((this._result.quizResults[this.length].percentageScore - this._result.quizResults[this.length - 1].percentageScore) / this._result.quizResults[this.length - 1].percentageScore) * 100;
+      this.changeFirst = Math.fround((this._result.quizResults[this.length].percentageScore - this._result.quizResults[0].percentageScore) / this._result.quizResults[0].percentageScore) * 100;
 
+      for (var j= 1; i <= this._result.quizResults.length; j++) {
+
+        console.log(i);
+    }
+
+      //_result?.quizResults[length].obtainedScore
+      //(_result?.quizResults[length]?.percentageScore - _result?.quizResults[length-1]?.percentageScore)/_result?.quizResults[length-1]?.percentageScore)*100
     });
   }
 }

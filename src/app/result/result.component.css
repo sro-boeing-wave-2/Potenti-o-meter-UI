@@ -5,7 +5,10 @@
   padding: 25px 50px 75px 50px;
 }
 
-
+.cumulative{
+  width: 80%;
+  align-self: center;
+}
 .question , .totalscore {
   text-align: center;
   margin: 15px;

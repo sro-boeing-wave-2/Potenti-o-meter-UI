@@ -1,0 +1,39 @@
+<div class="card">
+  <div class="card-body">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h2>{{domain}}</h2>
+      </div>
+      <div class="panel-body">
+        <div class="panel panel-default">
+          <h4>Cumulative Score: {{_result.averagePercentage}}%</h4>
+          <div *ngIf="change >= 0; then increased; else decreased"> </div>
+          <ng-template #increased>
+            <p style="color: green">Progress from your first attempt:
+              <i class="fa fa-arrow-up"></i>{{(Math.round(change * 100))/100}}%</p>
+          </ng-template>
+          <ng-template #decreased>
+            <p style="color: red">Progress from your first attempt:
+              <i class="fa fa-arrow-down"></i>{{(Math.round(change * 100))/100}}%</p>
+          </ng-template>
+        </div>
+        <div class="panel-body">
+        </div>
+        <div class="panel panel-default">
+          <mat-tab-group>
+            <mat-tab *ngFor="let quiz of quizResultList" label="{{quiz.quizId}}">
+              <div class="panel panel-default">
+                <h4>Score: {{quiz.obtainedScore}}/{{quiz.totalScore}}</h4>
+                <h4>Percentage Score: {{quiz.percentageScore}}%</h4>
+                <h4>Conceptwise Scores:</h4>
+                <ul class="list-group">
+                  <li *ngFor="let tag of quiz.tagWiseResults">Concept {{tag.tagName}}: {{tag.tagRating}}</li>
+                </ul>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

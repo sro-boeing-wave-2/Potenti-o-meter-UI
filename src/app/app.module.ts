@@ -18,6 +18,7 @@ import {MaterialModule} from '../materialmodule';
 import { MatMenuModule} from '@angular/material/menu';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioModule} from '@angular/material/radio';
+import {MatTabsModule} from '@angular/material/tabs';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { DashboardBodyComponent } from './dashboard-body/dashboard-body.component';
 import { UserLoginComponent } from './user-login/user-login.component';
@@ -30,7 +31,9 @@ import { ResultComponent } from './result/result.component';
 import { QuestionDirective } from './question.directive';
 import { Ng2Webstorage } from 'ngx-webstorage';
 import { FillInTheBlanksComponent } from './fill-in-the-blanks/fill-in-the-blanks.component';
-import { DomainComponent } from './domain/domain.component';
+import { ResultdomainComponent } from './resultdomain/resultdomain.component';
+import { QuizInDomainComponent } from './quiz-in-domain/quiz-in-domain.component';
+import { ResultHistoryComponent } from './result-history/result-history.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { QuestionmcqComponent } from './questionmcq/questionmcq.component';
 
@@ -53,9 +56,12 @@ import { QuestionmcqComponent } from './questionmcq/questionmcq.component';
     ResultComponent,
     QuestionDirective,
     FillInTheBlanksComponent,
-    DomainComponent,
     UserProfileComponent,
     QuestionmcqComponent,
+    ResultHistoryComponent,
+    ResultdomainComponent,
+    QuizInDomainComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -70,6 +76,7 @@ import { QuestionmcqComponent } from './questionmcq/questionmcq.component';
     MatRadioModule,
     FormsModule,
     MatMenuModule,
+    MatTabsModule,
     MatDialogModule,
     ReactiveFormsModule,
     MatIconModule,

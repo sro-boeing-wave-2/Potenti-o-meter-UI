@@ -1,0 +1,18 @@
+<app-header></app-header>
+<div class="row" style="margin-top: 60px">
+  <div class="col s12 m4 l4"  *ngFor="let domain of domainsOfUser">
+    <div class="card-panel hoverable small pink">
+      <div class="card-panel-header">
+        <span class="card-panel-icon"><i class="material-icons">code</i></span>
+        <span class="card-panel-caption">{{domain}}</span>
+      </div>
+      <div class="card-content card-panel-content">
+        <button  mat-stroked-button (click)="showResult(domain)"> Click Here to see your Result</button>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" rel="stylesheet">
+
