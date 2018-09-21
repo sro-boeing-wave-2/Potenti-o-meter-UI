@@ -27,6 +27,7 @@ export class ResultComponent implements OnInit {
   firstQuizElement: QuizResult;
   cumulativeTagWiseResult: CumulativeTagScore[] = [];
   cumulativeChart = [];
+  lineChart = [];
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private resultService: ResultService) { }
 
@@ -130,6 +131,30 @@ export class ResultComponent implements OnInit {
         }
 
       });
+      ///////Line
+    //   this.lineChart = new Chart('line', {
+    //     type: 'line',
+    //     data: {
+    //         datasets: [{
+    //             label: 'First dataset',
+    //             data: [0, 20, 40, 50]
+    //         }],
+    //         labels: ['January', 'February', 'March', 'April']
+    //     },
+    //     options: {
+    //         scales: {
+    //             xAxes: [{
+    //                 ticks: {
+    //                     suggestedMin: 50,
+    //                     suggestedMax: 100
+    //                 }
+    //             }]
+    //         }
+    //     }
+    // });
+
+
+      //////
 
       this._questions = this._result.quizResults[this.length].questionsAttempted;
 

@@ -13,6 +13,9 @@ export class ResultDomainService {
   {
     return this.http.get("http://localhost/api/QuizResult/domains?userId="+userId);
   }
+  getByUserId_Domain(userId,domainName){
+    return this.http.get("http://localhost/api/QuizResult?userId="+userId+"&domainName="+domainName);
+  }
 
   constructor(private http : Http) { }
 }

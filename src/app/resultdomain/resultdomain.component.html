@@ -1,5 +1,16 @@
-<p>
-  resultdomain works!
+<app-header></app-header>
+<div class="row" style="margin-top: 60px">
+  <div  class="col s12 m4 l4" *ngFor="let domain of domainsOfUser">
+    <div class="card-panel hoverable small blue">
+      <div class="card-panel-header">
+        <span class="card-panel-icon"><i class="material-icons">code</i></span>
+        <span class="card-panel-caption">{{domain}}</span>
+      </div>
+      <div class = "domainButton">
+      <button class="card-panel-content" mat-button (click)="startQuiz()"> Click Here to see your Result</button>
+    </div>
+    </div>
+  </div>
+</div>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" rel="stylesheet">
 
-</p>
-<h2>{{domainsOfUser}}</h2>
