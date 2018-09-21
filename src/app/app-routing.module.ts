@@ -8,6 +8,7 @@ import { ResultComponent } from './result/result.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserSignUpComponent } from './user-sign-up/user-sign-up.component';
 import { DomainComponent } from './domain/domain.component';
+import { QuestionmcqComponent } from './questionmcq/questionmcq.component';
 
 const routes: Routes = [
   { path: '',redirectTo: '/start:id/:domain',  pathMatch: 'full'},
@@ -16,7 +17,8 @@ const routes: Routes = [
   {  path: 'home', component: HomeComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'result/:quizId', component: ResultComponent },
-  { path: 'app',component: DomainComponent}
+  { path: 'app',component: DomainComponent},
+  { path: 'question',component: QuestionmcqComponent}
 ];
 
 @NgModule({
