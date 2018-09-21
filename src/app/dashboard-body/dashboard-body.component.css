@@ -119,4 +119,10 @@ margin-top: -8rem;
   .card-panel-content button:hover{
     cursor: pointer;
     margin: 0 auto;
-    }
+  }
+
+  .card-content{
+    width: 90%;
+    position: absolute;
+    bottom: 5%;
+  }
