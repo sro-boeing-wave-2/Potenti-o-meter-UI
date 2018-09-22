@@ -8,3 +8,9 @@
 .progress-bar{
   background-color: #89cff0;
 }
+
+app-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

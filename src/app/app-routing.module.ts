@@ -12,13 +12,14 @@ import { QuestionmcqComponent } from './questionmcq/questionmcq.component';
 import { ResultHistoryComponent } from './result-history/result-history.component';
 import { ResultdomainComponent } from './resultdomain/resultdomain.component';
 import { QuizInDomainComponent } from './quiz-in-domain/quiz-in-domain.component';
+import { AuthguardGuard } from './authguard.guard';
 
 const routes: Routes = [
   { path: '',redirectTo: '/start:id/:domain',  pathMatch: 'full'},
   {path:'start/:id/:domain', component:StartQuizComponent},
   {path:'player/:id', component:PlayerComponent},
   {  path: 'home', component: HomeComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate:[AuthguardGuard]},
   { path: 'result/:quizId', component: ResultComponent },
   { path: 'question',component: QuestionmcqComponent},
   { path: 'result/:id/:domain', component:ResultHistoryComponent},
