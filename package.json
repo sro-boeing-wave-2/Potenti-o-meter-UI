@@ -30,6 +30,8 @@
     "chart.js": "^2.7.2",
     "compass-mixins": "^0.12.10",
     "core-js": "^2.5.4",
+    "html2canvas": "^1.0.0-alpha.12",
+    "jspdf": "^1.4.1",
     "ngx-bootstrap": "^3.0.1",
     "ngx-webstorage": "^2.0.1",
     "rxjs": "~6.2.0",

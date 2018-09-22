@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ResultService } from '../result.service';
 import { UserResult, QuizResult, QuestionsAttempted, CumulativeTagScore } from '../UserResult';
 import { Chart } from 'chart.js';
+import * as jsPDF from 'jspdf';
+import * as html2canvas from 'html2canvas';
 @Component({
   selector: 'app-result',
   templateUrl: './result.component.html',
@@ -37,22 +39,34 @@ export class ResultComponent implements OnInit {
   scoreArray = [];
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private resultService: ResultService) { }
+  @ViewChild('content') content:ElementRef;
+  public downLoadResult(){
+   var data = document.getElementById('content');
+   html2canvas(data).then(canvas => {
+     // Few necessary setting options
+     var imgWidth = 208;
+     var pageHeight = 295;
+     var imgHeight = canvas.height * imgWidth / canvas.width;
+     var heightLeft = imgHeight;
+
+     const contentDataURL = canvas.toDataURL('image/png')
+     let pdf = new jsPDF('p', 'mm', 'legal'); // legal size page of PDF
+     var position = 10; // change the margins in the pdf
+
+     pdf.addImage(contentDataURL, 'PNG', 10, position, imgWidth, imgHeight)
+     pdf.save('MyResult.pdf'); // Generated PDF
+   });
+  }
+
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
-      // let UserId = parseInt(params.get('userId'));
-      // let Domain = params.get('domain');
-      // this.userId = UserId;
-      // this.domain = Domain;
       let quizId = params.get('quizId');
       this.quizId = quizId;
 
 
 
     });
-
-
-
     this.Math = Math;
     this.resultService.getUserResult(this.quizId).subscribe(data => {
       this._result = data.json();

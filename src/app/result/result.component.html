@@ -33,7 +33,8 @@
           </div>
           <div class="panel-body">
             <p>Don't Worry!!</p>
-            <p>Your performance has slightly decreased from your last attempt. Work hard and you will do better next time.</p>
+            <p>Your performance has slightly decreased from your last attempt. Work hard and you will do better next
+              time.</p>
           </div>
         </div>
       </ng-template>
@@ -58,60 +59,65 @@
           </div>
           <div class="panel-body">
             <p>Don't Worry!!</p>
-            <p>Your performance has slightly decreased from your first attempt. Work hard and you will do better next time.</p>
+            <p>Your performance has slightly decreased from your first attempt. Work hard and you will do better next
+              time.</p>
           </div>
         </div>
       </ng-template>
       <button type="button" class="btn btn-primary" (click)="viewResponse()">Click here to view your responses</button>
-      <h4>Your overall score in this domain now stands at: {{_result?.averagePercentage}} </h4>
+      <hr />
+      <button type="button" class="btn btn-primary" (click)="downLoadResult()">Click here to download your Result</button>
+      <hr />
 
-
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4>Your Progress Graph</h4>
-        </div>
-        <div class="panel-body">
-          <div *ngIf="lineGraph">
-            <canvas id="canvasLine">{{ lineGraph }}</canvas>
-          </div>
-        </div>
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">Title</div>
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-md-6">
+  <div id="content" #content>
+              <h4>Your overall score in {{_result?.domainName}} now stands at: {{_result?.averagePercentage}} </h4>
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h4>Radar Chart of First and Last Quiz</h4>
+                  <h4>Your Progress Graph</h4>
                 </div>
                 <div class="panel-body">
-                  <div *ngIf="chart">
-                    <canvas id="canvas">{{ chart }}</canvas>
+                  <div *ngIf="lineGraph">
+                    <canvas id="canvasLine">{{ lineGraph }}</canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading">Title</div>
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <h4>Radar Chart of First and Last Quiz</h4>
+                        </div>
+                        <div class="panel-body">
+                          <div *ngIf="chart">
+                            <canvas id="canvas">{{ chart }}</canvas>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              <div class="col-md-6">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4>Radar Chart of previous and current Quiz</h4>
+                  </div>
+                  <div class="panel-body">
+                    <div *ngIf="chart">
+                      <canvas id="canvas1">{{ chart }}</canvas>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4>Radar Chart of previous and current Quiz</h4>
-                </div>
-                <div class="panel-body">
-                  <div *ngIf="chart">
-                    <canvas id="canvas1">{{ chart }}</canvas>
-                  </div>
-                </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4>Cumulative Result</h4>
               </div>
-            </div>
-          </div>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4>Cumulative Result</h4>
-            </div>
-            <div class="panel-body cumulative">
-              <div *ngIf="cumulativeChart">
-                <canvas id="canva">{{ cumulativeChart }}</canvas>
+              <div class="panel-body cumulative">
+                <div *ngIf="cumulativeChart">
+                  <canvas id="canva">{{ cumulativeChart }}</canvas>
+                </div>
               </div>
             </div>
           </div>
@@ -119,16 +125,17 @@
       </div>
     </div>
   </div>
+</div>
 
 
 
-  <div class=u ser_domain>
+<!-- <div class=u ser_domain>
     <h4> User Id : {{_result?.userId}}</h4>
     <h4>Domain Name : {{_result?.domainName}}</h4>
     <h4>Your Percentage Score of this domain : {{_result?.averagePercentage}}</h4>
 
-  </div>
-  <div>
+  </div> -->
+<!-- <div>
     <h1 class=q uestion>Questions</h1>
     <table>
       <tr>
@@ -150,16 +157,16 @@
 
       </tr>
     </table>
-  </div>
+  </div> -->
 
 
-  <div class="w3-padding-44 w3-blue  w3-center circle-width">
-    <!-- hardcoded as of now, need to get the latest entry and for that we need to get the last element of this array -->
-    <!-- int length = _result.quizResults.Count -->
-    <h2>Your Score: {{_result?.quizResults[length].obtainedScore}}/{{_result?.quizResults[length].totalScore}} </h2>
+<!-- <div class="w3-padding-44 w3-blue  w3-center circle-width">
+    hardcoded as of now, need to get the latest entry and for that we need to get the last element of this array
+    int length = _result.quizResults.Count -->
+<!-- <h2>Your Score: {{_result?.quizResults[length].obtainedScore}}/{{_result?.quizResults[length].totalScore}} </h2>
     <h2> Percentage obtained: {{_result?.quizResults[length]?.percentageScore}}</h2>
-  </div>
-  <div>
+  </div> -->
+<!-- <div>
     <h1>Concept Wise Results</h1>
     <table>
       <tr>
@@ -177,9 +184,10 @@
         <td>{{tag.tagRating}}</td>
       </tr>
     </table>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
+  </div> -->
+
+<!-- <div class="panel panel-default">
+     <div class="panel-heading">
       <h2>Radar Chart of First and Last Quiz</h2>
     </div>
     <div class="panel-body">
@@ -187,12 +195,12 @@
         <canvas id="canvas">{{ chart }}</canvas>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
 
 
-
+<!--
 <h2>Radar Chart of First and Last Quiz</h2>
 <hr />
 <div *ngIf="chart">
@@ -201,10 +209,10 @@
 <h2>Cumulative Result</h2>
 <div *ngIf="cumulativeChart">
   <canvas id="canva">{{ cumulativeChart }}</canvas>
-</div>
+</div> -->
 <!-- <h2>Line Chart</h2>
 <div *ngIf="lineChart">
   <canvas id="line">{{ lineChart }}</canvas>
 </div> -->
-</div>
+<!-- </div> -->
 <app-footer></app-footer>
