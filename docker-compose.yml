@@ -2,8 +2,8 @@ version: '3'
 services:
   angular: # name of the first service
     build: . # specify the directory of the Dockerfile
-    ports:
-      - "13.126.26.172:80:4200"
+    expose:
+      -  "80"
     labels:
       - "SERVICE_NAME=DisplayUI"
       - "SERVICE_TAGS=DisplayUITag"
