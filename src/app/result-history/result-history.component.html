@@ -22,13 +22,19 @@
         <div class="panel panel-default">
           <mat-tab-group>
             <mat-tab *ngFor="let quiz of quizResultList" label="{{quiz.quizId}}">
-              <div class="panel panel-default">
-                <h4>Score: {{quiz.obtainedScore}}/{{quiz.totalScore}}</h4>
-                <h4>Percentage Score: {{quiz.percentageScore}}%</h4>
-                <h4>Conceptwise Scores:</h4>
-                <ul class="list-group">
-                  <li *ngFor="let tag of quiz.tagWiseResults">Concept {{tag.tagName}}: {{tag.tagRating}}</li>
-                </ul>
+              <h3>
+                <span class="label label-default">Score: {{quiz.obtainedScore}}/{{quiz.totalScore}}</span>
+              </h3>
+              <h3>
+                <span class="label label-default">Percentage Score: {{quiz.percentageScore}}%</span>
+              </h3>
+              <h4>Conceptwise Scores:</h4>
+              <div class="concept-list">
+                <ol class="list-group">
+                  <li *ngFor="let tag of quiz.tagWiseResults">
+                    <p>Concept {{tag.tagName}}: {{tag.tagRating}}</p>
+                  </li>
+                </ol>
               </div>
             </mat-tab>
           </mat-tab-group>
