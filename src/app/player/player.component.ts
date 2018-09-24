@@ -18,7 +18,9 @@ import { LocalStorageService } from 'ngx-webstorage';
 export class PlayerComponent implements OnInit {
   @Input() questionComponents: AdItem[];
   @ViewChild(QuestionDirective) questionHost: QuestionDirective;
-
+  public full = true;
+  public half = false;
+  public empty = false;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private playerService: PlayerService, private activatedRoute: ActivatedRoute, private router: Router, private localStorage: LocalStorageService) { }
   userId: number;
@@ -58,6 +60,7 @@ export class PlayerComponent implements OnInit {
     this.startTime = new Date();
     this.timer = setInterval(() => { this.tick(); }, 1000);
     this.duration = this.parseTime(600);
+    console.log(this.questionComponents);
   }
 
 
@@ -68,6 +71,17 @@ export class PlayerComponent implements OnInit {
       this.endQuiz();
     }
     this.ellapsedTime = this.parseTime(diff);
+    const endTime = this.ellapsedTime.split(":",2);
+    const minutes = +endTime[0];
+    if(minutes > 4)
+    {
+      this.half= true;
+      this.full = false;
+    }
+    if(minutes > 7){
+      this.half = false;
+      this.empty= true;
+    }
   }
 
   parseTime(totalSeconds: number) {
