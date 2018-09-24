@@ -61,7 +61,7 @@ import { QuestionmcqComponent } from './questionmcq/questionmcq.component';
     ResultHistoryComponent,
     ResultdomainComponent,
     QuizInDomainComponent,
-    UserProfileComponent
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,

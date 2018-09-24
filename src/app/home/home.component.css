@@ -89,6 +89,20 @@ h2 {font-size: 3em;}
   animation: fade-third 14s linear infinite;
 }
 
+
+.vc_single_image-wrapper {
+  display: inline-block;
+  vertical-align: top;
+  max-width: 100%;
+}
+
+
+#whatWeDo{
+  margin-top: 70px;
+  margin-bottom: 50px;
+}
+
+
 @keyframes fade-first {
   0% {opacity:0; visibility:hidden;}
   3% {opacity:1; visibility:visible;}
