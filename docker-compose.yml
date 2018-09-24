@@ -3,7 +3,7 @@ services:
   angular: # name of the first service
     build: . # specify the directory of the Dockerfile
     ports:
-      - "80:4200"
+      - "13.126.26.172:80:4200"
     labels:
-      - "SERVICE_NAME=UI"
-      - "SERVICE_TAGS=UITag"
+      - "SERVICE_NAME=DisplayUI"
+      - "SERVICE_TAGS=DisplayUITag"
