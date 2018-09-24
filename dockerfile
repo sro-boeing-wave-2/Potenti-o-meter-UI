@@ -11,6 +11,6 @@ RUN npm install
 # Copy the client application source files. You can use .dockerignore to exlcude files. Works just as .gitignore does.
 COPY . /usr/src/app
 # Open port 4200. This is the port that our development server uses
-EXPOSE 4200:80
+EXPOSE 4200
 # Start the application. This is the same as running ng serve.
 CMD ["npm", "start"]
