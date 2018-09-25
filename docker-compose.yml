@@ -2,8 +2,6 @@ version: "3"
 services:
  angular:
   build: .
-  ports:
-    - "80:4200"
   labels:
     - "SERVICE_4200_NAME=DisplayUI"
     - "SERVICE_TAGS=DisplayUITag"
