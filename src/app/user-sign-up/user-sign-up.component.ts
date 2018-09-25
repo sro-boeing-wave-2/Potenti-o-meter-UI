@@ -66,8 +66,8 @@ export class UserSignUpComponent implements OnInit {
   }
 
   AfterLogin(){
-  this.router.navigate(['dashboard']);
   this.dialogRef.close();
+  this.router.navigate(['dashboard']);
   }
 
   Message(result:string){
