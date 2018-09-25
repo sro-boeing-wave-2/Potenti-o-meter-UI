@@ -250,7 +250,7 @@ export class ResultComponent implements OnInit {
   viewResponse()
   {
     let dialogRef = this.dialog.open(QuizResponseComponent, {
-      width: '1500px',
+      // width: '1500px',
       data: this._result.quizResults
     });
   }
