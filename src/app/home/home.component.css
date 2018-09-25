@@ -344,3 +344,7 @@ a.arrow:hover {color: #FFC52F;} */
   40% {transform: translateY(-30px);}
   60% {transform: translateY(-15px);}
  }
+
+ .cover {
+  width: 100%;
+ }
