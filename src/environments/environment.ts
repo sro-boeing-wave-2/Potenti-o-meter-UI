@@ -6,6 +6,10 @@ export const environment = {
   production: false
 };
 
+export const AuthenticationAPILogin = "http://13.126.26.172/auth/Login";
+export const AuthenticationAPIRegister = "http://13.126.26.172/auth/Register";
+export const AuthenticationAPILogout = "http://13.126.26.172/auth/Logout";
+export const AuthenticationAPIDetails = "http://13.126.26.172/auth/details";
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
