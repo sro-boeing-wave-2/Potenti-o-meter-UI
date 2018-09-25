@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
     if(this.userDetail == true)
     {
     this.loginservice.getName().subscribe(result => {
-      this.FirstName = result.json().name;;
+      this.FirstName = result.json().FirstName;;
     });
     }
   }

@@ -24,7 +24,7 @@ export class SignUpService {
     return this.http.post("http://localhost:5050/api/Users/Logout","");
   }
   getName(){
-    return this.http.get("http://localhost:5050/api/Users/firstname", {withCredentials: true});
+    return this.http.get("http://13.126.26.172/auth/details", {withCredentials: true});
   }
   GetDomain(){
     type ArrayOfTypeDomain = Array<{name: string}>;
