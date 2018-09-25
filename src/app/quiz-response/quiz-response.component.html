@@ -1,0 +1,13 @@
+
+<mat-dialog-content>
+<div class="quiz-container" *ngFor="let qR of questionResponse">
+    <div class="question box">
+      <p><span>1.</span>{{qR.questionText}}</p>
+    </div>
+    <ul class="answers">
+      <li class="answer box" *ngFor="let opt of qR.options" >
+        <p><span>a</span>{{opt}}</p>
+      </li>
+    </ul>
+  </div>
+</mat-dialog-content>

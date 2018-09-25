@@ -8,7 +8,7 @@ export class UserResult{
 }
 
 export class QuizResult{
-  _id : string;
+  quizId : string;
   questionsAttempted : QuestionsAttempted[];
   obtainedScore : number;
   totalScore : number;
@@ -25,6 +25,8 @@ export class QuestionsAttempted{
   isCorrect : boolean;
   conceptTags : string[];
   correctAns : string;
+  options : string[];
+  questionType: string[];
 }
 
 export class TagWiseResult{
