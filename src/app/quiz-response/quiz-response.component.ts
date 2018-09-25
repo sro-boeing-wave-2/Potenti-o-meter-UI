@@ -12,6 +12,7 @@ export class QuizResponseComponent implements OnInit {
   length: number;
   quizResponse: QuizResult;
   questionResponse: QuestionsAttempted[] = [];
+  noOfQuestions: number;
 
   constructor(public dialogRef: MatDialogRef<QuizResponseComponent>,
     @Inject(MAT_DIALOG_DATA) public data: QuizResult[]) { }
@@ -20,7 +21,8 @@ export class QuizResponseComponent implements OnInit {
     console.log("inside popup");
     this.length = this.data.length;
     this.quizResponse = this.data[this.length - 1];
-    for(var i = 0; i< this.length; i++)
+    this.noOfQuestions = this.quizResponse.questionsAttempted.length
+    for(var i = 0; i< this.noOfQuestions; i++)
     {
       this.questionResponse[i] = this.quizResponse.questionsAttempted[i];
     }

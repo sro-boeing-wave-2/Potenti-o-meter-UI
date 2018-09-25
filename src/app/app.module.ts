@@ -38,6 +38,7 @@ import { ResultHistoryComponent } from './result-history/result-history.componen
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { QuestionmcqComponent } from './questionmcq/questionmcq.component';
 import { QuizResponseComponent } from './quiz-response/quiz-response.component';
+import { MmcqComponent } from './mmcq/mmcq.component';
 
 
 
@@ -64,7 +65,8 @@ import { QuizResponseComponent } from './quiz-response/quiz-response.component';
     ResultdomainComponent,
     QuizInDomainComponent,
     UserProfileComponent,
-    QuizResponseComponent
+    QuizResponseComponent,
+    MmcqComponent
   ],
   imports: [
     BrowserModule,

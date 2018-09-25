@@ -8,6 +8,8 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AdItem } from '../ad-item';
 import { FillInTheBlanksComponent } from '../fill-in-the-blanks/fill-in-the-blanks.component';
 import { LocalStorageService } from 'ngx-webstorage';
+import { MCQModel } from '../MCQModel';
+import { MMCQModel } from '../MMCQModel';
 
 
 @Component({
@@ -32,6 +34,7 @@ export class PlayerComponent implements OnInit {
   endTime: Date;
   ellapsedTime = '00:00';
   duration = '';
+  questionType: string;
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((params: ParamMap)=> {
@@ -56,7 +59,7 @@ export class PlayerComponent implements OnInit {
       );
       this.questionComponents = this.playerService.getComponents();
 
-      console.log("all the dwie " + this.questionComponents[1].component);
+      // console.log("all the dwie " + this.questionComponents[1].component);
     this.startTime = new Date();
     this.timer = setInterval(() => { this.tick(); }, 1000);
     this.duration = this.parseTime(600);
@@ -91,7 +94,9 @@ export class PlayerComponent implements OnInit {
     secs = (secs < 10 ? '0' : '') + secs;
     return `${mins}:${secs}`;
   }
-  question: QuestionModel;
+  question: any;
+  mcqQuestion: MCQModel;
+  mmcqQuestion: MMCQModel;
 
   onResponseReceived(response) {
     console.log("this is the user response " + response);
@@ -99,44 +104,87 @@ export class PlayerComponent implements OnInit {
   }
 
   getNextQuestion() {
-    console.log("Testing ", this.localStorage.retrieve("response"));
-    this.question.userResponse = this.localStorage.retrieve("response");
-    console.log("this is the response attachde " , this.question.userResponse);
-    this.count = this.count + 1;
-    this.progress = this.progress + 10;
-     return this.playerService.getNextQuestion(this.question).then(()=>this.loadComponent(this.question));
-    // this.loadComponent();
+
+      console.log("Testing ", this.localStorage.retrieve("response"));
+      this.questionType = this.question["questionType"];
+      console.log("PRINTING " + this.questionType);
+      this.count = this.count + 1;
+      this.progress = this.progress + 10;
+      switch(this.questionType) {
+        case "MCQ":
+        {
+        this.mcqQuestion.response = this.localStorage.retrieve("response");
+        console.log("PRINTING " + JSON.stringify(this.mcqQuestion));
+
+        return this.playerService.getNextQuestion(this.mcqQuestion);
+        }
+
+        case "MMCQ":
+        {
+        this.mmcqQuestion.response = this.localStorage.retrieve("response");
+        return this.playerService.getNextQuestion(this.mmcqQuestion);
+        }
+      }
+
+
+      // this.loadComponent();
+
+    // console.log("Testing ", this.localStorage.retrieve("response"));
+    // this.question.userResponse = this.localStorage.retrieve("response");
+    // console.log("this is the response attachde " , this.question.userResponse);
+    // this.count = this.count + 1;
+    // this.progress = this.progress + 10;
+    //  return this.playerService.getNextQuestion(this.question).then(()=>this.loadComponent(this.question));
+    // // this.loadComponent();
   }
 
   endQuiz() {
     //this.playerService.sendResponse(this.question);
     console.log("inside end quiz of player component");
     this.question.userResponse = this.localStorage.retrieve("response");
-    this.router.navigate(['result/abcd']);
+    // this.router.navigate(['result/abcd']);
     return this.playerService.endQuiz(this.question);
 
   }
 
-  loadComponent(question:QuestionModel) {
+  loadComponent(question:any) {
     let adItem;
-    console.log("type is " + question.questionText);
-    switch(question.questionType) {
-      case "MCQType":
-      adItem = this.questionComponents[0];
-      break;
-      case "FillBlanks":
-      adItem = this.questionComponents[1];
-      break;
+   this.questionType = question["questionType"];
+   console.log("INSIDE LOAD COMPONENT " + this.questionType);
+   switch(this.questionType) {
+     case "MCQ":
+     {
+     this.mcqQuestion = question;
+     adItem = this.questionComponents[0];
+     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(adItem.component);
+     let viewContainerRef = this.questionHost.viewContainerRef;
+     viewContainerRef.clear();
+     let componentRef = viewContainerRef.createComponent(componentFactory);
+     (<AdComponents>componentRef.instance).question = this.mcqQuestion;
+     }
+     break;
+     case "MMCQ":
+     {
+     this.mmcqQuestion = question;
+     adItem = this.questionComponents[0];
+     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(adItem.component);
+     let viewContainerRef = this.questionHost.viewContainerRef;
+     viewContainerRef.clear();
+     let componentRef = viewContainerRef.createComponent(componentFactory);
+     (<AdComponents>componentRef.instance).question = this.mmcqQuestion;
+     }
+     break;
 
-    }
-    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(adItem.component);
-    let viewContainerRef = this.questionHost.viewContainerRef;
-    viewContainerRef.clear();
-    let componentRef = viewContainerRef.createComponent(componentFactory);
-    (<AdComponents>componentRef.instance).question = question;
+   }
+   // if(question.questionType == "MCQType")
+   // {
+   //    adItem = this.questionComponents[0];
+   // }
+   // else {
+   //    adItem = this.questionComponents[1];
+   // }
 
 
-
-  }
+ }
 
 }
