@@ -130,3 +130,8 @@ nav {
 a.dropdown-toggle{
   height: 50px;
 }
+
+img {
+  height: 30px;
+  width: 30px;
+}

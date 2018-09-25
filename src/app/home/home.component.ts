@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
     if(this.dialogRef == null){
     this.dialogRef = this.dialog.open(UserSignUpComponent, {panelClass: 'full-width-dialog',
     data :{disabled},
+    disableClose: true,
     });
     }
     console.log(this.dialogRef.componentInstance.data);
@@ -35,7 +36,8 @@ export class HomeComponent implements OnInit {
     var disabled = this.isActive;
     if(this.dialogRef == null){
     this.dialogRef = this.dialog.open(UserSignUpComponent, {panelClass: 'full-width-dialog',
-    data :{disabled}
+    data :{disabled},
+    disableClose: true,
     });
     }
     console.log(this.dialogRef.componentInstance.data);
