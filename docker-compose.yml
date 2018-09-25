@@ -1,7 +1,7 @@
-version: '3'
+version: "3"
 services:
-  angular: # name of the first service
-    build: . # specify the directory of the Dockerfile
-    labels:
-      - "SERVICE_4200_NAME=DisplayUI"
-      - "SERVICE_TAGS=DisplayUITag"
+ angular:
+  build: .
+  labels:
+    - "SERVICE_4200_NAME=DisplayUI"
+    - "SERVICE_TAGS=DisplayUITag"
