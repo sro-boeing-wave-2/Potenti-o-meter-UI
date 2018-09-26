@@ -13,7 +13,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.cookieValue = this.cookieService.get('UserLoginAPItoken');
-    console.log(this.cookieValue);
   }
 
 }
