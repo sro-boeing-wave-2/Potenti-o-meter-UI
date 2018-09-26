@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
 
     this.dialogRef.afterClosed().subscribe(result => {
       this.dialogRef = null;
+      this.router.navigate(['dashboard']);
     });
   }
   onSignInNotify():void {
@@ -43,7 +44,6 @@ export class HomeComponent implements OnInit {
 
     this.dialogRef.afterClosed().subscribe(result => {
       this.dialogRef = null;
-      this.router.navigate(['dashboard']);
     });
     const sub = this.dialogRef.componentInstance.success.subscribe((result) => {
       this.signup = result;
