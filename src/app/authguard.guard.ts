@@ -21,6 +21,7 @@ export class AuthguardGuard implements CanActivate {
     // {
     // return false
     // };
+    console.log(this.IsCookieExists);
     return true;
   }
 }
