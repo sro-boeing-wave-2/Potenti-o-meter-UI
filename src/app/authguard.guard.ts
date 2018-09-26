@@ -13,11 +13,14 @@ export class AuthguardGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if(this.IsCookieExists)
-    {
+    // if(this.IsCookieExists)
+    // {
+    // return true;
+    // }
+    // else
+    // {
+    // return false
+    // };
     return true;
-    }
-    else
-    return false;
   }
 }
