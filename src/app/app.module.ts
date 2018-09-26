@@ -39,6 +39,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { QuestionmcqComponent } from './questionmcq/questionmcq.component';
 import { QuizResponseComponent } from './quiz-response/quiz-response.component';
 import { MmcqComponent } from './mmcq/mmcq.component';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -89,7 +90,7 @@ import { MmcqComponent } from './mmcq/mmcq.component';
     MaterialModule,
     Ng2Webstorage
   ],
-  providers: [PlayerService, MatDialog],
+  providers: [PlayerService, MatDialog, CookieService],
   bootstrap: [AppComponent],
   entryComponents: [UserLoginComponent,UserSignUpComponent,McqComponent,FillInTheBlanksComponent,QuizResponseComponent]
 })
