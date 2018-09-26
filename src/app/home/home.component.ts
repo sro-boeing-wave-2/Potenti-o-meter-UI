@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
     disableClose: false,
     });
     }
-    console.log(this.dialogRef.componentInstance.data);
+
     this.dialogRef.afterClosed().subscribe(result => {
       this.dialogRef = null;
     });
@@ -40,9 +40,10 @@ export class HomeComponent implements OnInit {
     disableClose: false,
     });
     }
-    console.log(this.dialogRef.componentInstance.data);
+
     this.dialogRef.afterClosed().subscribe(result => {
       this.dialogRef = null;
+      this.router.navigate(['dashboard']);
     });
     const sub = this.dialogRef.componentInstance.success.subscribe((result) => {
       this.signup = result;
