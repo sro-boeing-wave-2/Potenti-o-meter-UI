@@ -15,7 +15,6 @@ export class AuthguardGuard implements CanActivate {
     this.IsCookieExists = this.cookieService.check('UserLoginAPItoken');
     if(this.IsCookieExists)
     {
-    console.log(this.IsCookieExists);
     return true;
     }
     else
