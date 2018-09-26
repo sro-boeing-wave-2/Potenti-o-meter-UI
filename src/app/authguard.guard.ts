@@ -8,15 +8,14 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AuthguardGuard implements CanActivate {
   constructor(private cookieService: CookieService) { }
-
-  IsCookieExists: boolean = this.cookieService.check('UserLoginAPItoken');
+  public IsCookieExists: boolean = false;
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+    this.IsCookieExists = this.cookieService.check('UserLoginAPItoken');
     if(this.IsCookieExists)
     {
     console.log(this.IsCookieExists);
-    this.IsCookieExists = false;
     return true;
     }
     else
