@@ -16,46 +16,29 @@
 # CMD ["npm", "start"]
 
 # base image
-FROM node:8-alpine as builder
-
-# install chrome for protractor tests
+FROM node:8.9 as builder
 
 # set working directory
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # add `/usr/src/app/node_modules/.bin` to $PATH
-ENV PATH /usr/src/app/node_modules/.bin:$PATH
+# ENV PATH /usr/src/app/node_modules/.bin:$PATH
 
 # install and cache app dependencies
-COPY package.json /usr/src/app/package.json
+COPY package.json .
+
 RUN npm install
 RUN npm install -g @angular/cli
 
 # add app
-COPY . /usr/src/app
-
-# run tests
+COPY . .
 
 # generate build
 RUN npm run build
-
-##################
-### production ###
-##################
-
-# base image
-FROM node:8-alpine
-
-RUN mkdir -p /usr/src/app
-
-RUN  npm install http-server -g
-
-# copy artifact build from the 'build environment'
-COPY --from=builder /usr/src/app/dist /usr/src/app
 
 # expose port 80
 EXPOSE 80
 
 # run nginx
-CMD ["http-server -p 80 -a 0.0.0.0"]
+ENTRYPOINT ["npm", "run", "start-prod"]

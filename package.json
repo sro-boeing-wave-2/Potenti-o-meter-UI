@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "start-prod": "./node_modules/.bin/http-server ./dist/Potenti-o-meter-UI -p 80 -a 0.0.0.0 -d false -i true",
     "start": "ng serve --host 0.0.0.0",
     "build": "ng build",
     "test": "ng test",
@@ -47,6 +48,8 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.3.0",
+    "http-server": "^0.11.1",
+    "http-signature": "^1.2.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~3.0.0",
