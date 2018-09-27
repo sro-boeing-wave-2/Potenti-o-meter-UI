@@ -13,7 +13,7 @@ export class DashboardBodyComponent implements OnInit {
   constructor(private signupservice: SignUpService, private router: Router, private doaminservice: DashboardService ) {
 
   }
-  Domains :Domain[];
+  Domains = [];
 
   public UserData;
   ngOnInit() {
