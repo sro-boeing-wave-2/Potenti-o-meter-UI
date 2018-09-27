@@ -24,7 +24,9 @@ const routes: Routes = [
   { path: 'question',component: QuestionmcqComponent},
   { path: 'result/:id/:domain', component:ResultHistoryComponent},
   {path: 'resultdomain/:userId',component : ResultdomainComponent},
-  {path :'domainWisequiz/:userId/:domainName',component : QuizInDomainComponent}
+  {path :'domainWisequiz/:userId/:domainName',component : QuizInDomainComponent},
+
+
 ];
 
 @NgModule({

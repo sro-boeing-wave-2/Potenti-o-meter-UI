@@ -2,11 +2,16 @@ import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ResultService } from '../result.service';
 import { UserResult, QuizResult, QuestionsAttempted, CumulativeTagScore } from '../UserResult';
-import { Chart } from 'chart.js';
+import { Chart }  from 'chart.js';
 import * as jsPDF from 'jspdf';
 import * as html2canvas from 'html2canvas';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { QuizResponseComponent } from '../quiz-response/quiz-response.component';
+
+
+
+
+
 @Component({
   selector: 'app-result',
   templateUrl: './result.component.html',
@@ -39,6 +44,8 @@ export class ResultComponent implements OnInit {
   changeFirst: number;
   labelsArray = [];
   scoreArray = [];
+  barChart = [];
+  taxonomyScore = [];
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private resultService: ResultService, public dialog: MatDialog) { }
   @ViewChild('content') content:ElementRef;
@@ -53,8 +60,8 @@ export class ResultComponent implements OnInit {
      var imgHeight = canvas.height * imgWidth / canvas.width;
      var heightLeft = imgHeight;
 
-     const contentDataURL = canvas.toDataURL('image/png')
-     let pdf = new jsPDF('p', 'mm', 'a3'); // legal size page of PDF
+     const contentDataURL = canvas.toDataURL('image/jpeg',1)
+     let pdf = new jsPDF('p', 'mm', 'legal'); // legal size page of PDF
      var position = 10; // change the margins in the pdf
 
      pdf.addImage(contentDataURL, 'PNG', 10, position, imgWidth, imgHeight)
@@ -87,7 +94,8 @@ export class ResultComponent implements OnInit {
       this.cumulativeTagWiseResult.push(...cumulativeTagWiseList);
       let cumulativeConcept = this.cumulativeTagWiseResult.map(res => res.tagName);
       let cumulativeScore = this.cumulativeTagWiseResult.map(res => res.tagRating);
-
+      //Taxonomy Score
+      let taxonomyScore = this.cumulativeTagWiseResult.map(res => res.taxonomyScore);
 
 
       // Added
@@ -111,11 +119,12 @@ export class ResultComponent implements OnInit {
           this.labelsArray.push(i);
           console.log(i);
       }
-      console.log(this.labelsArray);
+      console.log("q--"+this.labelsArray);
 
       ////Score Array
       this.scoreArray.push(...this._result.quizResults.map(res => res.percentageScore));
       console.log(this.scoreArray);
+
 
 
 
@@ -133,6 +142,14 @@ export class ResultComponent implements OnInit {
           ]
         },
         options: {
+          scales: {
+            yAxes: [{
+                ticks: {
+                  beginAtZero: true,
+                  max: 100
+                }
+            }]
+        },
           title: {
             display: true,
             text: 'Progress Graph'
@@ -183,7 +200,6 @@ export class ResultComponent implements OnInit {
 
       this.chartPrev = new Chart('canvas1', {
         type: 'radar',
-
         options: options,
         data: {
           labels: tagNames,
@@ -207,11 +223,12 @@ export class ResultComponent implements OnInit {
 
 
       ////Cumulative chart
-      this.cumulativeChart = new Chart('canva', {
+      this.cumulativeChart = new Chart('canva',
+      {
         type: 'radar',
-
         options: options,
-        data: {
+        data:
+        {
           labels: cumulativeConcept,
           datasets: [
             {
@@ -220,12 +237,33 @@ export class ResultComponent implements OnInit {
               backgroundColor: "rgba(0,0,200,0.2)"
             }],
           fill: false
-
-
-
         }
 
       });
+
+     // Bar Graph for taxonomy
+
+       var TaxoData =
+       {
+          label: 'Taxonomy Score',
+          data: taxonomyScore,
+          backgroundColor: "rgba(0,0,200,0.2)"
+       };
+
+      var barChart = new Chart( 'barchartid', {
+        ticks: {
+          min: 0
+           },
+        type: 'bar',
+        data: {
+           labels: cumulativeConcept,
+           datasets: [TaxoData]
+          }
+       });
+
+
+
+
 
       this._questions = this._result.quizResults[this.length].questionsAttempted;
       this.changePrevious = Math.fround((this._result.quizResults[this.length].percentageScore - this._result.quizResults[this.length - 1].percentageScore) / this._result.quizResults[this.length - 1].percentageScore) * 100;
