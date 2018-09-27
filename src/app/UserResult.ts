@@ -23,6 +23,7 @@ export class QuestionsAttempted{
   difficultyLevel : number;
   response : string;
   isCorrect : boolean;
+  taxonomy : string;
   conceptTags : string[];
   correctAns : string;
 }
@@ -33,6 +34,7 @@ export class TagWiseResult{
   tagTotalQuestCount : string;
   tagCorrectPercentage : string;
   tagRating : number;
+  taxonomyLevel : string;
 }
 export class CumulativeTagScore
     {
