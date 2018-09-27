@@ -22,7 +22,7 @@ header {
   height: 320px;
   transform: skewY(-3.5deg);
   overflow: hidden;
-  background: url(../../assets/images/user-profile.jpg) 0 0 / cover no-repeat;
+  background: url(../../assets/images/user-bcg.gif) 0 0 / cover no-repeat;
 }
 
 /* MAIN */
@@ -45,7 +45,7 @@ main {
 .block-one {
   display: flex;
   flex-flow: row wrap;
-  width: 22%;
+  width: 100%;
   justify-content: space-between;
 }
 @media only screen and (max-width: 540px) {
@@ -55,7 +55,7 @@ main {
 }
 .avatar {
   margin-top: -7.478em;
-  width: 22%;
+  width: 13%;
   height: 10%;
 }
 .icon.icon-follow-button {
@@ -114,7 +114,8 @@ main {
 .block-two {
   display: flex;
   width: fit-content;
-  position: relative;
+  position: absolute;
+  top: 70%;
   flex-flow: row wrap;
   justify-content: space-between;
 }
@@ -299,4 +300,9 @@ footer {
 
 .user-text {
   margin-right: 4%;
+}
+
+app-dashboard-body {
+  float: right;
+  width: 80%;
 }
