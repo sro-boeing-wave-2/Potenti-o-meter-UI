@@ -1,4 +1,4 @@
-<mat-card class="example-card">
+<!-- <mat-card class="example-card">
   <mat-card-content>
     <h2 class="question">{{question.questionText}}</h2>
     <h3>
@@ -9,6 +9,24 @@
       </mat-radio-group>
     </h3>
   </mat-card-content>
-</mat-card>
-
-
+</mat-card> -->-->
+<mat-card class="example-card">
+  <div class="card quiz-container">
+    <p>Question</p>
+    <div class="question box">
+      <p>
+        <span>1.</span>{{question.questionText}}</p>
+    </div>
+    <ul class="answers">
+      <mat-radio-group class="example-radio-group" [(ngModel)]="response">
+        <li class="answer box" *ngFor="let q of question.options">
+          <p>
+            <mat-radio-button class="example-radio-button" [value]="q.raw">
+              <span>
+                <mat-radio-button class="example-radio-button" [value]="q.raw"></mat-radio-button> -->
+              </span>{{q.raw}}</mat-radio-button>
+          </p>
+        </li>
+      </mat-radio-group>
+    </ul>
+  </div>

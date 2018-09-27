@@ -20,6 +20,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioModule} from '@angular/material/radio';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatGridListModule} from '@angular/material/grid-list';
+
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { DashboardBodyComponent } from './dashboard-body/dashboard-body.component';
 import { UserLoginComponent } from './user-login/user-login.component';
@@ -80,10 +84,13 @@ import { MmcqComponent } from './mmcq/mmcq.component';
     HttpModule,
     MatRadioModule,
     MatCardModule,
+    MatExpansionModule,
     FormsModule,
     MatMenuModule,
     MatTabsModule,
     MatDialogModule,
+    MatGridListModule,
+    MatFormFieldModule,
     ReactiveFormsModule,
     MatIconModule,
     MaterialModule,

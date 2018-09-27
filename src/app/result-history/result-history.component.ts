@@ -109,7 +109,7 @@ export class ResultHistoryComponent implements OnInit {
           labels: cumulativeConcept,
           datasets: [
             {
-              label: "Cumulative Quiz Wise Score",
+              label: "Cumulative Concept Wise Score",
               data: cumulativeScore,
               backgroundColor: "rgba(0,0,200,0.2)"
             }],

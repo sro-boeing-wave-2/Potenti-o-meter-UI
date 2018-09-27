@@ -1,4 +1,123 @@
-<div class="card">
+<app-header></app-header>
+<mat-card class="page-contianer">
+  <div class="page-header">
+    <h2>{{domain}}</h2>
+  </div>
+  <mat-card class="card score-card">
+    <div class="scores">
+      <mat-card-title>
+        <h4>Cumulative Score</h4>
+        <span style="font-size: 50px">{{_result.averagePercentage}}%</span>
+      </mat-card-title>
+      <div *ngIf="changeFirst >= 0; then increasedFirst; else decreasedFirst"> </div>
+      <ng-template #increasedFirst>
+        <mat-card-subtitle>Progress from your first attempt</mat-card-subtitle>
+        <span style="color: green">
+          <i class="fa fa-arrow-up"></i>{{(Math.round(changeFirst * 100))/100}}%</span>
+      </ng-template>
+      <ng-template #decreasedFirst>
+        <mat-card-subtitle>
+          <p>Progress from your first attempt</p>
+          <span style="color: red; font-size: 30px; text-align: left">
+            <i class="fa fa-arrow-down"></i>{{(Math.round(changeFirst * 100))/100}}%</span>
+        </mat-card-subtitle>
+      </ng-template>
+    </div>
+    <mat-tab-group>
+      <mat-tab *ngFor="let quiz of quizResultList" label="{{quiz.quizId}}">
+
+        <h4>Score</h4>
+        <span style="font-size: 40px">{{quiz.obtainedScore}}/{{quiz.totalScore}}</span>
+        <h4>Percentage</h4>
+        <span style="font-size: 25px">{{quiz.percentageScore}}%</span>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Conceptwise Scores
+            </mat-panel-title>
+            <mat-panel-description>
+              Click to view
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-grid-list cols="3" rowHeight="3:1">
+            <mat-grid-tile *ngFor="let tag of quiz.tagWiseResults">
+              <h4>{{tag.tagName}}</h4>
+              <span style="font-size: 30px"> {{tag.tagRating}}</span>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </mat-expansion-panel>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card>
+
+  <mat-expansion-panel class="progress-graph" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title class="expansion-title">
+        <i class="fa fa-line-chart" style="font-size:28px;color:red"></i> Click to view your Progress Graph
+      </mat-panel-title>
+      <!-- <mat-panel-description>
+            Click to view
+          </mat-panel-description> -->
+    </mat-expansion-panel-header>
+    <div *ngIf="lineGraph">
+      <canvas id="canvasLine">{{ lineGraph }}</canvas>
+    </div>
+  </mat-expansion-panel>
+  <!-- </mat-card> -->
+  <mat-card class="cumulative">
+    <mat-card-title>Your Knowledge State</mat-card-title>
+    <mat-card-subtitle>This is a graphical representation of your cumulative scores in each concept in this</mat-card-subtitle>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Cumulative Conceptwise Scores
+        </mat-panel-title>
+        <mat-panel-description>
+          Click to view
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-grid-list cols="3" rowHeight="3:1">
+          <mat-grid-tile *ngFor="let ctag of cumulativeTagWiseResult">
+            <h4>{{ctag.tagName}}</h4>
+            <span style="font-size: 30px"> {{ctag.tagRating}}</span>
+          </mat-grid-tile>
+        </mat-grid-list>
+      <!-- <div class="concept-list">
+        <ol class="list-group">
+          <li *ngFor="let ctag of cumulativeTagWiseResult">
+            <p>Concept {{ctag.tagName}}: {{ctag.tagRating}}</p>
+          </li>
+        </ol>
+      </div> -->
+    </mat-expansion-panel>
+    <div *ngIf="cumulativeChart">
+      <canvas id="canva">{{ cumulativeChart }}</canvas>
+    </div>
+  </mat-card>
+</mat-card>
+<app-footer></app-footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="card">
   <div class="card-body">
     <div class="panel panel-success">
       <div class="panel-heading">
@@ -101,4 +220,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

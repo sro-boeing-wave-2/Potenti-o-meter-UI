@@ -11,9 +11,15 @@ export class MCQModel {
   public options : MCQOption[];
   public correctAnswer : MCQOption;
   public response : MCQOption;
+  constructor(values: Object = {}) {
+    Object.assign(this, values);
+  }
  }
 
- class MCQOption{
+ export class MCQOption{
   public raw : string;
   public optionText : string;
+  constructor(values: Object = {}) {
+    Object.assign(this, values);
+  }
  }

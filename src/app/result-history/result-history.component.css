@@ -1,10 +1,49 @@
-=.card{
+.page-contianer{
   background-color: #FBFCFC;
-  margin-top: 80px;
+  margin-top: 50px;
   text-align: center;
   padding: 25px 50px 75px 50px;
 
+
 }
+.scores{
+  text-align: center;
+}
+
+.score-card h4{
+
+  color: rgba(0,0,0,0.54);
+}
+
+
+.mat-card-subtitle
+{
+  font-weight: bold;
+}
+
+.score-card{
+border-radius: 8px;
+margin-bottom: 10px;
+}
+
+.concept-card{
+  background-color: #0089e0;
+}
+
+mat-grid-tile {
+  background: lightblue;
+  border-radius: 8px;
+  margin: 10px 10px 10px 10px;
+}
+
+/* .progress-graph{
+  padding-top: 30px;
+} */
+
+.cumulative{
+  margin-top: 20px;
+}
+
 .concept{
   align-self: center;
 background:#0089e0;
