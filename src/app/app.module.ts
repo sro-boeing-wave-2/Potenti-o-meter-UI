@@ -26,7 +26,6 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { HomeComponent } from './home/home.component';
 import { UserSignUpComponent } from './user-sign-up/user-sign-up.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { DashboardHeaderComponent } from './dashboard-header/dashboard-header.component';
 import { HttpModule } from '@angular/http';
 import { ResultComponent } from './result/result.component';
 import { QuestionDirective } from './question.directive';
@@ -55,7 +54,6 @@ import { CookieService } from 'ngx-cookie-service';
     HomeComponent,
     UserSignUpComponent,
     DashboardComponent,
-    DashboardHeaderComponent,
     DashboardBodyComponent,
     ResultComponent,
     QuestionDirective,
