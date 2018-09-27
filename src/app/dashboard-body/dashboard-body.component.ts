@@ -14,18 +14,15 @@ export class DashboardBodyComponent implements OnInit {
   }
   Domains :Domain[];
 
+  public UserData;
   ngOnInit() {
-   this.Domains= [
-      {name: 'C#'},
-      {name : 'Java'},
-      {name: 'Algorithms'},
-      {name: 'Python'},
-  ];
-  console.log(this.Domains);
+    this.signupservice.getName().subscribe(result => {
+      this.UserData = result.json();
+    });
   }
 
   startQuiz(){
-    this.router.navigate(['start',1,"Java"]);
+    this.router.navigate(['start',this.UserData.UserID,"Java"]);
   }
 
 }

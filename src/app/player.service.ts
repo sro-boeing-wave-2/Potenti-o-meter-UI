@@ -26,10 +26,14 @@ private url="";
   startQuiz(userId: number, domain: string)
   {
     console.log("THIS IS INSIDE STARTQUIZ");
-    this._connection = new HubConnectionBuilder().withUrl("http://172.23.238.155:9100/question").build();
+    this._connection = new HubConnectionBuilder().withUrl("http://13.126.26.172/quizEngine/start").build();
     this._connection.on('NextQuestion', this.onNextQuestionHandler.bind(this));
     // this._connection.on('EndQuiz', this.onQuizEnded.bind(this));
-    this._connection.start().then(() => { this._connection.invoke('StartQuiz', userId, domain); });
+    this._connection.start().then(() => {
+      console.log(this._connection);
+      this._connection.serverTimeoutInMilliseconds = 50000;
+      this._connection.invoke('StartQuiz', userId, domain);
+    });
     //this.playerComponent.loadComponent();
   }
   getQuestionStream(): Observable<QuestionModel> {
@@ -52,7 +56,7 @@ private url="";
     this._connection.on('EndQuiz', msg => {
          this.result = msg;
          console.log("result is " +  JSON.stringify(this.result));
-          this.url = "http://localhost:4200/result/" + this.result.quizId;
+          this.url = "http://13.126.26.172/quizresult/" + this.result.quizId;
           this.document.location.href = this.url;
           });
   }
