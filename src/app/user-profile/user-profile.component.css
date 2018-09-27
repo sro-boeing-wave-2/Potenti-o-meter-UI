@@ -22,7 +22,7 @@ header {
   height: 320px;
   transform: skewY(-3.5deg);
   overflow: hidden;
-  background: url(../../assets/images/user-bcg.gif) 0 0 / cover no-repeat;
+  background: url(../../assets/images/user-bcg.jpg) 0 0 / cover no-repeat;
 }
 
 /* MAIN */
@@ -131,7 +131,7 @@ main {
 .info-block-one h1 {
   flex: 2;
   margin: 0;
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-size: 1.777em;
   font-weight: 600;
 }
