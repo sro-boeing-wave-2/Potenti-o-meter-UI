@@ -30,7 +30,6 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { HomeComponent } from './home/home.component';
 import { UserSignUpComponent } from './user-sign-up/user-sign-up.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { DashboardHeaderComponent } from './dashboard-header/dashboard-header.component';
 import { HttpModule } from '@angular/http';
 import { ResultComponent } from './result/result.component';
 import { QuestionDirective } from './question.directive';
@@ -43,6 +42,10 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { QuestionmcqComponent } from './questionmcq/questionmcq.component';
 import { QuizResponseComponent } from './quiz-response/quiz-response.component';
 import { MmcqComponent } from './mmcq/mmcq.component';
+import { CookieService } from 'ngx-cookie-service';
+import { ChartModule } from 'angular-highcharts';
+
+
 
 
 
@@ -58,7 +61,6 @@ import { MmcqComponent } from './mmcq/mmcq.component';
     HomeComponent,
     UserSignUpComponent,
     DashboardComponent,
-    DashboardHeaderComponent,
     DashboardBodyComponent,
     ResultComponent,
     QuestionDirective,
@@ -70,7 +72,8 @@ import { MmcqComponent } from './mmcq/mmcq.component';
     QuizInDomainComponent,
     UserProfileComponent,
     QuizResponseComponent,
-    MmcqComponent
+    MmcqComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -94,9 +97,11 @@ import { MmcqComponent } from './mmcq/mmcq.component';
     ReactiveFormsModule,
     MatIconModule,
     MaterialModule,
-    Ng2Webstorage
+    Ng2Webstorage,
+    ChartModule
+
   ],
-  providers: [PlayerService, MatDialog],
+  providers: [PlayerService, MatDialog, CookieService],
   bootstrap: [AppComponent],
   entryComponents: [UserLoginComponent,UserSignUpComponent,McqComponent,FillInTheBlanksComponent,QuizResponseComponent]
 })

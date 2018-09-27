@@ -22,7 +22,7 @@ header {
   height: 320px;
   transform: skewY(-3.5deg);
   overflow: hidden;
-  background: url(../../assets/images/user-profile.jpg) 0 0 / cover no-repeat;
+  background: url(../../assets/images/user-bcg.jpg) 0 0 / cover no-repeat;
 }
 
 /* MAIN */
@@ -45,7 +45,7 @@ main {
 .block-one {
   display: flex;
   flex-flow: row wrap;
-  width: 22%;
+  width: 100%;
   justify-content: space-between;
 }
 @media only screen and (max-width: 540px) {
@@ -55,7 +55,7 @@ main {
 }
 .avatar {
   margin-top: -7.478em;
-  width: 22%;
+  width: 13%;
   height: 10%;
 }
 .icon.icon-follow-button {
@@ -90,8 +90,7 @@ main {
 }
 .profile-stats__block h2 {
   margin: 0;
-
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-size: 1em;
   opacity: .54;
 }
@@ -114,7 +113,8 @@ main {
 .block-two {
   display: flex;
   width: fit-content;
-  position: relative;
+  position: absolute;
+  top: 70%;
   flex-flow: row wrap;
   justify-content: space-between;
 }
@@ -124,7 +124,6 @@ main {
 .info-block-one {
   flex: 0 1 200px;
   margin-top: 1em;
-
   font-size: 1em;
   font-weight: 100;
   color: #31353D;
@@ -132,9 +131,9 @@ main {
 .info-block-one h1 {
   flex: 2;
   margin: 0;
-
+  text-transform: capitalize;
   font-size: 1.777em;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .info-block-one__place, .info-block-one__joined {
@@ -297,6 +296,24 @@ footer {
   background: inherit;
 }
 
-.user-text {
+/* .user-text {
   margin-right: 4%;
+} */
+
+app-dashboard-body {
+  float: right;
+  width: 80%;
+}
+
+i {
+  display: inline-block;
+	width: 30px;
+	height: 30px;
+	background-color: #4c4c4c;
+	border-radius: 100%;
+	margin-right: 8px;
+	vertical-align: middle;
+	color: #fff;
+	line-height: 30px;
+	text-align: center;
 }

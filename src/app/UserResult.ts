@@ -9,6 +9,7 @@ export class UserResult{
 
 export class QuizResult{
   quizId : string;
+  date : Date;
   questionsAttempted : QuestionsAttempted[];
   obtainedScore : number;
   totalScore : number;
@@ -23,6 +24,7 @@ export class QuestionsAttempted{
   difficultyLevel : number;
   response : string;
   isCorrect : boolean;
+  taxonomy : string;
   conceptTags : string[];
   correctAns : string;
   options : string[];
@@ -35,9 +37,13 @@ export class TagWiseResult{
   tagTotalQuestCount : string;
   tagCorrectPercentage : string;
   tagRating : number;
+  taxonomyLevel : string;
+  taxonomyScore : number;
 }
 export class CumulativeTagScore
     {
         tagName : string ;
         tagRating : number ;
+        taxonomyLevelReached : string;
+        taxonomyScore :number;
     }

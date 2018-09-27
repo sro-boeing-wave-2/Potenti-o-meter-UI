@@ -31,11 +31,20 @@ private url="";
   startQuiz(userId: number, domain: string)
   {
     console.log("THIS IS INSIDE STARTQUIZ");
-    this._connection = new HubConnectionBuilder().withUrl("http://172.23.239.199:8010/question").build();
+
+    // this._connection = new HubConnectionBuilder().withUrl("http://172.23.239.199:8010/question").build();
+    // this._connection.on('NextQuestion', this.onNextQuestionHandler.bind(this));
+
+    // this._connection.start().then(() => { this._connection.invoke('StartQuiz', userId, domain); });
+
+    this._connection = new HubConnectionBuilder().withUrl("http://13.126.26.172/quizEngine/start").build();
     this._connection.on('NextQuestion', this.onNextQuestionHandler.bind(this));
     // this._connection.on('EndQuiz', this.onQuizEnded.bind(this));
-
-    this._connection.start().then(() => { this._connection.invoke('StartQuiz', userId, domain); });
+    this._connection.start().then(() => {
+      console.log(this._connection);
+      this._connection.serverTimeoutInMilliseconds = 50000;
+      this._connection.invoke('StartQuiz', userId, domain);
+    });
     //this.playerComponent.loadComponent();
   }
 
@@ -67,6 +76,9 @@ private url="";
          this._connection.stop();
           // this.url = "http://172.23.238.183:4301/start/" + this.result.userId + "/" + this.result.domainName;
           // this.document.location.href = this.url;
+
+          this.url = "http://13.126.26.172/quizresult/" + this.result.quizId;
+          this.document.location.href = this.url;
           });
 
   }

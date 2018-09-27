@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {SignUpService} from '../sign-up.service';
 import {Domain} from '../Domain';
 import { Router } from '@angular/router';
+import { DashboardService } from './dashboard.service';
 @Component({
   selector: 'app-dashboard-body',
   templateUrl: './dashboard-body.component.html',
@@ -9,23 +10,27 @@ import { Router } from '@angular/router';
 })
 export class DashboardBodyComponent implements OnInit {
 
-  constructor(private signupservice: SignUpService, private router: Router ) {
+  constructor(private signupservice: SignUpService, private router: Router, private doaminservice: DashboardService ) {
 
   }
   Domains :Domain[];
 
+  public UserData;
   ngOnInit() {
-   this.Domains= [
-      {name: 'C#'},
-      {name : 'Java'},
-      {name: 'Algorithms'},
-      {name: 'Python'},
-  ];
-  console.log(this.Domains);
+    this.signupservice.getName().subscribe(result => {
+      this.UserData = result.json();
+    });
+    this.doaminservice.getQuizDomains().subscribe(result => {
+      this.Domains.push(...result.json());
+    })
+    this.doaminservice.getDomainDetails().subscribe(result => {
+      console.log(result.statusText);
+    }
+      )
   }
 
   startQuiz(){
-    this.router.navigate(['start',1,"Java"]);
+    this.router.navigate(['start',this.UserData.UserID,"Java"]);
   }
 
 }

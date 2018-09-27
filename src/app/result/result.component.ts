@@ -2,11 +2,16 @@ import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ResultService } from '../result.service';
 import { UserResult, QuizResult, QuestionsAttempted, CumulativeTagScore } from '../UserResult';
-import { Chart } from 'chart.js';
+import { Chart }  from 'chart.js';
 import * as jsPDF from 'jspdf';
 import * as html2canvas from 'html2canvas';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { QuizResponseComponent } from '../quiz-response/quiz-response.component';
+
+
+
+
+
 @Component({
   selector: 'app-result',
   templateUrl: './result.component.html',
@@ -39,9 +44,13 @@ export class ResultComponent implements OnInit {
   changeFirst: number;
   labelsArray = [];
   scoreArray = [];
+  barChart = [];
+  taxonomyScore = [];
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private resultService: ResultService, public dialog: MatDialog) { }
   @ViewChild('content') content:ElementRef;
+
+  //method to download result as pdf
   public downLoadResult(){
    var data = document.getElementById('content');
    html2canvas(data).then(canvas => {
@@ -51,7 +60,7 @@ export class ResultComponent implements OnInit {
      var imgHeight = canvas.height * imgWidth / canvas.width;
      var heightLeft = imgHeight;
 
-     const contentDataURL = canvas.toDataURL('image/png')
+     const contentDataURL = canvas.toDataURL('image/jpeg',1)
      let pdf = new jsPDF('p', 'mm', 'legal'); // legal size page of PDF
      var position = 10; // change the margins in the pdf
 
@@ -69,8 +78,8 @@ export class ResultComponent implements OnInit {
 
 
     });
-    this.Math = Math;
-    this.resultService.getUserResult(this.quizId).subscribe(data => {
+      this.Math = Math;
+      this.resultService.getUserResult(this.quizId).subscribe(data => {
       this._result = data.json();
       this.length = this._result.quizResults.length - 1;
       this.firstQuizElement = this._result.quizResults[0];
@@ -78,21 +87,21 @@ export class ResultComponent implements OnInit {
       const questionsListArray = this._result.quizResults[length].questionsAttempted
       this.question.push(...questionsListArray);
 
-      //console.log(this._result.quizResults.length);
-      //console.log(this.question[0]);
+
       const cumulativeTagWiseList = this._result.tagWiseCumulativeScore;
-      //console.log("Result" + JSON.stringify(this._result));
-      console.log("cumulativeTagWiseList:" + cumulativeTagWiseList);
+
+
       this.cumulativeTagWiseResult.push(...cumulativeTagWiseList);
       let cumulativeConcept = this.cumulativeTagWiseResult.map(res => res.tagName);
       let cumulativeScore = this.cumulativeTagWiseResult.map(res => res.tagRating);
-      console.log("cumalative scores:" + cumulativeScore);
+      //Taxonomy Score
+      let taxonomyScore = this.cumulativeTagWiseResult.map(res => res.taxonomyScore);
 
-      // let sortedcumulative = cumulativeScore.sort().reverse();
+
       // Added
       const tagList = this._result.quizResults[this.length].tagWiseResults;
       this.tags.push(...tagList);
-      // console.log(this.tags);
+
       // first Quiz
       const tagListFirstElement = this.firstQuizElement.tagWiseResults;
       this.tagListofFirstElement.push(...tagListFirstElement)
@@ -103,23 +112,19 @@ export class ResultComponent implements OnInit {
       let prevTagPc = this.tagListofPrevElement.map(res => res.tagRating);
       //Last Quiz
       let tagNames = this.tags.map(res => res.tagName); //extract the tagNames to label the chart
-      // console.log(tagNames);
+
       var tagCorrectPc = this.tags.map(res => res.tagRating);
-      //code to start numbering from Zero in the radar chart
-
-      // this.labelsArray.length = this._result.quizResults.length;
-
-      console.log("Quiz taken:" + this.labelsArray.length);
 
         for (var i = 1; i <= this._result.quizResults.length; i++) {
           this.labelsArray.push(i);
           console.log(i);
       }
-      console.log(this.labelsArray);
+      console.log("q--"+this.labelsArray);
 
       ////Score Array
       this.scoreArray.push(...this._result.quizResults.map(res => res.percentageScore));
       console.log(this.scoreArray);
+
 
 
 
@@ -137,6 +142,14 @@ export class ResultComponent implements OnInit {
           ]
         },
         options: {
+          scales: {
+            yAxes: [{
+                ticks: {
+                  beginAtZero: true,
+                  max: 100
+                }
+            }]
+        },
           title: {
             display: true,
             text: 'Progress Graph'
@@ -156,9 +169,7 @@ export class ResultComponent implements OnInit {
         }
       };
 
-      console.log("last" + tagCorrectPc);
-      console.log("first" + firstTagPc);
-      //console.log(Math.max.apply(null,tagCorrectPc));
+
 
 
 
@@ -189,7 +200,6 @@ export class ResultComponent implements OnInit {
 
       this.chartPrev = new Chart('canvas1', {
         type: 'radar',
-
         options: options,
         data: {
           labels: tagNames,
@@ -212,12 +222,13 @@ export class ResultComponent implements OnInit {
       });
 
 
-      //  //Cumulative chart
-      this.cumulativeChart = new Chart('canva', {
+      ////Cumulative chart
+      this.cumulativeChart = new Chart('canva',
+      {
         type: 'radar',
-
         options: options,
-        data: {
+        data:
+        {
           labels: cumulativeConcept,
           datasets: [
             {
@@ -226,12 +237,33 @@ export class ResultComponent implements OnInit {
               backgroundColor: "rgba(0,0,200,0.2)"
             }],
           fill: false
-
-
-
         }
 
       });
+
+     // Bar Graph for taxonomy
+
+       var TaxoData =
+       {
+          label: 'Taxonomy Score',
+          data: taxonomyScore,
+          backgroundColor: "rgba(0,0,200,0.2)"
+       };
+
+      var barChart = new Chart( 'barchartid', {
+        ticks: {
+          min: 0
+           },
+        type: 'bar',
+        data: {
+           labels: cumulativeConcept,
+           datasets: [TaxoData]
+          }
+       });
+
+
+
+
 
       this._questions = this._result.quizResults[this.length].questionsAttempted;
       this.changePrevious = Math.fround((this._result.quizResults[this.length].percentageScore - this._result.quizResults[this.length - 1].percentageScore) / this._result.quizResults[this.length - 1].percentageScore) * 100;
@@ -242,8 +274,6 @@ export class ResultComponent implements OnInit {
         console.log(i);
     }
 
-      //_result?.quizResults[length].obtainedScore
-      //(_result?.quizResults[length]?.percentageScore - _result?.quizResults[length-1]?.percentageScore)/_result?.quizResults[length-1]?.percentageScore)*100
     });
   }
 
