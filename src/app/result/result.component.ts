@@ -5,6 +5,8 @@ import { UserResult, QuizResult, QuestionsAttempted, CumulativeTagScore } from '
 import { Chart } from 'chart.js';
 import * as jsPDF from 'jspdf';
 import * as html2canvas from 'html2canvas';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { QuizResponseComponent } from '../quiz-response/quiz-response.component';
 @Component({
   selector: 'app-result',
   templateUrl: './result.component.html',
@@ -38,7 +40,7 @@ export class ResultComponent implements OnInit {
   labelsArray = [];
   scoreArray = [];
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private resultService: ResultService) { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private resultService: ResultService, public dialog: MatDialog) { }
   @ViewChild('content') content:ElementRef;
 
   //method to download result as pdf
@@ -236,7 +238,17 @@ export class ResultComponent implements OnInit {
 
     });
   }
+
+  viewResponse()
+  {
+    let dialogRef = this.dialog.open(QuizResponseComponent, {
+      // width: '1500px',
+      data: this._result.quizResults
+    });
+  }
 }
+
+
 
 
 

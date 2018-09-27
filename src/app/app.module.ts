@@ -19,6 +19,7 @@ import { MatMenuModule} from '@angular/material/menu';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioModule} from '@angular/material/radio';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatCardModule} from '@angular/material/card';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { DashboardBodyComponent } from './dashboard-body/dashboard-body.component';
 import { UserLoginComponent } from './user-login/user-login.component';
@@ -36,6 +37,9 @@ import { QuizInDomainComponent } from './quiz-in-domain/quiz-in-domain.component
 import { ResultHistoryComponent } from './result-history/result-history.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { QuestionmcqComponent } from './questionmcq/questionmcq.component';
+import { QuizResponseComponent } from './quiz-response/quiz-response.component';
+import { MmcqComponent } from './mmcq/mmcq.component';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -62,6 +66,8 @@ import { QuestionmcqComponent } from './questionmcq/questionmcq.component';
     ResultdomainComponent,
     QuizInDomainComponent,
     UserProfileComponent,
+    QuizResponseComponent,
+    MmcqComponent
   ],
   imports: [
     BrowserModule,
@@ -74,6 +80,7 @@ import { QuestionmcqComponent } from './questionmcq/questionmcq.component';
     MatToolbarModule,
     HttpModule,
     MatRadioModule,
+    MatCardModule,
     FormsModule,
     MatMenuModule,
     MatTabsModule,
@@ -83,8 +90,8 @@ import { QuestionmcqComponent } from './questionmcq/questionmcq.component';
     MaterialModule,
     Ng2Webstorage
   ],
-  providers: [PlayerService, MatDialog],
+  providers: [PlayerService, MatDialog, CookieService],
   bootstrap: [AppComponent],
-  entryComponents: [UserLoginComponent,UserSignUpComponent,McqComponent,FillInTheBlanksComponent]
+  entryComponents: [UserLoginComponent,UserSignUpComponent,McqComponent,FillInTheBlanksComponent,QuizResponseComponent]
 })
 export class AppModule { }
