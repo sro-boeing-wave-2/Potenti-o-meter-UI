@@ -90,8 +90,7 @@ main {
 }
 .profile-stats__block h2 {
   margin: 0;
-
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-size: 1em;
   opacity: .54;
 }
@@ -133,9 +132,8 @@ main {
   flex: 2;
   margin: 0;
   text-transform: uppercase;
-  font-family: "Source Sans Pro", sans-serif;
   font-size: 1.777em;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .info-block-one__place, .info-block-one__joined {
@@ -311,7 +309,7 @@ i {
   display: inline-block;
 	width: 30px;
 	height: 30px;
-	background-color: #3498db;
+	background-color: #4c4c4c;
 	border-radius: 100%;
 	margin-right: 8px;
 	vertical-align: middle;
