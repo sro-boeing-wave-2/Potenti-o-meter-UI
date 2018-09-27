@@ -21,7 +21,7 @@ FROM node:8-alpine as builder
 # install chrome for protractor tests
 
 # set working directory
-RUN mkdir /usr/src/app
+RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # add `/usr/src/app/node_modules/.bin` to $PATH
@@ -47,7 +47,7 @@ RUN npm run build
 # base image
 FROM node:8-alpine
 
-RUN mkdir /usr/src/app
+RUN mkdir -p /usr/src/app
 
 RUN  npm install http-server -g
 
