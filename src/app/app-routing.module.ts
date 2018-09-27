@@ -15,7 +15,7 @@ import { QuizInDomainComponent } from './quiz-in-domain/quiz-in-domain.component
 import { AuthguardGuard } from './authguard.guard';
 
 const routes: Routes = [
-  { path: '',redirectTo: '/start:id/:domain',  pathMatch: 'full'},
+  { path: '',redirectTo: 'home',  pathMatch: 'full'},
   {path:'start/:id/:domain', component:StartQuizComponent},
   {path:'player/:id', component:PlayerComponent},
   {  path: 'home', component: HomeComponent },
