@@ -125,7 +125,6 @@ main {
 .info-block-one {
   flex: 0 1 200px;
   margin-top: 1em;
-
   font-size: 1em;
   font-weight: 100;
   color: #31353D;
@@ -133,7 +132,8 @@ main {
 .info-block-one h1 {
   flex: 2;
   margin: 0;
-
+  text-transform: uppercase;
+  font-family: "Source Sans Pro", sans-serif;
   font-size: 1.777em;
   font-weight: 500;
 }
@@ -305,4 +305,17 @@ footer {
 app-dashboard-body {
   float: right;
   width: 80%;
+}
+
+i {
+  display: inline-block;
+	width: 30px;
+	height: 30px;
+	background-color: #3498db;
+	border-radius: 100%;
+	margin-right: 8px;
+	vertical-align: middle;
+	color: #fff;
+	line-height: 30px;
+	text-align: center;
 }
