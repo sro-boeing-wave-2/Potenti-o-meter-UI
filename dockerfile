@@ -16,7 +16,7 @@
 # CMD ["npm", "start"]
 
 # base image
-FROM node:8.9 as builder
+FROM node:8-alpine as builder
 
 # install chrome for protractor tests
 
@@ -45,13 +45,17 @@ RUN npm run build
 ##################
 
 # base image
-FROM nginx:1.13.9-alpine
+FROM node:8-alpine
+
+RUN mkdir /usr/src/app
+
+RUN  npm install http-server -g
 
 # copy artifact build from the 'build environment'
-COPY --from=builder /usr/src/app/dist /usr/share/nginx/html
+COPY --from=builder /usr/src/app/dist /usr/src/app
 
 # expose port 80
 EXPOSE 80
 
 # run nginx
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["http-server -p 80 -a 0.0.0.0"]
