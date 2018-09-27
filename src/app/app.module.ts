@@ -39,6 +39,9 @@ import { QuestionmcqComponent } from './questionmcq/questionmcq.component';
 import { QuizResponseComponent } from './quiz-response/quiz-response.component';
 import { MmcqComponent } from './mmcq/mmcq.component';
 import { CookieService } from 'ngx-cookie-service';
+import { ChartModule } from 'angular-highcharts';
+
+
 
 
 
@@ -65,7 +68,8 @@ import { CookieService } from 'ngx-cookie-service';
     QuizInDomainComponent,
     UserProfileComponent,
     QuizResponseComponent,
-    MmcqComponent
+    MmcqComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -86,7 +90,9 @@ import { CookieService } from 'ngx-cookie-service';
     ReactiveFormsModule,
     MatIconModule,
     MaterialModule,
-    Ng2Webstorage
+    Ng2Webstorage,
+    ChartModule
+
   ],
   providers: [PlayerService, MatDialog, CookieService],
   bootstrap: [AppComponent],
