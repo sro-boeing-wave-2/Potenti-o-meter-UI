@@ -120,6 +120,16 @@
                 </div>
               </div>
             </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4>Taxonomy Score</h4>
+              </div>
+              <div class="panel-body cumulative">
+                <div *ngIf="barChart">
+                  <canvas id="barchartid">{{ barChart }}</canvas>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
