@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {SignUpService} from '../sign-up.service';
 import {Domain} from '../Domain';
 import { Router } from '@angular/router';
-import { DashboardService } from './dashboard.service';
+import { DashboardService } from '../dashboard.service';
 @Component({
   selector: 'app-dashboard-body',
   templateUrl: './dashboard-body.component.html',
@@ -14,14 +14,13 @@ export class DashboardBodyComponent implements OnInit {
 
   }
   public Domains= [];
-
   public UserData;
   ngOnInit() {
     this.signupservice.getName().subscribe(result => {
       this.UserData = result.json();
     });
     this.doaminservice.getQuizDomains().subscribe(result => {
-      this.Domains.push(result);
+      console.log(result.statusText);
     })
     this.doaminservice.getDomainDetails().subscribe(result => {
       console.log(result.statusText);

@@ -14,7 +14,7 @@ export class DashboardService {
 
   getDomainDetails()
   {
-    return this.http.get("dashboard-body/domain.json");
+    return this.http.get("/assets/data/domain.json");
   }
 
   constructor(private http : Http) { }
