@@ -21,7 +21,8 @@ export class DashboardBodyComponent implements OnInit {
     });
     this.doaminservice.getQuizDomains().subscribe(result => {
       console.log(result);
-      this.Domains.push(result.json());
+      this.Domains.push(...result.json());
+      // this.Domains.push(result.json());
       console.log(this.Domains);
     })
     // this.doaminservice.getDomainDetails().subscribe(result => {
