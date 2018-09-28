@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {SignUpService} from '../sign-up.service';
-import {Domain} from '../Domain';
 import { Router } from '@angular/router';
 import { DashboardService } from '../dashboard.service';
+declare var require: any;
+var data = require('../../assets/data/domain.json');
 @Component({
   selector: 'app-dashboard-body',
   templateUrl: './dashboard-body.component.html',
@@ -18,11 +19,11 @@ export class DashboardBodyComponent implements OnInit {
     this.signupservice.getName().subscribe(result => {
       this.UserData = result.json();
     });
-    console.log(this.DomainData);
+    console.log(data);
   }
 
-  startQuiz(){
-    this.router.navigate(['start',this.UserData.UserID,"Java"]);
+  startQuiz(item){
+    this.router.navigate(['start',this.UserData.UserID,item]);
   }
 
 }
