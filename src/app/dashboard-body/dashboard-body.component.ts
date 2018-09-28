@@ -13,7 +13,7 @@ export class DashboardBodyComponent implements OnInit {
   constructor(private signupservice: SignUpService, private router: Router, private doaminservice: DashboardService ) {
 
   }
-  Domains = [];
+  public Domains= [];
 
   public UserData;
   ngOnInit() {
@@ -21,7 +21,7 @@ export class DashboardBodyComponent implements OnInit {
       this.UserData = result.json();
     });
     this.doaminservice.getQuizDomains().subscribe(result => {
-      this.Domains.push(...result.json());
+      this.Domains.push(result);
     })
     this.doaminservice.getDomainDetails().subscribe(result => {
       console.log(result.statusText);
