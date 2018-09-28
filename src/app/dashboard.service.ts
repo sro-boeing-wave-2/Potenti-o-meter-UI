@@ -12,10 +12,10 @@ export class DashboardService {
     return this.http.get("http://13.126.26.172/conceptmap/domain");
   }
 
-  getDomainDetails()
-  {
-    return this.http.get("./domain.json");
-  }
+  // getDomainDetails()
+  // {
+  //   return this.http.get("/assets/data/domain.json");
+  // }
 
   constructor(private http : Http) { }
 }
