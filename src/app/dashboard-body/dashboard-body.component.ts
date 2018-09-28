@@ -16,11 +16,11 @@ export class DashboardBodyComponent implements OnInit {
   }
   @Input() DomainData;
   public UserData;
+  uniqueItems = Array.from(new Set(this.DomainData))
   ngOnInit() {
     this.signupservice.getName().subscribe(result => {
       this.UserData = result.json();
     });
-    console.log(this.domainstuff);
   }
 
   startQuiz(item){
@@ -30,7 +30,7 @@ export class DashboardBodyComponent implements OnInit {
   domainstuff = [
     {"color":"blue","tagline":"Know the reason behind every fiction","icon":"nature_people"},
     {"color":"pink","tagline":"Java: write once, run away!","icon":"code"},
-    {"color":"red","tagline":"Know the reason behind every fiction","icon":"nature_people"},
+    // {"color":"red","tagline":"Know the reason behind every fiction","icon":"nature_people"},
   ]
 
 }
