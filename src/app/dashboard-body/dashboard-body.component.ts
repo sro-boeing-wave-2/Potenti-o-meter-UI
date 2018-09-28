@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {SignUpService} from '../sign-up.service';
 import {Domain} from '../Domain';
 import { Router } from '@angular/router';
@@ -11,21 +11,14 @@ import { DashboardService } from '../dashboard.service';
 export class DashboardBodyComponent implements OnInit {
 
   constructor(private signupservice: SignUpService, private router: Router, private doaminservice: DashboardService ) {
-
   }
-  public Domains= [];
+  @Input() DomainData;
   public UserData;
   ngOnInit() {
     this.signupservice.getName().subscribe(result => {
       this.UserData = result.json();
     });
-    this.doaminservice.getQuizDomains().subscribe(result => {
-      console.log(result);
-      this.Domains.push(result);
-    })
-    // this.doaminservice.getDomainDetails().subscribe(result => {
-    //   console.log(result.statusText);
-    // })
+    console.log(this.DomainData);
   }
 
   startQuiz(){
