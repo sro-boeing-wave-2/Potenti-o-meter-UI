@@ -22,10 +22,10 @@ export class DashboardBodyComponent implements OnInit {
     this.doaminservice.getQuizDomains().subscribe(result => {
       console.log(result.statusText);
     })
-    this.doaminservice.getDomainDetails().subscribe(result => {
-      console.log(result.statusText);
-    }
-      )
+    // this.doaminservice.getDomainDetails().subscribe(result => {
+    //   console.log(result.statusText);
+    // }
+    //   )
   }
 
   startQuiz(){
