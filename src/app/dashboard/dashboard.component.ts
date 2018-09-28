@@ -12,10 +12,8 @@ export class DashboardComponent implements OnInit {
 
   public Domains= [];
   ngOnInit() {
-    this.domainservice.getQuizDomains().subscribe(result => {
-      console.log(result.json());
+    this.domainservice.getQuizDomains().subscribe(result => {;
       this.Domains.push(...result.json());
-      console.log(this.Domains);
     })
   }
 
