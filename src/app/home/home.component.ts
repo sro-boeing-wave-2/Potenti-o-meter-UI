@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   constructor(private dialog: MatDialog, private router: Router, private route: ActivatedRoute,) { }
   public isActive:boolean = false;
   public signup:boolean = false;
+  public login:boolean = false;
   dialogRef: MatDialogRef<UserSignUpComponent>;
   public static onClose:boolean;
   public fragment;
@@ -57,6 +58,9 @@ export class HomeComponent implements OnInit {
     });
     const sub = this.dialogRef.componentInstance.success.subscribe((result) => {
       this.signup = result;
+    });
+    const fail = this.dialogRef.componentInstance.failure.subscribe((result) => {
+      this.login = result;
     });
   }
 

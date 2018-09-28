@@ -19,7 +19,7 @@ export class UserSignUpComponent implements OnInit {
   public dialogForm: FormGroup;
   public loginForm: FormGroup;
   @Output() success = new EventEmitter<boolean>();
-
+  @Output() failure = new EventEmitter<boolean>();
 
   constructor( private fb: FormBuilder,private dialog: MatDialog,
   public dialogRef: MatDialogRef<UserSignUpComponent>,private UserSignUpService :SignUpService,
@@ -49,12 +49,12 @@ export class UserSignUpComponent implements OnInit {
 
   this.UserSignUpService.USerSignUp(this.dialogForm.value as User)
   .subscribe(result=>
-    result.status == 201?this.GoBack(): this.Message(result.toString()))
+    result.status == 201?this.GoBack(): this.Message())
   }
 
   LoginSubmit(): void {
     this.loginservice.USerLogIn(this.loginForm.value as Login)
-    .subscribe(result=> result.status == 200?this.AfterLogin(): this.Message(result.toString()));
+    .subscribe(result=> result.status == 200?this.AfterLogin(): this.Message());
   }
 
   GoBack(){
@@ -70,7 +70,11 @@ export class UserSignUpComponent implements OnInit {
   // this.router.navigate(['dashboard']);
   }
 
-  Message(result:string){
+  Message(){
+    this.failure.emit(true);
+  setTimeout(() => {
+    this.failure.emit(false);
+  },2000)
   }
 
 }
