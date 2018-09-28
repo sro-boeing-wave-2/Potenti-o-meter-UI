@@ -11,14 +11,14 @@ import { DashboardService } from '../dashboard.service';
 export class DashboardBodyComponent implements OnInit {
 
   constructor(private signupservice: SignUpService, private router: Router, private doaminservice: DashboardService ) {
-
   }
-  public Domains= [];
+  @Input() DomainData;
   public UserData;
   ngOnInit() {
     this.signupservice.getName().subscribe(result => {
       this.UserData = result.json();
     });
+    console.log(this.DomainData);
   }
 
   startQuiz(){
