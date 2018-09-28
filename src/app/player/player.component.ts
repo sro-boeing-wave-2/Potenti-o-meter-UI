@@ -34,6 +34,10 @@ export class PlayerComponent implements OnInit {
   questionType : string;
   userResponse: any;
   count: number;
+  progress: number;
+  public full = true;
+  public half = false;
+  public empty = false;
   ngOnInit() {
 
     this.activatedRoute.paramMap.subscribe((params: ParamMap)=> {
@@ -55,6 +59,7 @@ export class PlayerComponent implements OnInit {
         error => console.log(error)
       );
      this.count = 1;
+     this.progress = 10;
      this.questionComponents = this.playerService.getComponents();
      this.startTime = new Date();
      this.timer = setInterval(() => { this.tick(); }, 1000);
@@ -64,15 +69,13 @@ export class PlayerComponent implements OnInit {
   mcqQuestion : MCQModel;
   mmcqQuestion : MMCQModel;
   onResponseReceived(response) {
-    console.log("this is the user response " + response);
     this.userResponse = response;
   }
 
   getNextQuestion() {
-    console.log("Testing ", this.localStorage.retrieve("response"));
     this.questionType = this.question["questionType"];
-    console.log("PRINTING " + this.questionType);
     this.count = this.count + 1;
+    this.progress = this.progress + 10;
     switch(this.questionType) {
       case "MCQ":
       {
@@ -81,8 +84,7 @@ export class PlayerComponent implements OnInit {
           optionText: this.localStorage.retrieve("response")
         };
         this.mcqQuestion.response = this.res;
-        console.log("THIS IS MCQQuestion ", JSON.stringify(this.mcqQuestion));
-      //console.log(this.localStorage.retrieve("response"));
+
 
 
       return this.playerService.getNextQuestion(this.mcqQuestion);
@@ -101,19 +103,14 @@ export class PlayerComponent implements OnInit {
 
   endQuiz() {
     this.questionType = this.question["questionType"];
-    console.log("PRINTING " + this.questionType);
     switch(this.questionType) {
       case "MCQ":
       {
         this.res = {
           raw: this.localStorage.retrieve("response"),
-          optionText: this.localStorage.retrieve("response")
+          optionText: null
         };
         this.mcqQuestion.response = this.res;
-      //this.mcqQuestion.response = this.userResponse;
-     // console.log("THIS IS WHAT " + this.userResponse);
-     // console.log("PRINTING " + JSON.stringify(this.mcqQuestion));
-
       return this.playerService.endQuiz(this.mcqQuestion);
       }
 
@@ -133,6 +130,17 @@ export class PlayerComponent implements OnInit {
         this.endQuiz();
       }
       this.ellapsedTime = this.parseTime(diff);
+      const endTime = this.ellapsedTime.split(":",2);
+      const minutes = +endTime[0];
+    if(minutes > 4)
+    {
+      this.half= true;
+      this.full = false;
+    }
+    if(minutes > 7){
+      this.half = false;
+      this.empty= true;
+    }
     }
 
     parseTime(totalSeconds: number) {
