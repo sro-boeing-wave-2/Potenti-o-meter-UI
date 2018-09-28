@@ -37,7 +37,7 @@ private url="";
 
     // this._connection.start().then(() => { this._connection.invoke('StartQuiz', userId, domain); });
 
-    this._connection = new HubConnectionBuilder().withUrl("http://13.126.26.172/quizEngine/start").build();
+    this._connection = new HubConnectionBuilder().withUrl("http://13.126.26.172/quizEngine/start/").build();
     this._connection.on('NextQuestion', this.onNextQuestionHandler.bind(this));
     // this._connection.on('EndQuiz', this.onQuizEnded.bind(this));
     this._connection.start().then(() => {
