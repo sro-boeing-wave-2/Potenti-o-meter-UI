@@ -14,7 +14,7 @@ export class DashboardService {
 
   // getDomainDetails()
   // {
-  //   return this.http.get("/assets/data/domain.json");
+  //   return this.http.get("E:\Potenti-o-meter-UI\src\assets\data\domain.json");
   // }
 
   constructor(private http : Http) { }
