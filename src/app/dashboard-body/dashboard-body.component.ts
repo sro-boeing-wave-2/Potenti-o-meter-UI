@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { DashboardService } from '../dashboard.service';
 declare var require: any;
 var data = require('../../assets/data/domain.json');
+
 @Component({
   selector: 'app-dashboard-body',
   templateUrl: './dashboard-body.component.html',
@@ -19,11 +20,16 @@ export class DashboardBodyComponent implements OnInit {
     this.signupservice.getName().subscribe(result => {
       this.UserData = result.json();
     });
-    console.log(data);
+    console.log(this.domainstuff);
   }
 
   startQuiz(item){
     this.router.navigate(['start',this.UserData.UserID,item]);
   }
+
+  domainstuff = [
+    {"color":"blue","tagline":"Know the reason behind every fiction","icon":"nature_people"},
+    {"color":"pink","tagline":"Java: write once, run away!","icon":"code"}
+  ]
 
 }
