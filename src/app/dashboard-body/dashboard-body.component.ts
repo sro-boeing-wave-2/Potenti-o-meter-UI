@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {SignUpService} from '../sign-up.service';
-import {Domain} from '../Domain';
 import { Router } from '@angular/router';
-import { DashboardService } from './dashboard.service';
+import { DashboardService } from '../dashboard.service';
+declare var require: any;
+var data = require('../../assets/data/domain.json');
+
 @Component({
   selector: 'app-dashboard-body',
   templateUrl: './dashboard-body.component.html',
@@ -11,26 +13,23 @@ import { DashboardService } from './dashboard.service';
 export class DashboardBodyComponent implements OnInit {
 
   constructor(private signupservice: SignUpService, private router: Router, private doaminservice: DashboardService ) {
-
   }
-  Domains :Domain[];
-
+  @Input() DomainData;
   public UserData;
   ngOnInit() {
     this.signupservice.getName().subscribe(result => {
       this.UserData = result.json();
     });
-    this.doaminservice.getQuizDomains().subscribe(result => {
-      this.Domains.push(...result.json());
-    })
-    this.doaminservice.getDomainDetails().subscribe(result => {
-      console.log(result.statusText);
-    }
-      )
+    console.log(this.domainstuff);
   }
 
-  startQuiz(){
-    this.router.navigate(['start',this.UserData.UserID,"Java"]);
+  startQuiz(item){
+    this.router.navigate(['start',this.UserData.UserID,item]);
   }
+
+  domainstuff = [
+    {"color":"blue","tagline":"Know the reason behind every fiction","icon":"nature_people"},
+    {"color":"pink","tagline":"Java: write once, run away!","icon":"code"}
+  ]
 
 }

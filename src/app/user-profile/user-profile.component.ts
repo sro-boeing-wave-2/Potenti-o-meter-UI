@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { SignUpService } from '../sign-up.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { SignUpService } from '../sign-up.service';
 })
 export class UserProfileComponent implements OnInit {
 
+  @Input() DomainData;
   constructor(private signupservice: SignUpService) { }
 
   public UserData;
@@ -16,6 +17,7 @@ export class UserProfileComponent implements OnInit {
     this.signupservice.getName().subscribe(result => {
       this.UserData = result.json();
     });
+    console.log(this.DomainData)
   }
 
 }
