@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
+import { DashboardService } from '../dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,11 +8,12 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private cookieService: CookieService) { }
-  cookieValue = ''
+  constructor(private domainservice: DashboardService) { }
 
   ngOnInit() {
-    this.cookieValue = this.cookieService.get('UserLoginAPItoken');
+    this.domainservice.getQuizDomains().subscribe(result => {
+      console.log(result.json());
+    })
   }
 
 }

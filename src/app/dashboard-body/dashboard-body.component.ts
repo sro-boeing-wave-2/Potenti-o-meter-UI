@@ -19,9 +19,6 @@ export class DashboardBodyComponent implements OnInit {
     this.signupservice.getName().subscribe(result => {
       this.UserData = result.json();
     });
-    this.doaminservice.getQuizDomains().subscribe(result => {
-      console.log(result.json());
-    })
   }
 
   startQuiz(){
