@@ -95,14 +95,13 @@ h2 {font-size: 3em;}
 }
 
 
-#whatWeDo{
-  margin-top: 70px;
-  margin-bottom: 50px;
-}
-
 h1,h2,h3,h4, p{
   font-family: 'Open Sans', sans-serif !important;
 }
+
+/* #AboutUs{
+  margin-left: 25px;
+} */
 
 whatWeDo p{
   text-align: center;
@@ -122,6 +121,41 @@ whatWeDo p{
     vertical-align: baseline;
     outline: 0;
 }
+
+.header_line{
+  margin: 0 auto;
+  width: 70px;
+  height: 2px;
+  background: #100000;
+}
+
+.left_header_line{
+  width: 50px;
+  height: 1.7px;
+  background: #100000;
+  float: left;
+}
+
+.img_big{
+  display: inline-block;
+  vertical-align: top;
+  max-width: 100%;
+  /* width: 600px;
+  height: 422px; */
+}
+
+.cover {
+  width: 100%;
+ }
+
+#discover_text{
+  text-align: center;
+}
+
+#discover_signup{
+  text-align: center;
+}
+
 
 @keyframes fade-first {
   0% {opacity:0; visibility:hidden;}
@@ -261,6 +295,28 @@ whatWeDo p{
   margin-left: 1%;
 }
 
+.btn_discover{
+  /* border-color: #0092aa !important;
+  background: #0092aa !important; */
+  line-height: 3;
+  width: 290px;
+  border: 2px solid #00BCD4 !important;
+  background-color: #00BCD4 !important;
+  font-style: normal;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  border-radius: 8px;
+}
+
+
+#disc_signup_a{
+  font-style: normal;
+  color: #ffffff !important;
+  text-decoration:none !important;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+
 /* a.arrow{
   color: white;
   text-align: center;
@@ -344,8 +400,4 @@ a.arrow:hover {color: #FFC52F;} */
   0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
   40% {transform: translateY(-30px);}
   60% {transform: translateY(-15px);}
- }
-
- .cover {
-  width: 100%;
  }
