@@ -22,6 +22,10 @@ export class HomeComponent implements OnInit {
     this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
   }
 
+  ngAfterViewInit() {
+    window.scrollTo(0, 0);
+  }
+
   ngAfterViewChecked(): void {
     try {
         if(this.fragment) {
