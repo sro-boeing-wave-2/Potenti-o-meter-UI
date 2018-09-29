@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   max-width: 100%;
+  height: 100%;
   margin: 0 auto;
-
   background-color: #EFEFF7;
 }
 
@@ -212,6 +212,7 @@ main {
 footer {
   position: absolute;
   bottom: 0px;
+  width: 100%;
   height: 80px;
   overflow: hidden;
 }
