@@ -210,7 +210,8 @@ main {
 /* FOOTER */
 
 footer {
-  position: relative;
+  position: absolute;
+  bottom: 0px;
   height: 80px;
   overflow: hidden;
 }
