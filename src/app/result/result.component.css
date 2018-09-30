@@ -1,8 +1,41 @@
 .card{
-  background-color: #FBFCFC;
   text-align: center;
-  margin-top: 80px;
-  padding: 25px 50px 75px 50px;
+  margin-top: 34px;
+  padding: 35px 50px 65px 50px;
+  border: 3px solid rgba(0,0,0,.125);
+  border-radius: 2.25rem;
+  font-size: 40px;
+  font-family: 'Courier New', Courier, monospace;
+}
+.card-columns{
+  column-gap: 6.25rem;
+
+}
+.card-text{
+  font-weight: bold;
+}
+.card-body
+{
+  padding: 0.25rem;
+}
+.panel {
+  margin-top: 78px;
+}
+.fa-tasks{
+  color:rgb(209, 121, 39);
+}
+.fa-percentage{
+  color:rgb(14, 157, 223)
+}
+.fa-edit{
+  color:rgb(9, 134, 47);
+}
+.fa-address-card{
+  color: darkred;
+}
+.buttonDiv{
+  margin-top: 73px;
+  margin-bottom: -50px;
 }
 
 .cumulative{
