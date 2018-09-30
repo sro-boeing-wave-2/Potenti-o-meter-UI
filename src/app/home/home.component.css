@@ -184,54 +184,87 @@ whatWeDo p{
   100% {opacity:0; visibility:hidden;}
 }
 
-/* @media all and (max-width: 1158px) {
+@media all and (max-width: 1242px) {
   .herotext{
     font-size: 26px;
   }
 }
 
-@media all and (max-width: 1075px) {
+@media all and (max-width: 1159px) {
   .herotext{
     font-size: 22px;
   }
 }
 
-@media all and (max-width: 912px) {
+@media all and (max-width: 976px) {
   .herotext{
     font-size: 20px;
   }
+  .fa {
+    font-size: 40px !important;
+  }
+  .bounce {
+    border: none !important;
+  }
 }
 
-@media all and (max-width: 827px) {
+@media all and (max-width: 888px) {
   .herotext{
     font-size: 18px;
   }
-  .herobutton{
-    top:75%;
+}
+
+@media all and (max-width: 830px) {
+  .bounce{
+    top:85%;
+    border: none !important;
+  }
+  .fa {
+    font-size: 35px !important;
   }
 }
 
-@media all and (max-width: 745px) {
+@media all and (max-width: 800px) {
   .herotext{
     font-size: 16px;
   }
 }
 
-@media all and (max-width: 662px) {
+@media all and (max-width: 766px) {
   .herotext{
-    font-size: 14px;
+    width: 50%;
   }
-  .btn {
-    width: 80px;
+  .herobutton {
+    width: 25%;
+  }
+  .fa {
+    font-size: 30px !important;
+  }
+  .bounce {
+    border: none !important;
+  }
+}
+@media all and (max-width: 710px) {
+  .herotext{
+    width: 60%;
   }
 }
 
-@media all and (max-width: 579px) {
+@media all and (max-width: 622px) {
   .herotext{
     font-size: 12px;
   }
-  .btn {
-    width: 60px;
+  .herobutton {
+    width: 30%;
+  }
+}
+
+@media all and (max-width: 570px) {
+  .herotext{
+    width: 70%;
+  }
+  .herobutton {
+    width: 30%;
   }
 }
 
@@ -239,29 +272,44 @@ whatWeDo p{
   .herotext{
     font-size: 10px;
   }
-  .btn {
-    width: 40px;
+  .herobutton{
+    top:70%;
+    width: 35%;
+  }
+}
+
+@media all and (max-width: 440px) {
+  .herotext{
+    width: 80%;
   }
   .herobutton{
-    top:80%;
+    width: 40%;
   }
 }
-
 @media all and (max-width: 414px) {
   .herotext{
-    font-size: 8px;
+    width: 85%;
   }
-  .btn {
-    width: 20px;
+  .herobutton{
+    width: 45%;
   }
 }
 
-@media all and (max-width: 331px) {
+@media all and (max-width: 360px) {
   .herotext{
-    font-size: 6px;
+    width: 90%;
   }
-  .btn {
-    width: 10px;
+  .herobutton{
+    width: 50%;
+  }
+}
+
+@media all and (max-width: 340px) {
+  .herotext{
+    width: 95%;
+  }
+  .herobutton{
+    width: 55%;
   }
 } */
 
