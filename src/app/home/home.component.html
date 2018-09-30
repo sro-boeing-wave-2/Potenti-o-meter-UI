@@ -1,33 +1,33 @@
 <app-header [homePage]="true" [validSignup]="true" (notifyLogIn)='onLoginNotify($event)' (notifySignIn)='onSignInNotify($event)'></app-header>
-<div class="hero">
-  <img src="../../assets/images/Potential-of-Change.jpg" class="overlay" />
-  <div class="heroalert alert alert-success alert-dismissible fade in" *ngIf="signup" role="alert" data-auto-dismiss="2000"
-    id="fifth">
-    Successfully registered!
-  </div>
-  <div class="heroalert alert alert-warning alert-dismissible fade in" *ngIf="login" role="alert" data-auto-dismiss="2000"
-  id="fifth">
-    Wrong username or password
-  </div>
-  <div class="herotext" id="first">
-    <h2>Potenti-o-meter</h2>
-    <p>Diagnosis of each candidate, rather than the group.</p>
-  </div>
-  <div class="herotext" id="second">
-    <h2>Potenti-o-meter</h2>
-    <p>Personalized and tailored Tests.</p>
-  </div>
-  <div class="herotext" id="third">
-    <h2>Potenti-o-meter</h2>
-    <p>better data analytics and accurate results</p>
-  </div>
-  <div class="herobutton" id="fourth">
-    <button type="button" id="Signup" (click)="onSignInNotify()" class="btn btn-primary btn-outline btn-responsive">Sign
-      Up
-    </button>
-    <button type="button" id="Signin" (click)="onLoginNotify()" class="btn btn-primary btn-outline btn-responsive">Sign In</button>
-  </div>
-  <div class="bounce" routerLink="." fragment="OurWork"><i class="fa fa-angle-double-down"></i></div>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <div class="heroalert alert alert-success alert-dismissible fade in" *ngIf="signup" role="alert" data-auto-dismiss="2000"
+        id="fifth">
+        Successfully registered!
+      </div>
+      <div class="heroalert alert alert-warning alert-dismissible fade in" *ngIf="login" role="alert" data-auto-dismiss="2000"
+      id="fifth">
+        Wrong username or password
+      </div>
+      <div class="herotext" id="first">
+        <h2>Potenti-o-meter</h2>
+        <p>Diagnosis of each candidate, rather than the group.</p>
+      </div>
+      <div class="herotext" id="second">
+        <h2>Potenti-o-meter</h2>
+        <p>Personalized and tailored Tests.</p>
+      </div>
+      <div class="herotext" id="third">
+        <h2>Potenti-o-meter</h2>
+        <p>better data analytics and accurate results</p>
+      </div>
+      <div class="herobutton" id="fourth">
+        <button type="button" id="Signup" (click)="onSignInNotify()" class="btn btn-primary btn-outline btn-responsive">SignUp
+        </button>
+        <button type="button" id="Signin" (click)="onLoginNotify()" class="btn btn-primary btn-outline btn-responsive">Sign In</button>
+      </div>
+      <div class="bounce" routerLink="." fragment="OurWork"><i class="fa fa-angle-double-down"></i></div>
+    </div>
 </div>
 
 <div class="vc_empty_space" style="height: 60px"></div>
@@ -36,19 +36,20 @@
   <h2 class="container-fluid text-center" id="whatWeDo">What Do We Do</h2>
   <div class="vc_empty_space" style="height: 15px"></div>
   <div class="header_line"></div>
-  <div class="vc_empty_space" style="height: 40px"></div>
+  <div class="vc_empty_space" style="height: 30px"></div>
 
   <div class="row cover">
-    <div class="col-md-4 text-center" id="OurWork">
+    <div class="col-md-4 text-center" id="OurWork" >
       <div class="col-md-2"></div>
       <div class="col-md-10">
-        <div class="row vc_single_image-wrapper vc_box_border_grey"><img width="136" height="80" src="../../assets/images/Smarter_training.png"
+        <div class="row vc_single_image-wrapper vc_box_border_grey"><img width="226" height="160" src="../../assets/images/maintenance.svg"
             class="vc_single_image-img attachment-thumbnail" alt="Ease Onboarding"></div>
+        <div class="vc_empty_space" style="height: 30px"></div>
         <div class="row">
           <div class="wpb_text_column wpb_content_element ">
             <div class="wpb_wrapper">
               <h3 style="text-align: center;">Varied Domains</h3>
-              <p style="text-align: center;">We provide you a platform where you can give tests on varied domains.</p>
+              <p style="text-align: center; font-size: 16px">We provide you a platform where you can give tests on varied domains.</p>
             </div>
           </div>
         </div>
@@ -57,13 +58,14 @@
     <div class="col-md-4 text-center">
       <div class="col-md-1"></div>
       <div class="col-md-10">
-        <div class="vc_single_image-wrapper vc_box_border_grey"><img width="136" height="80" src="../../assets/images/Ease_onboarding.png"
+        <div class="vc_single_image-wrapper vc_box_border_grey"><img width="226" height="160" src="../../assets/images/update.svg"
             class="vc_single_image-img attachment-thumbnail" alt="Ease Onboarding"></div>
+        <div class="vc_empty_space" style="height: 30px"></div>
         <div class="row">
           <div class="wpb_text_column wpb_content_element ">
             <div class="wpb_wrapper">
               <h3 style="text-align: center;">Adaptive Questions</h3>
-              <p style="text-align: center;">Get adaptive questions through our beautifully designed algorithm.</p>
+              <p style="text-align: center; font-size: 16px">Get adaptive questions through our beautifully designed algorithm.</p>
             </div>
           </div>
         </div>
@@ -72,13 +74,14 @@
     </div>
     <div class="col-md-4 text-center">
       <div class="col-md-11">
-        <div class="vc_single_image-wrapper vc_box_border_grey"><img width="136" height="80" src="../../assets/images/Improve_support.png"
+        <div class="vc_single_image-wrapper vc_box_border_grey"><img width="226" height="160" src="../../assets/images/brain.svg"
             class="vc_single_image-img attachment-thumbnail" alt="Ease Onboarding"></div>
+        <div class="vc_empty_space" style="height: 30px"></div>
         <div class="row">
           <div class="wpb_text_column wpb_content_element">
             <div class="wpb_wrapper">
               <h3 style="text-align: center;">Brain Mapping</h3>
-              <p style="text-align: center;">Obtain your knowledge graph and track your progress.</p>
+              <p style="text-align: center; font-size: 16px">Obtain your knowledge graph and track your progress.</p>
             </div>
           </div>
         </div>
@@ -87,8 +90,7 @@
     </div>
   </div>
 </div>
-
-<div class="vc_empty_space" style="height: 90px"><span class="vc_empty_space_inner">
+<div class="vc_empty_space" style="height: 120px"><span class="vc_empty_space_inner">
     <span class="empty_space_image"></span>
   </span>
 </div>
