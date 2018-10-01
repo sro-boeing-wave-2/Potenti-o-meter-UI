@@ -1,9 +1,100 @@
-.card{
-  background-color: aliceblue;
+*{
+  /* font-family: 'Signika', Courier, monospace; */
+}
+
+.page-contianer{
+  background-color: #FBFCFC;
+  margin-top: 50px;
   text-align: center;
-  margin-top: 80px;
+  padding: 25px 50px 25px 50px;
+  /* height: 100vh; */
+
+
+}
+
+.player-card{
+  margin-top: 10px;
+  border-radius: 8px;
 }
 
 .progress-bar{
-  background-color: gray;
+  background-color: #1a73e8;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.progress{
+  height: 30px;
+}
+
+.next-button{
+  background-color: #1a73e8;
+  border-radius: 6px;
+  font-weight: bold;
+}
+app-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.countdown-label {
+  font: thin 15px Arial, sans-serif;
+	color: #65584c;
+	text-align: center;
+	text-transform: uppercase;
+	display: inline-block;
+  letter-spacing: 2px;
+  margin-top: 9px
+}
+
+#countdown{
+box-shadow: 0 1px 2px 0 rgba(1, 1, 1, 0.4);
+width: 240px;
+height: 80px;
+text-align: center;
+background: #f1f1f1;
+border-radius: 5px;
+margin: auto;
+
+}
+
+
+
+#countdown #tiles{
+  color: #fff;
+	position: relative;
+	z-index: 1;
+  text-shadow: 1px 1px 0px #ccc;
+	display: inline-block;
+  font-family: Arial, sans-serif;
+	text-align: center;
+
+  padding: 20px;
+  border-radius: 5px 5px 0 0;
+  font-size: 48px;
+  font-weight: thin;
+  display: block;
+
+}
+
+.color-full {
+  background: #53bb74;
+  height: 60%;
+}
+
+.color-half {
+  background: #ebc85d;
+  height: 60%;
+}
+
+.color-empty {
+  background: #e5554e;
+  height: 60%;
+}
+
+#timer {
+  margin-top: auto;
+  margin-bottom: auto;
 }

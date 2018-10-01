@@ -1,0 +1,180 @@
+
+<app-header [result]="true" [userDetail]="true"></app-header>
+<div class="container-fluid">
+  <div class="buttonDiv">
+    <button type="button" style='margin-right:16px' class="btn btn-primary" (click)="viewResponse()">Click here to view
+      your responses<i class="fas fa-eye"></i></button>
+    <button type="button" class="btn btn-primary" (click)="downLoadResult()">Click here to download your Result<i class="fas fa-download"></i></button>
+  </div>
+  <hr>
+  <div id="content" #content>
+    <!-- <div class="panel panel-info">
+      <div class="panel-heading">
+        <h4>Results for Current Quiz</h4>
+      </div>-->
+      <div>
+        <mat-grid-list cols="10">
+          <mat-grid-tile colspan='4' class="currentCard">
+            <mat-card>Domain<div class="mainContent">{{_result?.domainName}} <i class="fas fa-edit"></i></div></mat-card>
+          </mat-grid-tile>
+          <mat-grid-tile colspan='3' class="currentCard">
+            <mat-card>Score<div class="mainContent">{{_result?.quizResults[length].obtainedScore}}/{{_result?.quizResults[length].totalScore}} <i class="fas fa-tasks"></i></div></mat-card>
+          </mat-grid-tile>
+          <mat-grid-tile colspan='3' class="currentCard">
+            <mat-card>Percentage<div class="mainContent">{{_result?.quizResults[length]?.percentageScore}} <i class="fas fa-percentage"></i></div></mat-card>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <hr>
+
+      </div>
+    <!-- </div> -->
+
+      <div class="row">
+          <div class="col-md-6">
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <h4>Taxonomy Score</h4>
+              </div>
+              <div class="panel-body cumulative">
+                <div *ngIf="barChart">
+                  <canvas id="barchartid">{{ barChart }}</canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="panel panel-info">
+              <div *ngIf="length == 0; then oneTest ; else moreTest"> </div>
+              <ng-template #oneTest>
+                <div class="panel-heading">
+                  <h4>Your first Result</h4>
+                </div>
+              </ng-template>
+              <ng-template #moreTest>
+                <div class="panel-heading">
+                  <h4>Your Cumulative Result</h4>
+                </div>
+              </ng-template>
+              <div class="panel-body cumulative">
+                <div *ngIf="cumulativeChart">
+                  <canvas id="canva">{{ cumulativeChart }}</canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--  -->
+        <!--  -->
+
+        <div class="row">
+          <div class="col-md-6">
+            <div *ngIf="changePrevious >= 0; then increasedPrevious; else decreasedPrevious"> </div>
+            <ng-template #increasedPrevious>
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <p style="color: green">Progress from your previous attempt:
+                    <i class="fa fa-arrow-up"></i>{{(Math.round(changePrevious * 100))/100}}%</p>
+                </div>
+                <div class="panel-body">
+                  <p>Great!!</p>
+                  <p>Your performance has improved from your last attempt. Keep on the progress.</p>
+                </div>
+              </div>
+            </ng-template>
+            <ng-template #decreasedPrevious>
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <p style="color: red">Progress from your previous attempt:
+                    <i class="fa fa-arrow-down"></i>{{(Math.round(changePrevious * 100))/100}}%</p>
+                </div>
+                <div class="panel-body">
+                  <p>Don't Worry!!</p>
+                  <p>Your performance has slightly decreased from your last attempt. Work hard and you will do better
+                    next
+                    time.</p>
+                </div>
+              </div>
+            </ng-template>
+          </div>
+
+          <div class="col-md-6">
+            <div *ngIf="changeFirst >= 0; then increasedFirst; else decreasedFirst"> </div>
+            <ng-template #increasedFirst>
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <p style="color: green">Progress from your first attempt:
+                    <i class="fa fa-arrow-up"></i>{{(Math.round(changeFirst * 100))/100}}%</p>
+                </div>
+                <div class="panel-body">
+                  <p>Great!!</p>
+                  <p>Your performance has improved from your first attempt. Keep on the progress</p>
+                </div>
+              </div>
+            </ng-template>
+            <ng-template #decreasedFirst>
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <p style="color: red">Progress from your first attempt:
+                    <i class="fa fa-arrow-down"></i>{{(Math.round(changeFirst * 100))/100}}%</p>
+                </div>
+                <div class="panel-body">
+                  <p>Don't Worry!!</p>
+                  <p>Your performance has slightly decreased from your first attempt. Work hard and you will do better
+                    next
+                    time.</p>
+                </div>
+              </div>
+            </ng-template>
+          </div>
+
+        </div>
+        <!--  -->
+        <div class="card bg-light">
+          <div class="card-body text-center">
+            <p class="card-text"> Your overall score in {{_result?.domainName}} now stands at</p>
+            <i class="fas fa-address-card"> {{_result?.averagePercentage}}</i>
+          </div>
+        </div>
+
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h4>Your Progress Graph</h4>
+          </div>
+          <div class="panel-body">
+            <div *ngIf="lineGraph">
+              <canvas id="canvasLine">{{ lineGraph }}</canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <h4>Radar Chart of First and Last Quiz</h4>
+              </div>
+              <div class="panel-body">
+                <div *ngIf="chart">
+                  <canvas id="canvas">{{ chart }}</canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <h4>Radar Chart of previous and current Quiz</h4>
+              </div>
+              <div class="panel-body">
+                <div *ngIf="chart">
+                  <canvas id="canvas1">{{ chart }}</canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<app-footer></app-footer>
+

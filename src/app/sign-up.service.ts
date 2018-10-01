@@ -4,6 +4,7 @@ import { User } from './User';
 import { HttpHeaders } from '@angular/common/http';
 import { Login} from './Login';
 import {Router} from '@angular/router';
+import { AuthenticationAPILogin, AuthenticationAPIRegister, AuthenticationAPILogout, AuthenticationAPIDetails } from '../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,13 +16,16 @@ export class SignUpService {
   }
 
   USerSignUp(user: User) {
-    return this.http.post("https://localhost:44397/api/Users/Register", user);
+    return this.http.post(AuthenticationAPIRegister, user);
   }
   USerLogIn(user: Login) {
-    return this.http.post("https://localhost:44397/api/Users/Login", user);
+    return this.http.post(AuthenticationAPILogin, user, {withCredentials: true});
   }
   UserLogOut(){
-    return this.http.post("https://localhost:44397/api/Users/Logout","");
+    return this.http.post(AuthenticationAPILogout,"");
+  }
+  getName(){
+    return this.http.get(AuthenticationAPIDetails, {withCredentials: true});
   }
   GetDomain(){
     type ArrayOfTypeDomain = Array<{name: string}>;

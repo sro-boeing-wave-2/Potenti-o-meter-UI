@@ -24,4 +24,11 @@ ul{
 
 }
 
+a {
+  margin-left: 2%;
+  color: white !important;
+}
 
+.social-links {
+  text-align: left;
+}

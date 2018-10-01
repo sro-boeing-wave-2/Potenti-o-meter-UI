@@ -1,0 +1,25 @@
+<mat-dialog-content class="card">
+<div class="quiz-container" *ngFor="let qR of questionResponse">
+    <div class="question box">
+      <p><span>{{qR.questionNumber}}.</span>{{qR.questionText}}</p>
+    </div>
+    <ul class="answers">
+      <li class="answer box" *ngFor="let opt of qR.options" >
+        <p><span><i class="fa fa-angle-right"></i></span>{{opt}}</p>
+      </li>
+    </ul>
+    <div class="response">
+      <h4>Your response: {{qR.response}}</h4>
+      <div *ngIf="qR.isCorrect == true; then correct; else wrong"> </div>
+      <ng-template #correct>
+          <p style="color: green">Correct<i class="fa fa-check"></i></p>
+      </ng-template>
+      <ng-template #wrong>
+          <p style="color: red">Wrong<i class="fa fa-close"></i></p>
+      </ng-template>
+    </div>
+    <div class="correctAns">
+      <h4>Correct option: {{qR.correctAns}}</h4>
+    </div>
+  </div>
+</mat-dialog-content>

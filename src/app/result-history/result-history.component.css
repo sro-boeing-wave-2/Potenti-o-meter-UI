@@ -1,0 +1,136 @@
+.page-contianer{
+  background-color: #FBFCFC;
+  margin-top: 50px;
+  text-align: center;
+  padding: 25px 50px 75px 50px;
+
+
+}
+.scores{
+  text-align: center;
+}
+
+.score-card h4{
+
+  color: rgba(0,0,0,0.54);
+}
+
+
+.mat-card-subtitle
+{
+  font-weight: bold;
+}
+
+.score-card{
+border-radius: 8px;
+margin-bottom: 10px;
+}
+
+
+.concept-card{
+  background-color: #0089e0;
+}
+
+.progress-card{
+  height: 525px;
+  /* padding: 100px 100px 100px 100px; */
+  padding-top: 70px;
+  border-radius: 8px;
+}
+
+mat-grid-tile {
+  background: #1a73e8;
+  color: white;
+  border-radius: 8px;
+  margin: 10px 10px 10px 10px;
+}
+
+/* .progress-graph{
+  padding-top: 30px;
+} */
+
+.cumulative{
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
+.concept{
+  align-self: center;
+background:#0089e0;
+color:#fff;
+/* -moz-border-radius-bottomright:4px;
+-webkit-border-bottom-right-radius:4px;
+border-bottom-right-radius:4px;
+-moz-border-radius-topright:4px;
+-webkit-border-top-right-radius:4px;
+border-top-right-radius:4px;
+border-width: 18px 12px 18px 0;
+width: 50%;
+margin-left: 50px;
+border-color:transparent #0089e0 transparent transparent; */
+}
+
+.result-block{
+  height: 480px;
+}
+
+
+
+.concept-list{
+  width:400px;
+  margin:0 auto;
+  }
+
+  .concept-list ol{
+  counter-reset: li;
+  list-style: none;
+  *list-style: decimal;
+  font-size: 15px;
+  font-family: 'Raleway', sans-serif;
+  padding: 0;
+  margin-bottom: 4em;
+  }
+  .concept-list ol ol{
+  margin: 0 0 0 2em;
+  }
+
+  .concept-list p{
+  position: relative;
+  display: block;
+  padding: .4em .4em .4em 2em;
+  *padding: .4em;
+  margin: .5em 0;
+  background: #93C775;
+  color: #000;
+  text-decoration: none;
+  -moz-border-radius: .3em;
+  -webkit-border-radius: .3em;
+  border-radius: 10em;
+  transition: all .2s ease-in-out;
+  }
+
+  .concept-list p:hover{
+  background: #d6d4d4;
+  text-decoration:none;
+  transform: scale(1.1);
+  }
+
+  .concept-list p:before{
+  content: counter(li);
+  counter-increment: li;
+  position: absolute;
+  left: -1.3em;
+  top: 50%;
+  margin-top: -1.3em;
+  background:#93C775;
+  height: 2em;
+  width: 2em;
+  line-height: 2em;
+  border: .3em solid #fff;
+  /* text-align: center; */
+  font-weight: bold;
+  -moz-border-radius: 2em;
+  -webkit-border-radius: 2em;
+  border-radius: 2em;
+  color:#FFF;
+  }

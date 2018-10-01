@@ -1,28 +1,17 @@
-<mat-card class="domain">
-  <mat-card-header>
-    <mat-card-title>
-      <h1>Test Yourself</h1>
-    </mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <ul class="domain-item" class="grid-container">
-      <li *ngFor="let domain of Domains">
-        <mat-card >
-          <mat-card-header>
-            <mat-card-title>
-              <h2>{{domain.name}}</h2>
-            </mat-card-title>
-            <mat-card-subtitle>
-              <h4> Test your Concept in {{domain.name}}</h4>
-            </mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-button> Click Here to Take Quiz</button>
-          </mat-card-actions>
-        </mat-card>
-      </li>
-    </ul>
-  </mat-card-content>
-</mat-card>
+    <h4>Quiz Domains</h4>
+    <div class="row" style="margin-top: 50px">
+      <div class="col s12 m4 l4" *ngFor="let item of DomainData;let i = index">
+        <div class="card-panel hoverable small blue">
+          <div class="card-panel-header">
+            <span class="card-panel-icon"><i class="material-icons">{{domainstuff[i].icon}}</i></span>
+            <span class="card-panel-caption">{{item}}</span>
+          </div>
+          <p class="card-panel-content">{{domainstuff[i].tagline}}</p>
+          <div class="card-content card-panel-content">
+            <button  id = "showResult" mat-stroked-button (click)="result(item)"> Click Here to see Result</button>
+            <button  mat-stroked-button (click)="startQuiz(item)"> Click Here to Take Quiz</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" rel="stylesheet">

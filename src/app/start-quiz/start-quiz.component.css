@@ -1,10 +1,22 @@
 .card{
   margin-top: 52px;
-  /* background-color: #FBFCFC; */
-  background-color: #ECF0F1;
+  background-color: #FBFCFC;
+  /* background-color: #89cff0 ; */
   text-align: center;
+  padding: 25px 50px 75px 50px;
+}
+.card-header{
+  text-transform: uppercase;
 }
 
 .list-group-item{
-  background-color: #FBFCFC;
+  /* background-color: #E4DFDA; */
+  background-color: burlywood;
+  /* background-color: black; */
+  color: black;
+  text-align: left;
+  font-size: 16px;
+}
+h4{
+  text-align: left;
 }
