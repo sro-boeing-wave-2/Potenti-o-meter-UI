@@ -26,10 +26,10 @@ export class PlayerComponent implements OnInit {
       location.onPopState(() => {
         var r = confirm("We detected a back button press. Do you want to submit the test ?");
         if (r == true) {
-          this.playerService.exitQuestion();
+          this.endQuiz();
         }
         else {
-          this.router.navigate(['player', this.userId]);
+          window.location.reload();
         }
     });
    }
