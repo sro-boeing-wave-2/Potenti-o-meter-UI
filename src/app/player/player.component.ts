@@ -26,8 +26,6 @@ export class PlayerComponent implements OnInit {
     private location: PlatformLocation, private router: Router) {
       location.onPopState(() => {
         const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-          width: '250px',
-          height: '250px'
         });
         const sub = dialogRef.componentInstance.dataConfirm.subscribe((result) => {
           if(result == 'confirm'){
