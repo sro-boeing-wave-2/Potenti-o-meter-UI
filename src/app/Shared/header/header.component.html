@@ -14,10 +14,10 @@
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav navbar-left" *ngIf="homePage">
         <li>
-          <a>Home</a>
+          <a>Our Work</a>
         </li>
         <li>
-          <a>About Us</a>
+          <a>About</a>
         </li>
         <li>
           <a>Contact</a>
@@ -29,6 +29,11 @@
         </li>
         <li>
           <a type="button" (click)="LogIn()">Login</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf="result">
+        <li>
+          <a type="button" (click)="Dashboard()"></a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right" *ngIf="userDetail">

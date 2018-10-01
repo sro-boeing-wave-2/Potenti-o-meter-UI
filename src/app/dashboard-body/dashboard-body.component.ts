@@ -27,10 +27,15 @@ export class DashboardBodyComponent implements OnInit {
     this.router.navigate(['start',this.UserData.UserID,item]);
   }
 
+  result(item){
+    this.router.navigate(['quizresult',this.UserData.UserID,item]);
+  }
+
   domainstuff = [
-    {"color":"blue","tagline":"Know the reason behind every fiction","icon":"nature_people"},
     {"color":"pink","tagline":"Java: write once, run away!","icon":"code"},
+    {"color":"blue","tagline":"Know the reason behind every fiction","icon":"nature_people"},
     {"color":"red","tagline":"Know the reason behind every fiction","icon":"nature_people"},
+    {"color":"green","tagline":"An algorithm must be seen to be believed","icon":"code"},
   ]
 
 }
