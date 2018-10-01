@@ -1,4 +1,4 @@
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> -->
@@ -12,187 +12,201 @@
   <div id="content" #content>
     <div class="panel panel-info">
       <div class="panel-heading">
-      <h4>Results for Current Quiz</h4>
-    </div>
-    <div class="panel-body">
-      <div class="card-columns">
-        <div class="card bg-light">
-          <div class="card-body text-center">
-            <p class="card-text">Domain</p>
-            <i class="fas fa-edit"> {{_result?.domainName}}</i>
-          </div>
-        </div>
-        <div class="card bg-light">
-          <div class="card-body text-center">
-            <p class="card-text">Score</p>
-            <i class="fas fa-tasks">{{_result?.quizResults[length].obtainedScore}}/{{_result?.quizResults[length].totalScore}}</i>
-          </div>
-        </div>
-        <div class="card bg-light">
-          <div class="card-body text-center">
-            <p class="card-text">Percentage</p>
-            <i class="fas fa-percentage">{{_result?.quizResults[length]?.percentageScore}}</i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--  -->
-  <div class="row">
-    <div class="col-md-6">
-      <div class="panel panel-info">
-        <div class="panel-heading">
-          <h4>Taxonomy Score</h4>
-        </div>
-        <div class="panel-body cumulative">
-          <div *ngIf="barChart">
-            <canvas id="barchartid">{{ barChart }}</canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="panel panel-info">
-        <div *ngIf="length == 0; then oneTest ; else moreTest"> </div>
-        <ng-template #oneTest>
-          <div class="panel-heading">
-            <h4>Your first Result</h4>
-          </div>
-        </ng-template>
-        <ng-template #moreTest>
-          <div class="panel-heading">
-            <h4>Your Cumulative Result</h4>
-          </div>
-        </ng-template>
-        <div class="panel-body cumulative">
-          <div *ngIf="cumulativeChart">
-            <canvas id="canva">{{ cumulativeChart }}</canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!--  -->
-  <!--  -->
-
-  <div class="row">
-    <div class="col-md-6">
-      <div *ngIf="changePrevious >= 0; then increasedPrevious; else decreasedPrevious"> </div>
-      <ng-template #increasedPrevious>
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <p style="color: green">Progress from your previous attempt:
-              <i class="fa fa-arrow-up"></i>{{(Math.round(changePrevious * 100))/100}}%</p>
-          </div>
-          <div class="panel-body">
-            <p>Great!!</p>
-            <p>Your performance has improved from your last attempt. Keep on the progress.</p>
-          </div>
-        </div>
-      </ng-template>
-      <ng-template #decreasedPrevious>
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <p style="color: red">Progress from your previous attempt:
-              <i class="fa fa-arrow-down"></i>{{(Math.round(changePrevious * 100))/100}}%</p>
-          </div>
-          <div class="panel-body">
-            <p>Don't Worry!!</p>
-            <p>Your performance has slightly decreased from your last attempt. Work hard and you will do better next
-              time.</p>
-          </div>
-        </div>
-      </ng-template>
-    </div>
-
-    <div class="col-md-6">
-      <div *ngIf="changeFirst >= 0; then increasedFirst; else decreasedFirst"> </div>
-      <ng-template #increasedFirst>
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <p style="color: green">Progress from your first attempt:
-              <i class="fa fa-arrow-up"></i>{{(Math.round(changeFirst * 100))/100}}%</p>
-          </div>
-          <div class="panel-body">
-            <p>Great!!</p>
-            <p>Your performance has improved from your first attempt. Keep on the progress</p>
-          </div>
-        </div>
-      </ng-template>
-      <ng-template #decreasedFirst>
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <p style="color: red">Progress from your first attempt:
-              <i class="fa fa-arrow-down"></i>{{(Math.round(changeFirst * 100))/100}}%</p>
-          </div>
-          <div class="panel-body">
-            <p>Don't Worry!!</p>
-            <p>Your performance has slightly decreased from your first attempt. Work hard and you will do better next
-              time.</p>
-          </div>
-        </div>
-      </ng-template>
-    </div>
-
-  </div>
-  <!--  -->
-  <div class="card bg-light">
-    <div class="card-body text-center">
-      <p class="card-text"> Your overall score in {{_result?.domainName}} now stands at</p>
-      <i class="fas fa-address-card"> {{_result?.averagePercentage}}</i>
-    </div>
-  </div>
-
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <h4>Your Progress Graph</h4>
+        <h4>Results for Current Quiz</h4>
       </div>
       <div class="panel-body">
-        <div *ngIf="lineGraph">
-          <canvas id="canvasLine">{{ lineGraph }}</canvas>
-        </div>
+        <mat-grid-list cols="3" rowHeight="4:3">
+          <mat-grid-tile class="currentCard">
+            <mat-card>Domain<div> <i class="fas fa-edit"> {{_result?.domainName}}</i></div></mat-card>
+          </mat-grid-tile>
+          <mat-grid-tile class="currentCard">
+            <mat-card>Score<div><i class="fas fa-tasks">{{_result?.quizResults[length].obtainedScore}}/{{_result?.quizResults[length].totalScore}}</i></div></mat-card>
+          </mat-grid-tile>
+          <mat-grid-tile class="currentCard">
+            <mat-card>Percentage<div><i class="fas fa-percentage">{{_result?.quizResults[length]?.percentageScore}}</i></div></mat-card>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <!--
+        <div class="card-columns">
+          <div class="card bg-light">
+            <div class="card-body text-center">
+              <p class="card-text">Domain</p>
+              <i class="fas fa-edit"> {{_result?.domainName}}</i>
+            </div>
+          </div>
+          <div class="card bg-light">
+            <div class="card-body text-center">
+              <p class="card-text">Score</p>
+              <i class="fas fa-tasks">{{_result?.quizResults[length].obtainedScore}}/{{_result?.quizResults[length].totalScore}}</i>
+            </div>
+          </div>
+          <div class="card bg-light">
+            <div class="card-body text-center">
+              <p class="card-text">Percentage</p>
+              <i class="fas fa-percentage">{{_result?.quizResults[length]?.percentageScore}}</i>
+            </div>
+          </div>
+        </div>-->
       </div>
     </div>
-
-    <div class="row">
-      <div class="col-md-6">
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <h4>Radar Chart of First and Last Quiz</h4>
+      <!--  -->
+      <div class="row">
+        <div class="col-md-6">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h4>Taxonomy Score</h4>
+            </div>
+            <div class="panel-body cumulative">
+              <div *ngIf="barChart">
+                <canvas id="barchartid">{{ barChart }}</canvas>
+              </div>
+            </div>
           </div>
-          <div class="panel-body">
-            <div *ngIf="chart">
-              <canvas id="canvas">{{ chart }}</canvas>
+        </div>
+        <div class="col-md-6">
+          <div class="panel panel-info">
+            <div *ngIf="length == 0; then oneTest ; else moreTest"> </div>
+            <ng-template #oneTest>
+              <div class="panel-heading">
+                <h4>Your first Result</h4>
+              </div>
+            </ng-template>
+            <ng-template #moreTest>
+              <div class="panel-heading">
+                <h4>Your Cumulative Result</h4>
+              </div>
+            </ng-template>
+            <div class="panel-body cumulative">
+              <div *ngIf="cumulativeChart">
+                <canvas id="canva">{{ cumulativeChart }}</canvas>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <h4>Radar Chart of previous and current Quiz</h4>
+
+      <!--  -->
+      <!--  -->
+
+      <div class="row">
+        <div class="col-md-6">
+          <div *ngIf="changePrevious >= 0; then increasedPrevious; else decreasedPrevious"> </div>
+          <ng-template #increasedPrevious>
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <p style="color: green">Progress from your previous attempt:
+                  <i class="fa fa-arrow-up"></i>{{(Math.round(changePrevious * 100))/100}}%</p>
+              </div>
+              <div class="panel-body">
+                <p>Great!!</p>
+                <p>Your performance has improved from your last attempt. Keep on the progress.</p>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template #decreasedPrevious>
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <p style="color: red">Progress from your previous attempt:
+                  <i class="fa fa-arrow-down"></i>{{(Math.round(changePrevious * 100))/100}}%</p>
+              </div>
+              <div class="panel-body">
+                <p>Don't Worry!!</p>
+                <p>Your performance has slightly decreased from your last attempt. Work hard and you will do better
+                  next
+                  time.</p>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+
+        <div class="col-md-6">
+          <div *ngIf="changeFirst >= 0; then increasedFirst; else decreasedFirst"> </div>
+          <ng-template #increasedFirst>
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <p style="color: green">Progress from your first attempt:
+                  <i class="fa fa-arrow-up"></i>{{(Math.round(changeFirst * 100))/100}}%</p>
+              </div>
+              <div class="panel-body">
+                <p>Great!!</p>
+                <p>Your performance has improved from your first attempt. Keep on the progress</p>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template #decreasedFirst>
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <p style="color: red">Progress from your first attempt:
+                  <i class="fa fa-arrow-down"></i>{{(Math.round(changeFirst * 100))/100}}%</p>
+              </div>
+              <div class="panel-body">
+                <p>Don't Worry!!</p>
+                <p>Your performance has slightly decreased from your first attempt. Work hard and you will do better
+                  next
+                  time.</p>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+
+      </div>
+      <!--  -->
+      <div class="card bg-light">
+        <div class="card-body text-center">
+          <p class="card-text"> Your overall score in {{_result?.domainName}} now stands at</p>
+          <i class="fas fa-address-card"> {{_result?.averagePercentage}}</i>
+        </div>
+      </div>
+
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h4>Your Progress Graph</h4>
+        </div>
+        <div class="panel-body">
+          <div *ngIf="lineGraph">
+            <canvas id="canvasLine">{{ lineGraph }}</canvas>
           </div>
-          <div class="panel-body">
-            <div *ngIf="chart">
-              <canvas id="canvas1">{{ chart }}</canvas>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h4>Radar Chart of First and Last Quiz</h4>
+            </div>
+            <div class="panel-body">
+              <div *ngIf="chart">
+                <canvas id="canvas">{{ chart }}</canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h4>Radar Chart of previous and current Quiz</h4>
+            </div>
+            <div class="panel-body">
+              <div *ngIf="chart">
+                <canvas id="canvas1">{{ chart }}</canvas>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
 
 
-<!-- <div class=u ser_domain>
+  <!-- <div class=u ser_domain>
     <h4> User Id : {{_result?.userId}}</h4>
     <h4>Domain Name : {{_result?.domainName}}</h4>
     <h4>Your Percentage Score of this domain : {{_result?.averagePercentage}}</h4>
 
   </div> -->
-<!-- <div>
+  <!-- <div>
     <h1 class=q uestion>Questions</h1>
     <table>
       <tr>
@@ -217,13 +231,13 @@
   </div> -->
 
 
-<!-- <div class="w3-padding-44 w3-blue  w3-center circle-width">
+  <!-- <div class="w3-padding-44 w3-blue  w3-center circle-width">
     hardcoded as of now, need to get the latest entry and for that we need to get the last element of this array
     int length = _result.quizResults.Count -->
-<!-- <h2>Your Score: {{_result?.quizResults[length].obtainedScore}}/{{_result?.quizResults[length].totalScore}} </h2>
+  <!-- <h2>Your Score: {{_result?.quizResults[length].obtainedScore}}/{{_result?.quizResults[length].totalScore}} </h2>
     <h2> Percentage obtained: {{_result?.quizResults[length]?.percentageScore}}</h2>
   </div> -->
-<!-- <div>
+  <!-- <div>
     <h1>Concept Wise Results</h1>
     <table>
       <tr>
@@ -243,7 +257,7 @@
     </table>
   </div> -->
 
-<!-- <div class="panel panel-default">
+  <!-- <div class="panel panel-default">
      <div class="panel-heading">
       <h2>Radar Chart of First and Last Quiz</h2>
     </div>
@@ -257,7 +271,7 @@
 
 
 
-<!--
+  <!--
 <h2>Radar Chart of First and Last Quiz</h2>
 <hr />
 <div *ngIf="chart">
@@ -267,9 +281,9 @@
 <div *ngIf="cumulativeChart">
   <canvas id="canva">{{ cumulativeChart }}</canvas>
 </div> -->
-<!-- <h2>Line Chart</h2>
+  <!-- <h2>Line Chart</h2>
 <div *ngIf="lineChart">
   <canvas id="line">{{ lineChart }}</canvas>
 </div> -->
-<!-- </div> -->
-<app-footer></app-footer>
+  <!-- </div> -->
+  <app-footer></app-footer>
