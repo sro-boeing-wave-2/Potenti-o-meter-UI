@@ -57,6 +57,7 @@ import { ChartModule } from 'angular-highcharts';
     McqComponent,
     HeaderComponent,
     FooterComponent,
+    DialogOverviewExampleDialog,
     UserLoginComponent,
     HomeComponent,
     UserSignUpComponent,
