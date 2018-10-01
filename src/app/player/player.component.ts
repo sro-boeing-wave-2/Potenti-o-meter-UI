@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild, ComponentFactoryResolver } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ComponentFactoryResolver, Inject, EventEmitter } from '@angular/core';
 import { QuestionDirective} from '../question.directive';
 import { AdComponents } from '../adComponent';
 import { QuestionModel } from '../questionModule';
@@ -6,6 +6,7 @@ import { PlayerService } from '../player.service';
 import { McqComponent} from '../mcq/mcq.component';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { AdItem } from '../ad-item';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { PlatformLocation } from '@angular/common'
 import { FillInTheBlanksComponent } from '../fill-in-the-blanks/fill-in-the-blanks.component';
 import { LocalStorageService } from 'ngx-webstorage';
@@ -21,13 +22,20 @@ export class PlayerComponent implements OnInit {
   @Input() questionComponents: AdItem[];
   @ViewChild(QuestionDirective) questionHost: QuestionDirective;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver,private playerService: PlayerService, private activatedRoute: ActivatedRoute, private localStorage: LocalStorageService,
+  constructor(public dialog: MatDialog, private componentFactoryResolver: ComponentFactoryResolver,private playerService: PlayerService, private activatedRoute: ActivatedRoute, private localStorage: LocalStorageService,
     private location: PlatformLocation, private router: Router) {
       location.onPopState(() => {
-        var r = confirm("We detected a back button press. Do you want to submit the test ?");
-        if (r == true) {
-          this.endQuiz();
-        }
+        const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+        });
+        const sub = dialogRef.componentInstance.dataConfirm.subscribe((result) => {
+          if(result == 'confirm'){
+            this.endQuiz();
+          }
+        });
+        // var r = confirm("We detected a back button press. Do you want to submit the test ?");
+        // if (r == true) {
+        //   this.endQuiz();
+        // }
     });
    }
    res: MCQOption;
@@ -202,5 +210,30 @@ export class PlayerComponent implements OnInit {
 
   }
 
+
+}
+
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'confirmdialog.html',
+  styleUrls: ['confirmdialog.css']
+})
+export class DialogOverviewExampleDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {}
+
+  dataConfirm = new EventEmitter();
+
+  cancel(): void {
+    this.dataConfirm.emit("cancel");
+    this.dialogRef.close();
+  }
+  confirm(): void {
+    this.dataConfirm.emit("confirm");
+    this.dialogRef.close();
+  }
 
 }
