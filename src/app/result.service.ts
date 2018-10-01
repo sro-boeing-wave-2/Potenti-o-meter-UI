@@ -23,6 +23,8 @@ export class ResultService {
 
  getByUserId_Domain(userId,domainName){
   return this.http.get("http://13.126.26.172/result/"+userId+"/"+domainName);
+    //  return this.http.get("https://localhost:44343/api/QuizResult?userId="+userId+"&domainName="+domainName);
+
 }
 
  constructor(private http : Http) { }

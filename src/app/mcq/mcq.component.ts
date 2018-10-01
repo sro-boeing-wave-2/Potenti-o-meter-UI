@@ -32,3 +32,4 @@ export class McqComponent implements OnInit, AdComponents {
   @Input() question:MCQModel;
   @Output() onResponse = new EventEmitter<any>();
 }
+
