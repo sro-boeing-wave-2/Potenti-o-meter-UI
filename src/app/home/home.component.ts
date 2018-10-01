@@ -43,6 +43,9 @@ export class HomeComponent implements OnInit {
       this.dialogRef = null;
       this.router.navigate(['dashboard']);
     });
+    const fail = this.dialogRef.componentInstance.failure.subscribe((result) => {
+      this.login = result;
+    });
   }
   onSignInNotify():void {
     var disabled = this.isActive;
@@ -58,9 +61,6 @@ export class HomeComponent implements OnInit {
     });
     const sub = this.dialogRef.componentInstance.success.subscribe((result) => {
       this.signup = result;
-    });
-    const fail = this.dialogRef.componentInstance.failure.subscribe((result) => {
-      this.login = result;
     });
   }
 
