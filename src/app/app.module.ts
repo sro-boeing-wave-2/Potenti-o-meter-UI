@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AppComponent } from './app.component';
 import { StartQuizComponent } from './start-quiz/start-quiz.component';
-import { PlayerComponent } from './player/player.component';
+import { PlayerComponent, DialogOverviewExampleDialog } from './player/player.component';
 import { McqComponent } from './mcq/mcq.component';
 import { HeaderComponent } from './Shared/header/header.component';
 import { FooterComponent } from './Shared/footer/footer.component';
@@ -102,6 +102,7 @@ import { ChartModule } from 'angular-highcharts';
   ],
   providers: [PlayerService, MatDialog, CookieService],
   bootstrap: [AppComponent],
-  entryComponents: [UserLoginComponent,UserSignUpComponent,McqComponent,FillInTheBlanksComponent,QuizResponseComponent]
+  entryComponents: [UserLoginComponent,UserSignUpComponent,McqComponent,FillInTheBlanksComponent,QuizResponseComponent,
+                    DialogOverviewExampleDialog]
 })
 export class AppModule { }
