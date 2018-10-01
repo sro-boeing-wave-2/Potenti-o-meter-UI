@@ -87,6 +87,12 @@ private url="";
 
   }
 
+  exitQuestion(){
+    this._connection.on('EndQuiz', msg => {
+      this.result = msg;
+      this._connection.stop();
+       });
+  }
 
   getComponents() {
     return [

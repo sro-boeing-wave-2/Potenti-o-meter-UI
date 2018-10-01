@@ -4,8 +4,9 @@ import { AdComponents } from '../adComponent';
 import { QuestionModel } from '../questionModule';
 import { PlayerService } from '../player.service';
 import { McqComponent} from '../mcq/mcq.component';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { AdItem } from '../ad-item';
+import { PlatformLocation } from '@angular/common'
 import { FillInTheBlanksComponent } from '../fill-in-the-blanks/fill-in-the-blanks.component';
 import { LocalStorageService } from 'ngx-webstorage';
 import { MCQModel, MCQOption } from '../MCQModel';
@@ -20,8 +21,15 @@ export class PlayerComponent implements OnInit {
   @Input() questionComponents: AdItem[];
   @ViewChild(QuestionDirective) questionHost: QuestionDirective;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver,private playerService: PlayerService, private activatedRoute: ActivatedRoute, private localStorage: LocalStorageService) {
-
+  constructor(private componentFactoryResolver: ComponentFactoryResolver,private playerService: PlayerService, private activatedRoute: ActivatedRoute, private localStorage: LocalStorageService,
+    private location: PlatformLocation, private router: Router) {
+      location.onPopState(() => {
+        var r = confirm("We detected a back button press. Do you want to submit the test ?");
+        if (r == true) {
+          this.playerService.exitQuestion();
+          this.router.navigate(['dashboard']);
+      }
+    });
    }
    res: MCQOption;
   userId: number;
