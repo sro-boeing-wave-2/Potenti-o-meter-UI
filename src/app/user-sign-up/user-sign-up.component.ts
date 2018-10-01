@@ -18,8 +18,8 @@ import { Router } from '@angular/router';
 export class UserSignUpComponent implements OnInit {
   public dialogForm: FormGroup;
   public loginForm: FormGroup;
+  public login = false;
   @Output() success = new EventEmitter<boolean>();
-  @Output() failure = new EventEmitter<boolean>();
 
   constructor( private fb: FormBuilder,private dialog: MatDialog,
   public dialogRef: MatDialogRef<UserSignUpComponent>,private UserSignUpService :SignUpService,
@@ -54,7 +54,7 @@ export class UserSignUpComponent implements OnInit {
 
   LoginSubmit(): void {
     this.loginservice.USerLogIn(this.loginForm.value as Login)
-    .subscribe(result=> result.status == 200?this.AfterLogin(): this.Message());
+    .subscribe(result=> {result.status == 200?this.AfterLogin(): this.Message()});
   }
 
   GoBack(){
@@ -71,9 +71,10 @@ export class UserSignUpComponent implements OnInit {
   }
 
   Message(){
-    this.failure.emit(true);
+    console.log("unauthorized login");
+    this.login = true;
   setTimeout(() => {
-    this.failure.emit(false);
+    this.login = false;
   },2000)
   }
 

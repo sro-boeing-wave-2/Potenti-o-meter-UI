@@ -43,10 +43,6 @@ export class HomeComponent implements OnInit {
       this.dialogRef = null;
       this.router.navigate(['dashboard']);
     });
-    const fail = this.dialogRef.componentInstance.failure.subscribe((result) => {
-      this.login = result;
-    });
-    console.log(this.login);
   }
   onSignInNotify():void {
     var disabled = this.isActive;

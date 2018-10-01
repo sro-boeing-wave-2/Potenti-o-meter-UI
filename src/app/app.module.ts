@@ -11,18 +11,18 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import {MatToolbarModule, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './/app-routing.module';
 import { PlayerService } from './player.service';
-import {MaterialModule} from '../materialmodule';
-import { MatMenuModule} from '@angular/material/menu';
+import {MaterialModule } from '../materialmodule';
+import { MatMenuModule } from '@angular/material/menu';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatRadioModule} from '@angular/material/radio';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatCardModule} from '@angular/material/card';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatCardModule } from '@angular/material/card';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { DashboardBodyComponent } from './dashboard-body/dashboard-body.component';
@@ -98,8 +98,7 @@ import { ChartModule } from 'angular-highcharts';
     MatIconModule,
     MaterialModule,
     Ng2Webstorage,
-    ChartModule
-
+    ChartModule,
   ],
   providers: [PlayerService, MatDialog, CookieService],
   bootstrap: [AppComponent],

@@ -30,6 +30,10 @@
               <div class="text-center">
                 <label><a href="#">Forgot your password?</a></label>
               </div>
+              <div class="heroalert alert alert-warning alert-dismissible fade in" *ngIf="login" role="alert" data-auto-dismiss="2000"
+              id="fifth">
+              Wrong username or password
+              </div>
             </form>
           </div>
           <div class="tab-pane" [ngClass]="{'active':prop}" id="sign_up">

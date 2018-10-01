@@ -8,10 +8,6 @@ import * as html2canvas from 'html2canvas';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { QuizResponseComponent } from '../quiz-response/quiz-response.component';
 
-
-
-
-
 @Component({
   selector: 'app-result',
   templateUrl: './result.component.html',
