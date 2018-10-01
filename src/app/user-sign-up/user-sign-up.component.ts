@@ -71,6 +71,7 @@ export class UserSignUpComponent implements OnInit {
   }
 
   Message(){
+    alert("login failed");
     this.login = true;
   setTimeout(() => {
     this.login = false;
