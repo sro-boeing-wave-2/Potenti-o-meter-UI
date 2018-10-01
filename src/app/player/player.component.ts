@@ -27,8 +27,10 @@ export class PlayerComponent implements OnInit {
         var r = confirm("We detected a back button press. Do you want to submit the test ?");
         if (r == true) {
           this.playerService.exitQuestion();
-          this.router.navigate(['dashboard']);
-      }
+        }
+        else {
+          this.router.navigate(['player', this.userId]);
+        }
     });
    }
    res: MCQOption;

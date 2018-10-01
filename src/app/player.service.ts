@@ -92,6 +92,7 @@ private url="";
       this.result = msg;
       this._connection.stop();
        });
+    this.router.navigate(['dashboard']);
   }
 
   getComponents() {
