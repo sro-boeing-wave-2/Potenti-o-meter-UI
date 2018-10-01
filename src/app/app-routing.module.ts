@@ -23,8 +23,8 @@ const routes: Routes = [
   { path: 'quizresult/:quizId', component: ResultComponent , canActivate:[AuthguardGuard]},
   { path: 'question',component: QuestionmcqComponent, canActivate:[AuthguardGuard]},
   { path: 'quizresult/:id/:domain', component:ResultHistoryComponent, canActivate:[AuthguardGuard]},
-  { path: 'resultdomain/:userId',component : ResultdomainComponent, canActivate:[AuthguardGuard]},
-  { path :'domainWisequiz/:userId/:domainName',component : QuizInDomainComponent , canActivate:[AuthguardGuard]},
+  {path: 'resultdomain/:userId',component : ResultdomainComponent, canActivate:[AuthguardGuard]},
+  {path :'domainWisequiz/:userId/:domainName',component : QuizInDomainComponent , canActivate:[AuthguardGuard]},
 
 
 ];

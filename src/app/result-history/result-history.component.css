@@ -26,12 +26,21 @@ border-radius: 8px;
 margin-bottom: 10px;
 }
 
+
 .concept-card{
   background-color: #0089e0;
 }
 
+.progress-card{
+  height: 525px;
+  /* padding: 100px 100px 100px 100px; */
+  padding-top: 70px;
+  border-radius: 8px;
+}
+
 mat-grid-tile {
-  background: lightblue;
+  background: #1a73e8;
+  color: white;
   border-radius: 8px;
   margin: 10px 10px 10px 10px;
 }
