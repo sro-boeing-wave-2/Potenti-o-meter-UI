@@ -54,7 +54,7 @@ export class UserSignUpComponent implements OnInit {
 
   LoginSubmit(): void {
     this.loginservice.USerLogIn(this.loginForm.value as Login)
-    .subscribe(result=> result.status == 200?this.AfterLogin(): this.Message());
+    .subscribe(result=> {result.status == 200?this.AfterLogin(): this.Message()});
   }
 
   GoBack(){
@@ -71,7 +71,6 @@ export class UserSignUpComponent implements OnInit {
   }
 
   Message(){
-    alert("login failed");
     this.login = true;
   setTimeout(() => {
     this.login = false;
