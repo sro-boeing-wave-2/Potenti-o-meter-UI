@@ -24,11 +24,6 @@ export class PlayerComponent implements OnInit {
 
   constructor(public dialog: MatDialog, private componentFactoryResolver: ComponentFactoryResolver,private playerService: PlayerService, private activatedRoute: ActivatedRoute, private localStorage: LocalStorageService,
     private location: PlatformLocation, private router: Router) {
-      setInterval(function(){
-        if(!document.hasFocus()){
-          this.endQuiz();
-        }
-       }, 2000);
       location.onPopState(() => {
         const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
         });
@@ -58,6 +53,14 @@ export class PlayerComponent implements OnInit {
   public full = true;
   public half = false;
   public empty = false;
+
+
+  outFocus() {
+    if(!document.hasFocus()){
+      this.endQuiz();
+    }
+  }
+
   ngOnInit() {
 
     this.activatedRoute.paramMap.subscribe((params: ParamMap)=> {
@@ -69,6 +72,9 @@ export class PlayerComponent implements OnInit {
       this.domainName = domain;
     });
 
+    setInterval(() => {
+      this.outFocus();
+    }, 2000);
     this.playerService
       .getQuestionStream()
       .subscribe(
