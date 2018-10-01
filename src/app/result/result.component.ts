@@ -55,7 +55,7 @@ export class ResultComponent implements OnInit {
    var data = document.getElementById('content');
    html2canvas(data).then(canvas => {
      // Few necessary setting options
-     var imgWidth = 208;
+     var imgWidth = 198;
      var pageHeight = 295;
      var imgHeight = canvas.height * imgWidth / canvas.width;
      var heightLeft = imgHeight;
@@ -81,9 +81,16 @@ export class ResultComponent implements OnInit {
       this.Math = Math;
       this.resultService.getUserResult(this.quizId).subscribe(data => {
       this._result = data.json();
-      this.length = this._result.quizResults.length - 1;
+      this.length = this._result.quizResults.length-1;
       this.firstQuizElement = this._result.quizResults[0];
-      this.prevQuizElement = this._result.quizResults[this.length - 1];
+      //If there is only one Test,there is nothing to compare
+      if(this.length == 0){
+        this.prevQuizElement = this.firstQuizElement;
+      }
+      else{
+        this.prevQuizElement = this._result.quizResults[this.length - 1];
+      }
+
       const questionsListArray = this._result.quizResults[length].questionsAttempted
       this.question.push(...questionsListArray);
 
@@ -190,9 +197,6 @@ export class ResultComponent implements OnInit {
             backgroundColor: "rgba(0,0,200,0.2)"
           }],
           fill: false
-
-
-
         }
 
       });
@@ -232,7 +236,7 @@ export class ResultComponent implements OnInit {
           labels: cumulativeConcept,
           datasets: [
             {
-              label: "Cumulative Quiz Wise Score",
+              label: "Score",
               data: cumulativeScore,
               backgroundColor: "rgba(0,0,200,0.2)"
             }],
@@ -266,9 +270,15 @@ export class ResultComponent implements OnInit {
 
 
       this._questions = this._result.quizResults[this.length].questionsAttempted;
+      if(this.length == 0){
+        this.changePrevious = 0;
+        this.changeFirst = 0;
+      }
+      else
+      {
       this.changePrevious = Math.fround((this._result.quizResults[this.length].percentageScore - this._result.quizResults[this.length - 1].percentageScore) / this._result.quizResults[this.length - 1].percentageScore) * 100;
       this.changeFirst = Math.fround((this._result.quizResults[this.length].percentageScore - this._result.quizResults[0].percentageScore) / this._result.quizResults[0].percentageScore) * 100;
-
+      }
       for (var j= 1; i <= this._result.quizResults.length; j++) {
 
         console.log(i);
