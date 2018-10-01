@@ -136,21 +136,24 @@ export class PlayerComponent implements OnInit {
   tick() {
       const now = new Date();
       const diff = (now.getTime() - this.startTime.getTime()) / 1000;
-      if (diff >= 300 && diff< 301) {
-        this.endQuiz();
-      }
+      // if (diff >= 300 && diff< 301) {
+      //   this.endQuiz();
+      // }
       this.ellapsedTime = this.parseTime(diff);
       const endTime = this.ellapsedTime.split(":",2);
       const minutes = +endTime[0];
-    if(minutes > 4)
+    if(minutes > 2)
     {
       this.half= true;
       this.full = false;
     }
-    if(minutes > 7){
+    if(minutes > 3){
       this.half = false;
       this.empty= true;
+    }if(minutes == 5){
+      this.endQuiz();
     }
+
     }
 
     parseTime(totalSeconds: number) {
