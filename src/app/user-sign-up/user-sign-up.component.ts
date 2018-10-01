@@ -18,8 +18,8 @@ import { Router } from '@angular/router';
 export class UserSignUpComponent implements OnInit {
   public dialogForm: FormGroup;
   public loginForm: FormGroup;
+  public login = false;
   @Output() success = new EventEmitter<boolean>();
-  @Output() failure = new EventEmitter<boolean>();
 
   constructor( private fb: FormBuilder,private dialog: MatDialog,
   public dialogRef: MatDialogRef<UserSignUpComponent>,private UserSignUpService :SignUpService,
@@ -71,9 +71,9 @@ export class UserSignUpComponent implements OnInit {
   }
 
   Message(){
-    this.failure.emit(true);
+    this.login = true;
   setTimeout(() => {
-    this.failure.emit(false);
+    this.login = false;
   },2000)
   }
 
