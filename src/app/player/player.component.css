@@ -1,3 +1,7 @@
+*{
+  /* font-family: 'Signika', Courier, monospace; */
+}
+
 .page-contianer{
   background-color: #FBFCFC;
   margin-top: 50px;
@@ -8,10 +12,27 @@
 
 }
 
-.progress-bar{
-  background-color: #039be5;
+.player-card{
+  margin-top: 10px;
+  border-radius: 8px;
 }
 
+.progress-bar{
+  background-color: #1a73e8;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.progress{
+  height: 30px;
+}
+
+.next-button{
+  background-color: #1a73e8;
+  border-radius: 6px;
+  font-weight: bold;
+}
 app-footer {
   position: absolute;
   bottom: 0;

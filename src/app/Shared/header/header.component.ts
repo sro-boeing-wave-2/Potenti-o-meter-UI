@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
   @Input() validSignup;
   @Input() userDetail;
   @Input() homePage;
+  @Input() result
   public UserData ;
 
 
@@ -42,6 +43,10 @@ export class HeaderComponent implements OnInit {
     this.loginservice.UserLogOut().subscribe(result => {
       result.status == 200?this.AfterLoginOut(): this.Message(result.toString())
     })
+  }
+
+  Dashboard() {
+    this.router.navigate(['dashboard']);
   }
 
   AfterLoginOut(){
