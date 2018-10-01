@@ -28,9 +28,6 @@ export class PlayerComponent implements OnInit {
         if (r == true) {
           this.endQuiz();
         }
-        else {
-          window.location.reload();
-        }
     });
    }
    res: MCQOption;
