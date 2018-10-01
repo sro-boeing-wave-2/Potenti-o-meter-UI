@@ -54,7 +54,15 @@ export class UserSignUpComponent implements OnInit {
 
   LoginSubmit(): void {
     this.loginservice.USerLogIn(this.loginForm.value as Login)
-    .subscribe(result=> {result.status == 200?this.AfterLogin(): this.Message()});
+    .subscribe(result=> {
+      if(result.status == 200){
+        this.AfterLogin()
+      }
+      if(result.status == 401)
+      {
+         this.Message()
+      }
+      });
   }
 
   GoBack(){
@@ -71,7 +79,7 @@ export class UserSignUpComponent implements OnInit {
   }
 
   Message(){
-    console.log("unauthorized login");
+    alert("unauthorized entry");
     this.login = true;
   setTimeout(() => {
     this.login = false;
