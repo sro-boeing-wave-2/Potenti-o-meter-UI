@@ -16,15 +16,15 @@ import { AuthguardGuard } from './authguard.guard';
 
 const routes: Routes = [
   { path: '',redirectTo: 'home',  pathMatch: 'full'},
-  {path:'start/:id/:domain', component:StartQuizComponent},
-  {path:'player/:id', component:PlayerComponent},
+  {path:'start/:id/:domain', component:StartQuizComponent , canActivate:[AuthguardGuard]},
+  {path:'player/:id', component:PlayerComponent, canActivate:[AuthguardGuard]},
   {  path: 'home', component: HomeComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate:[AuthguardGuard]},
-  { path: 'quizresult/:quizId', component: ResultComponent },
-  { path: 'question',component: QuestionmcqComponent},
-  { path: 'quizresult/:id/:domain', component:ResultHistoryComponent},
-  {path: 'resultdomain/:userId',component : ResultdomainComponent},
-  {path :'domainWisequiz/:userId/:domainName',component : QuizInDomainComponent},
+  { path: 'quizresult/:quizId', component: ResultComponent , canActivate:[AuthguardGuard]},
+  { path: 'question',component: QuestionmcqComponent, canActivate:[AuthguardGuard]},
+  { path: 'quizresult/:id/:domain', component:ResultHistoryComponent, canActivate:[AuthguardGuard]},
+  {path: 'resultdomain/:userId',component : ResultdomainComponent, canActivate:[AuthguardGuard]},
+  {path :'domainWisequiz/:userId/:domainName',component : QuizInDomainComponent , canActivate:[AuthguardGuard]},
 
 
 ];
