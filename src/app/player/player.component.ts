@@ -24,6 +24,11 @@ export class PlayerComponent implements OnInit {
 
   constructor(public dialog: MatDialog, private componentFactoryResolver: ComponentFactoryResolver,private playerService: PlayerService, private activatedRoute: ActivatedRoute, private localStorage: LocalStorageService,
     private location: PlatformLocation, private router: Router) {
+      setInterval(function(){
+        if(!document.hasFocus()){
+          this.endQuiz();
+        }
+       }, 2000);
       location.onPopState(() => {
         const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
         });
