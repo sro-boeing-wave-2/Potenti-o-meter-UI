@@ -58,13 +58,16 @@ export class PlayerComponent implements OnInit {
 
   outFocus() {
     if(!document.hasFocus()){
-      PlayerComponent.outofFocus++;
       const dialogRef = this.dialog.open(SubmitWarning, {
       });
-      if(PlayerComponent.outofFocus >= 2)
+      dialogRef.afterClosed().subscribe(result => {
+        PlayerComponent.outofFocus++;
+        if(PlayerComponent.outofFocus >= 2)
       {
       this.endQuiz();
       }
+      });
+
     }
   }
 
@@ -264,15 +267,15 @@ export class DialogOverviewExampleDialog {
 })
 export class SubmitWarning implements OnInit{
   ngOnInit(): void {
-    setTimeout(() => {
-      this.dialogRef.close();
-    }, 2000);
   }
 
   constructor(
     public dialogRef: MatDialogRef<SubmitWarning>,
     @Inject(MAT_DIALOG_DATA) public data: any) {}
 
+    warning() {
+      this.dialogRef.close();
+    }
 
 
 }
