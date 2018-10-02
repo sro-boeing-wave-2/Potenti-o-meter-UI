@@ -21,6 +21,7 @@ import { MMCQModel } from '../MMCQModel';
 export class PlayerComponent implements OnInit {
   @Input() questionComponents: AdItem[];
   @ViewChild(QuestionDirective) questionHost: QuestionDirective;
+  public dialogRef = null;
 
   constructor(public dialog: MatDialog, private componentFactoryResolver: ComponentFactoryResolver,private playerService: PlayerService, private activatedRoute: ActivatedRoute, private localStorage: LocalStorageService,
     private location: PlatformLocation, private router: Router) {
@@ -58,16 +59,21 @@ export class PlayerComponent implements OnInit {
 
   outFocus() {
     if(!document.hasFocus()){
-      const dialogRef = this.dialog.open(SubmitWarning, {
+      if(PlayerComponent.outofFocus < 1 && this.dialogRef==null) {
+      this.dialogRef = this.dialog.open(SubmitWarning, {
       });
-      dialogRef.afterClosed().subscribe(result => {
+      }
+      this.dialogRef.afterClosed().subscribe(result => {
+        this.dialogRef ==null;
+      });
+      if(this.dialogRef== null)
+      {
         PlayerComponent.outofFocus++;
-        if(PlayerComponent.outofFocus >= 2)
+      if(PlayerComponent.outofFocus == 2)
       {
       this.endQuiz();
       }
-      });
-
+      }
     }
   }
 
@@ -84,7 +90,7 @@ export class PlayerComponent implements OnInit {
 
     setInterval(() => {
       this.outFocus();
-    }, 4000);
+    }, 2000);
 
     this.playerService
       .getQuestionStream()
