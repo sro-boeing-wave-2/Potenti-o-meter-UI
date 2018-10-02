@@ -59,7 +59,7 @@ export class PlayerComponent implements OnInit {
   outFocus() {
     if(!document.hasFocus()){
       PlayerComponent.outofFocus++;
-      const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      const dialogRef = this.dialog.open(SubmitWarning, {
       });
       if(PlayerComponent.outofFocus >= 2)
       {
@@ -81,7 +81,7 @@ export class PlayerComponent implements OnInit {
 
     setInterval(() => {
       this.outFocus();
-    }, 2000);
+    }, 4000);
 
     this.playerService
       .getQuestionStream()
@@ -254,5 +254,25 @@ export class DialogOverviewExampleDialog {
     this.dataConfirm.emit("confirm");
     this.dialogRef.close();
   }
+
+}
+
+@Component({
+  selector: 'dialog-overview-example-submit',
+  templateUrl: 'submitwarning.html',
+  styleUrls: ['submitwarning.css']
+})
+export class SubmitWarning implements OnInit{
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.dialogRef.close();
+    }, 2000);
+  }
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {}
+
+
 
 }
