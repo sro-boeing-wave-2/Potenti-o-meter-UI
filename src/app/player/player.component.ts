@@ -49,6 +49,7 @@ export class PlayerComponent implements OnInit {
   questionType : string;
   userResponse: any;
   count: number;
+  static outofFocus: number = 0;
   progress: number;
   public full = true;
   public half = false;
@@ -57,7 +58,13 @@ export class PlayerComponent implements OnInit {
 
   outFocus() {
     if(!document.hasFocus()){
+      PlayerComponent.outofFocus++;
+      const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      });
+      if(PlayerComponent.outofFocus >= 2)
+      {
       this.endQuiz();
+      }
     }
   }
 
@@ -75,6 +82,7 @@ export class PlayerComponent implements OnInit {
     setInterval(() => {
       this.outFocus();
     }, 2000);
+
     this.playerService
       .getQuestionStream()
       .subscribe(
