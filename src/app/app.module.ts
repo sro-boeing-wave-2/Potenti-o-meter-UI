@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AppComponent } from './app.component';
 import { StartQuizComponent } from './start-quiz/start-quiz.component';
-import { PlayerComponent, DialogOverviewExampleDialog } from './player/player.component';
+import { PlayerComponent, DialogOverviewExampleDialog, SubmitWarning } from './player/player.component';
 import { McqComponent } from './mcq/mcq.component';
 import { HeaderComponent } from './Shared/header/header.component';
 import { FooterComponent } from './Shared/footer/footer.component';
@@ -71,6 +71,7 @@ import { ChartModule } from 'angular-highcharts';
     ResultHistoryComponent,
     ResultdomainComponent,
     QuizInDomainComponent,
+    SubmitWarning,
     UserProfileComponent,
     QuizResponseComponent,
     MmcqComponent,
@@ -104,6 +105,6 @@ import { ChartModule } from 'angular-highcharts';
   providers: [PlayerService, MatDialog, CookieService],
   bootstrap: [AppComponent],
   entryComponents: [UserLoginComponent,UserSignUpComponent,McqComponent,FillInTheBlanksComponent,QuizResponseComponent,
-                    DialogOverviewExampleDialog]
+                    DialogOverviewExampleDialog, SubmitWarning]
 })
 export class AppModule { }

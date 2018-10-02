@@ -270,7 +270,7 @@ export class SubmitWarning implements OnInit{
   }
 
   constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    public dialogRef: MatDialogRef<SubmitWarning>,
     @Inject(MAT_DIALOG_DATA) public data: any) {}
 
 
