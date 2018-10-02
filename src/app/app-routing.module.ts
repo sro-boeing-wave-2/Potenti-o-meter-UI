@@ -20,9 +20,9 @@ const routes: Routes = [
   { path:'player/:id', component:PlayerComponent, canActivate:[AuthguardGuard], canDeactivate: [CanDeactivateGuard]},
   { path: 'home', component: HomeComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate:[AuthguardGuard]},
-  { path: 'quizresult/:quizId', component: ResultComponent , canActivate:[AuthguardGuard]},
+  { path: 'quizresult/:quizId', component: ResultComponent , canActivate:[AuthguardGuard], canDeactivate: [CanDeactivateGuard]},
   { path: 'question',component: QuestionmcqComponent, canActivate:[AuthguardGuard]},
-  { path: 'quizresult/:id/:domain', component:ResultHistoryComponent, canActivate:[AuthguardGuard]},
+  { path: 'quizresult/:id/:domain', component:ResultHistoryComponent, canActivate:[AuthguardGuard], canDeactivate: [CanDeactivateGuard]},
   {path: 'resultdomain/:userId',component : ResultdomainComponent, canActivate:[AuthguardGuard]},
   {path :'domainWisequiz/:userId/:domainName',component : QuizInDomainComponent , canActivate:[AuthguardGuard]},
 
