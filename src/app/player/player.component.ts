@@ -88,6 +88,9 @@ export class PlayerComponent implements OnInit {
       this.domainName = domain;
     });
 
+    window.oncontextmenu = function () {
+      return false;
+    }
     setInterval(() => {
       this.outFocus();
     }, 2000);
