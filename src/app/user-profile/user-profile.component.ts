@@ -10,6 +10,8 @@ export class UserProfileComponent implements OnInit {
 
   @Input() DomainData;
   public display= true;
+  public domain;
+
   constructor(private signupservice: SignUpService) { }
 
   public UserData;
@@ -22,5 +24,6 @@ export class UserProfileComponent implements OnInit {
 
   receiveMessage($event){
     this.display = $event.render;
+    this.domain = $event.domains;
   }
 }
