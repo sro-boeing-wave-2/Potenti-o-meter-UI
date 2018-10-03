@@ -19,6 +19,7 @@
                 <input class="form-control input-lg" id="login_password" formControlName="Password" placeholder="Password" required type="password"> <i class="fa fa-lock"></i>
               </div>
               </mat-dialog-content>
+              <h5 *ngIf="login" style="color: white; text-align: right ">*Wrong username or password</h5>
               <div class="form-group">
                 <button class="btn btn-success btn-lg btn-block" type="submit" (click)="LoginSubmit()">Sign In</button>
               </div>
@@ -29,10 +30,6 @@
               <hr />
               <div class="text-center">
                 <label><a href="#">Forgot your password?</a></label>
-              </div>
-              <div class="heroalert alert alert-warning alert-dismissible fade in" *ngIf="login" role="alert" data-auto-dismiss="2000"
-              id="fifth">
-              Wrong username or password
               </div>
             </form>
           </div>
@@ -48,9 +45,10 @@
               <div class="form-group relative">
                 <input class="form-control input-lg" formControlName="Contact" id="contact" placeholder="Contact Number" required type="text"> <i class="fa fa-phone"></i>
               </div>
-              <div class="form-group relative">
-                <input class="form-control input-lg" formControlName="Email" id="signup_username" placeholder="E-mail Address" required type="email"> <i class="fa fa-envelope"></i>
+              <div class="form-group relative has-error">
+                <input class="form-control input-lg"  formControlName="Email" id="signup_username" placeholder="E-mail Address" required type="email"> <i class="fa fa-envelope"></i>
               </div>
+              <h5 *ngIf="SignupFail" style="color: white; text-align: right">*The email id already Exists</h5>
               <div class="form-group relative">
                 <input class="form-control input-lg" formControlName="Password" id="signup_password" placeholder="Password" required type="password"> <i class="fa fa-lock"></i>
               </div>
