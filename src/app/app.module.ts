@@ -45,6 +45,7 @@ import { MmcqComponent } from './mmcq/mmcq.component';
 import { CookieService } from 'ngx-cookie-service';
 import { ChartModule } from 'angular-highcharts';
 import { AuthguardGuard, CanDeactivateGuard } from './authguard.guard';
+import { RecommendationsComponent } from './recommendations/recommendations.component';
 
 
 
@@ -76,6 +77,7 @@ import { AuthguardGuard, CanDeactivateGuard } from './authguard.guard';
     UserProfileComponent,
     QuizResponseComponent,
     MmcqComponent,
+    RecommendationsComponent,
 
   ],
   imports: [

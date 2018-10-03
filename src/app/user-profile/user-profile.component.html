@@ -31,7 +31,8 @@
             </a>
           </div>
         </div>
-        <app-dashboard-body [DomainData]="DomainData"></app-dashboard-body>
+        <app-dashboard-body (recommend)="receiveMessage($event)" *ngIf="display" [DomainData]="DomainData"></app-dashboard-body>
+        <app-recommendations *ngIf="display"></app-recommendations>
         <section class="block-two">
             <div class="info-block-one ">
               <h1>{{UserData.FirstName}} {{UserData.LastName}}</h1>
