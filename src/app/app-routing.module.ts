@@ -12,19 +12,28 @@ import { QuestionmcqComponent } from './questionmcq/questionmcq.component';
 import { NewResultHistoryComponent } from './new-result-history/new-result-history.component';
 import { ResultdomainComponent } from './resultdomain/resultdomain.component';
 import { QuizInDomainComponent } from './quiz-in-domain/quiz-in-domain.component';
+
 import { AuthguardGuard, CanDeactivateGuard } from './authguard.guard';
+import { NewResultComponent } from './result/new-result.component';
 
 const routes: Routes = [
   { path: '',redirectTo: 'home',  pathMatch: 'full'},
+  { path: 'new/quizresult/:quizId', component: NewResultComponent},
   { path:'start/:id/:domain', component:StartQuizComponent , canActivate:[AuthguardGuard]},
   { path:'player/:id', component:PlayerComponent, canActivate:[AuthguardGuard], canDeactivate: [CanDeactivateGuard]},
   { path: 'home', component: HomeComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate:[AuthguardGuard]},
+  { path: 'dashboard', component: DashboardComponent, canActivate:[AuthguardGuard], canDeactivate: [CanDeactivateGuard]},
   { path: 'quizresult/:quizId', component: ResultComponent , canActivate:[AuthguardGuard], canDeactivate: [CanDeactivateGuard]},
   { path: 'question',component: QuestionmcqComponent, canActivate:[AuthguardGuard]},
+
   { path: 'quizresult/:id/:domain', component:NewResultHistoryComponent, canActivate:[AuthguardGuard], canDeactivate: [CanDeactivateGuard]},
-  {path: 'resultdomain/:userId',component : ResultdomainComponent, canActivate:[AuthguardGuard]},
-  {path :'domainWisequiz/:userId/:domainName',component : QuizInDomainComponent , canActivate:[AuthguardGuard]},
+  // {path: 'resultdomain/:userId',component : ResultdomainComponent, canActivate:[AuthguardGuard]},
+  // {path :'domainWisequiz/:userId/:domainName',component : QuizInDomainComponent , canActivate:[AuthguardGuard]},
+
+  // { path: 'quizresult/:id/:domain', component:ResultHistoryComponent, canActivate:[AuthguardGuard], canDeactivate: [CanDeactivateGuard]},
+
+
 
 
 ];

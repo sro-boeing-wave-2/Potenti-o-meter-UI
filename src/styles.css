@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
-@import url('https://fonts.googleapis.com/css?family=Signika:300,400,600,700');
+/* Needs to be removed */
+
+/* @import url('https://fonts.googleapis.com/css?family=Signika:300,400,600,700'); */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700,900');
 
 
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,700,900");

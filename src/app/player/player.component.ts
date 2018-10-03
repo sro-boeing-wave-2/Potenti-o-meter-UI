@@ -59,22 +59,19 @@ export class PlayerComponent implements OnInit {
 
   outFocus() {
     if(!document.hasFocus()){
-      if(PlayerComponent.outofFocus < 1 && this.dialogRef==null) {
+      if(this.dialogRef==null){
       this.dialogRef = this.dialog.open(SubmitWarning, {
       });
-      }
       this.dialogRef.afterClosed().subscribe(result => {
-        this.dialogRef ==null;
-      });
-      if(this.dialogRef== null)
-      {
+        this.dialogRef == null;
         PlayerComponent.outofFocus++;
-      if(PlayerComponent.outofFocus == 2)
-      {
-      this.endQuiz();
-      }
-      }
+        if(PlayerComponent.outofFocus >= 2)
+        {
+          this.endQuiz();
+        }
+      });
     }
+  }
   }
 
   ngOnInit() {

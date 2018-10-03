@@ -46,6 +46,12 @@ import { CookieService } from 'ngx-cookie-service';
 import { ChartModule } from 'angular-highcharts';
 import { NewResultHistoryComponent } from './new-result-history/new-result-history.component';
 
+import { NewResultComponent } from './result/new-result.component';
+
+import { AuthguardGuard, CanDeactivateGuard } from './authguard.guard';
+import { RecommendationsComponent } from './recommendations/recommendations.component';
+
+
 
 
 
@@ -77,6 +83,8 @@ import { NewResultHistoryComponent } from './new-result-history/new-result-histo
     QuizResponseComponent,
     MmcqComponent,
     NewResultHistoryComponent,
+    NewResultComponent,
+    RecommendationsComponent
 
   ],
   imports: [
@@ -104,7 +112,7 @@ import { NewResultHistoryComponent } from './new-result-history/new-result-histo
     Ng2Webstorage,
     ChartModule,
   ],
-  providers: [PlayerService, MatDialog, CookieService],
+  providers: [PlayerService, MatDialog, CookieService, AuthguardGuard, CanDeactivateGuard],
   bootstrap: [AppComponent],
   entryComponents: [UserLoginComponent,UserSignUpComponent,McqComponent,FillInTheBlanksComponent,QuizResponseComponent,
                     DialogOverviewExampleDialog, SubmitWarning]

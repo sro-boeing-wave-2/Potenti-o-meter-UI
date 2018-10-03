@@ -1,4 +1,9 @@
-    <h4>Quiz Domains</h4>
+<div>
+  <a><i class="fa fa-arrow-left">Back to Domains</i></a>
+  <button  id = "showResult" mat-stroked-button (click)="result()"> Click Here to see Result</button>
+  <button  mat-stroked-button (click)="startQuiz()"> Click Here to Take Quiz</button>
+  <h4>Learning Recommendations for {{domain}}</h4>
+</div>
     <div class="row" style="margin-top: 50px">
       <div class="col s12 m4 l4" *ngFor="let item of DomainData;let i = index">
         <div class="card-panel hoverable small blue">
@@ -8,9 +13,7 @@
           </div>
           <p class="card-panel-content">{{domainstuff[i].tagline}}</p>
           <div class="card-content card-panel-content">
-            <button  id = "recommendations" mat-stroked-button (click)="recommendations(item)"> Learning Recommendations</button>
-            <button  id = "showResult" mat-stroked-button (click)="result(item)"> Click Here to see Result</button>
-            <button  mat-stroked-button (click)="startQuiz(item)"> Click Here to Take Quiz</button>
+
           </div>
         </div>
       </div>
