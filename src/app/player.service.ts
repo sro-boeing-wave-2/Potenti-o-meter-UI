@@ -11,6 +11,7 @@ import { AdItem } from './ad-item';
 import { McqComponent } from './mcq/mcq.component';
 import { FillInTheBlanksComponent } from './fill-in-the-blanks/fill-in-the-blanks.component';
 import { PlayerComponent } from './player/player.component';
+import { MmcqComponent } from './mmcq/mmcq.component';
 
 @Injectable()
 export class PlayerService {
@@ -91,7 +92,7 @@ private url="";
   getComponents() {
     return [
       new AdItem(McqComponent),
-      new AdItem(FillInTheBlanksComponent)
+      new AdItem(MmcqComponent)
 
     ];
 
