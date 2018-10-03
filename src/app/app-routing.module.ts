@@ -13,19 +13,20 @@ import { ResultHistoryComponent } from './result-history/result-history.componen
 import { ResultdomainComponent } from './resultdomain/resultdomain.component';
 import { QuizInDomainComponent } from './quiz-in-domain/quiz-in-domain.component';
 import { AuthguardGuard } from './authguard.guard';
+import { NewResultComponent } from './result/new-result.component';
 
 const routes: Routes = [
   { path: '',redirectTo: 'home',  pathMatch: 'full'},
-  {path:'start/:id/:domain', component:StartQuizComponent , canActivate:[AuthguardGuard]},
-  {path:'player/:id', component:PlayerComponent, canActivate:[AuthguardGuard]},
-  {  path: 'home', component: HomeComponent },
+  { path:'start/:id/:domain', component:StartQuizComponent , canActivate:[AuthguardGuard]},
+  { path:'player/:id', component:PlayerComponent, canActivate:[AuthguardGuard]},
+  { path: 'home', component: HomeComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate:[AuthguardGuard]},
-  { path: 'quizresult/:quizId', component: ResultComponent , canActivate:[AuthguardGuard]},
+  { path: 'quizresult/:quizId', component: ResultComponent} ,// canActivate:[AuthguardGuard]},
   { path: 'question',component: QuestionmcqComponent, canActivate:[AuthguardGuard]},
   { path: 'quizresult/:id/:domain', component:ResultHistoryComponent, canActivate:[AuthguardGuard]},
-  {path: 'resultdomain/:userId',component : ResultdomainComponent, canActivate:[AuthguardGuard]},
-  {path :'domainWisequiz/:userId/:domainName',component : QuizInDomainComponent , canActivate:[AuthguardGuard]},
-
+  { path: 'resultdomain/:userId',component : ResultdomainComponent, canActivate:[AuthguardGuard]},
+  { path :'domainWisequiz/:userId/:domainName',component : QuizInDomainComponent , canActivate:[AuthguardGuard]},
+  { path: 'new/quizresult/:quizId', component: NewResultComponent}
 
 ];
 

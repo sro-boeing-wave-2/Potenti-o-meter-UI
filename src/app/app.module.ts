@@ -44,6 +44,7 @@ import { QuizResponseComponent } from './quiz-response/quiz-response.component';
 import { MmcqComponent } from './mmcq/mmcq.component';
 import { CookieService } from 'ngx-cookie-service';
 import { ChartModule } from 'angular-highcharts';
+import { NewResultComponent } from './result/new-result.component';
 
 
 
@@ -73,6 +74,7 @@ import { ChartModule } from 'angular-highcharts';
     UserProfileComponent,
     QuizResponseComponent,
     MmcqComponent,
+    NewResultComponent
 
   ],
   imports: [
