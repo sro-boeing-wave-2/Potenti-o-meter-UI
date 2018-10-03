@@ -65,14 +65,14 @@ export class PlayerComponent implements OnInit {
       }
       this.dialogRef.afterClosed().subscribe(result => {
         this.dialogRef ==null;
-      });
-      if(this.dialogRef== null)
-      {
         PlayerComponent.outofFocus++;
-      if(PlayerComponent.outofFocus == 2)
+        console.log("value of out of focus is " +PlayerComponent.outofFocus);
+      });
+
+      if(PlayerComponent.outofFocus > 1)
       {
+      console.log("ending quiz now");
       this.endQuiz();
-      }
       }
     }
   }

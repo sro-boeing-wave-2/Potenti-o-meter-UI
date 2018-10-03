@@ -17,7 +17,7 @@ import { AuthguardGuard, CanDeactivateGuard } from './authguard.guard';
 const routes: Routes = [
   { path: '',redirectTo: 'home',  pathMatch: 'full'},
   { path:'start/:id/:domain', component:StartQuizComponent , canActivate:[AuthguardGuard]},
-  { path:'player/:id', component:PlayerComponent, canActivate:[AuthguardGuard], canDeactivate: [CanDeactivateGuard]},
+  { path:'player/:id', component:PlayerComponent}, //canActivate:[AuthguardGuard], canDeactivate: [CanDeactivateGuard]},
   { path: 'home', component: HomeComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate:[AuthguardGuard], canDeactivate: [CanDeactivateGuard]},
   { path: 'quizresult/:quizId', component: ResultComponent , canActivate:[AuthguardGuard], canDeactivate: [CanDeactivateGuard]},
