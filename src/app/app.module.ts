@@ -44,6 +44,7 @@ import { QuizResponseComponent } from './quiz-response/quiz-response.component';
 import { MmcqComponent } from './mmcq/mmcq.component';
 import { CookieService } from 'ngx-cookie-service';
 import { ChartModule } from 'angular-highcharts';
+import { AuthguardGuard, CanDeactivateGuard } from './authguard.guard';
 
 
 
@@ -102,7 +103,7 @@ import { ChartModule } from 'angular-highcharts';
     Ng2Webstorage,
     ChartModule,
   ],
-  providers: [PlayerService, MatDialog, CookieService],
+  providers: [PlayerService, MatDialog, CookieService, AuthguardGuard, CanDeactivateGuard],
   bootstrap: [AppComponent],
   entryComponents: [UserLoginComponent,UserSignUpComponent,McqComponent,FillInTheBlanksComponent,QuizResponseComponent,
                     DialogOverviewExampleDialog, SubmitWarning]
