@@ -52,16 +52,16 @@ export class NewResultComponent implements OnInit {
    var data = document.getElementById('content');
    html2canvas(data).then(canvas => {
      // Few necessary setting options
-     var imgWidth = 198;
+     var imgWidth = 200;
      var pageHeight = 295;
      var imgHeight = canvas.height * imgWidth / canvas.width;
      var heightLeft = imgHeight;
 
      const contentDataURL = canvas.toDataURL('image/jpeg',1)
-     let pdf = new jsPDF('p', 'mm', 'legal'); // legal size page of PDF
-     var position = 10; // change the margins in the pdf
+     let pdf = new jsPDF('p', 'mm', 'a4'); // a4 size page of PDF
+     var position = 5; // change the margins in the pdf
 
-     pdf.addImage(contentDataURL, 'PNG', 10, position, imgWidth, imgHeight)
+     pdf.addImage(contentDataURL, 'PNG', 5, position, imgWidth, imgHeight)
      pdf.save('MyResult.pdf'); // Generated PDF
    });
   }
@@ -90,10 +90,13 @@ export class NewResultComponent implements OnInit {
 
 
       const cumulativeTagWiseList = this._result.tagWiseCumulativeScore;
-
-
       this.cumulativeTagWiseResult.push(...cumulativeTagWiseList);
       this.sortedCumulativeTagWiseResult = this.cumulativeTagWiseResult.sort((a, b) => b.taxonomyScore - a.taxonomyScore);
+
+      //the length after removing values '0' from top 5 concept list
+       var conceptLength = this.sortedCumulativeTagWiseResult.map(res => res.taxonomyScore).slice(0,10).filter(Number).length;
+
+
       let cumulativeConcept = this.cumulativeTagWiseResult.map(res => res.tagName);
       let cumulativeScore = this.cumulativeTagWiseResult.map(res => res.tagRating);
       //Taxonomy Score
@@ -127,7 +130,7 @@ export class NewResultComponent implements OnInit {
       this.scoreArray.push(...this._result.quizResults.map(res => res.percentageScore));
       console.log(this.scoreArray);
 
-
+    console.log("Hoi"+this.length);
 
 
 
@@ -140,8 +143,7 @@ export class NewResultComponent implements OnInit {
             label: this._result.domainName,
             borderColor: "#3e95cd",
             fill: false
-          }
-          ]
+          }]
         },
         options: {
           scales: {
@@ -181,7 +183,7 @@ export class NewResultComponent implements OnInit {
 
 
 
-      this.chart = new Chart('canvas', {
+      this.chart = new Chart('canvas2', {
         type: 'radar',
 
         options: options,
@@ -246,7 +248,6 @@ export class NewResultComponent implements OnInit {
             }],
           fill: false
         }
-
       });
 
      // Bar Graph for taxonomy
@@ -254,17 +255,23 @@ export class NewResultComponent implements OnInit {
        var TaxoData =
        {
           label: 'Taxonomy Score',
-          data: this.sortedCumulativeTagWiseResult.map(result => result.taxonomyScore),
+          data: this.sortedCumulativeTagWiseResult.map(result => result.taxonomyScore).slice(0,conceptLength),
           backgroundColor: "rgba(255, 150, 21, 1)"
        };
 
       var barChart = new Chart( 'barchartid', {
-        ticks: {
-          min: 0
-        },
-        type: 'line',
+        type: 'bar',
+        options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+          }
+      },
         data: {
-          labels: this.sortedCumulativeTagWiseResult.map(result => result.tagName),
+          labels: this.sortedCumulativeTagWiseResult.map(result => result.tagName).slice(0,conceptLength),
           datasets: [TaxoData]
         }
       });

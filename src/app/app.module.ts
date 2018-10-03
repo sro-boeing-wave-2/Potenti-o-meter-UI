@@ -50,7 +50,7 @@ import { NewResultComponent } from './result/new-result.component';
 
 import { AuthguardGuard, CanDeactivateGuard } from './authguard.guard';
 import { RecommendationsComponent } from './recommendations/recommendations.component';
-
+import { NewUserProfileComponent } from './new-user-profile/new-user-profile.component';
 
 
 
@@ -84,8 +84,8 @@ import { RecommendationsComponent } from './recommendations/recommendations.comp
     MmcqComponent,
     NewResultHistoryComponent,
     NewResultComponent,
-    RecommendationsComponent
-
+    RecommendationsComponent,
+    NewUserProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -112,7 +112,7 @@ import { RecommendationsComponent } from './recommendations/recommendations.comp
     Ng2Webstorage,
     ChartModule,
   ],
-  providers: [PlayerService, MatDialog, CookieService, AuthguardGuard, CanDeactivateGuard],
+  providers: [PlayerService, MatDialog, CookieService],
   bootstrap: [AppComponent],
   entryComponents: [UserLoginComponent,UserSignUpComponent,McqComponent,FillInTheBlanksComponent,QuizResponseComponent,
                     DialogOverviewExampleDialog, SubmitWarning]

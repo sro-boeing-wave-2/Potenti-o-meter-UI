@@ -41,10 +41,6 @@ export class PlayerComponent implements OnInit {
             this.endQuiz();
           }
         });
-        // var r = confirm("We detected a back button press. Do you want to submit the test ?");
-        // if (r == true) {
-        //   this.endQuiz();
-        // }
     });
    }
    res: MCQOption;
@@ -68,19 +64,22 @@ export class PlayerComponent implements OnInit {
 
   outFocus() {
     if(!document.hasFocus()){
-      if(this.dialogRef==null){
-      this.dialogRef = this.dialog.open(SubmitWarning, {
-      });
-      this.dialogRef.afterClosed().subscribe(result => {
-        this.dialogRef == null;
-        PlayerComponent.outofFocus++;
-        if(PlayerComponent.outofFocus >= 2)
-        {
-          this.endQuiz();
-        }
-      });
+      if(PlayerComponent.outofFocus < 2 && this.dialogRef==null){
+        this.dialogRef = this.dialog.open(SubmitWarning, {});
+        this.dialogRef.afterClosed().subscribe(result =>
+          {
+            console.log("outoffocus value" + PlayerComponent.outofFocus);
+            this.dialogRef == null;
+            PlayerComponent.outofFocus++;
+            console.log("updated outoffocus value" + PlayerComponent.outofFocus);
+          });
+      }
+      if(PlayerComponent.outofFocus >= 1)
+      {
+        console.log("Ending quiz now");
+        this.endQuiz();
+      }
     }
-  }
   }
 
   ngOnInit() {

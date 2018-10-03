@@ -32,3 +32,12 @@ a {
 .social-links {
   text-align: left;
 }
+
+@media all and (max-width: 991px) {
+  .contactus{
+    float: right;
+  }
+  .about{
+    float: left;
+  }
+}

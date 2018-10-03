@@ -19,14 +19,18 @@ export class HeaderComponent implements OnInit {
   @Input() validSignup;
   @Input() userDetail;
   @Input() homePage;
-  @Input() result
+  @Input() result;
+  @Input() loggedin;
   public UserData ;
 
 
   ngOnInit() {
-    this.loginservice.getName().subscribe(result => {
-      this.UserData = result.json();
-    });
+    if(this.loggedin) {
+      this.loginservice.getName().subscribe({ next: result => {
+        this.UserData = result.json();
+      }, error: err => console.error(err)
+      });
+    }
   }
 
   LogIn() {
@@ -51,6 +55,12 @@ export class HeaderComponent implements OnInit {
 
   AfterLoginOut(){
     this.router.navigate(['home']);
+  }
+
+  navbarOpen = false;
+
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
   }
 
   Message(result: string){
