@@ -69,7 +69,7 @@ export class PlayerComponent implements OnInit {
         console.log("value of out of focus is " +PlayerComponent.outofFocus);
       });
 
-      if(PlayerComponent.outofFocus > 1)
+      if(PlayerComponent.outofFocus >= 1)
       {
       console.log("ending quiz now");
       this.endQuiz();
