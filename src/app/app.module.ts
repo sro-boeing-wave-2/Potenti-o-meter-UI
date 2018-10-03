@@ -112,7 +112,7 @@ import { RecommendationsComponent } from './recommendations/recommendations.comp
     Ng2Webstorage,
     ChartModule,
   ],
-  providers: [PlayerService, MatDialog, CookieService, AuthguardGuard, CanDeactivateGuard],
+  providers: [PlayerService, MatDialog, CookieService],
   bootstrap: [AppComponent],
   entryComponents: [UserLoginComponent,UserSignUpComponent,McqComponent,FillInTheBlanksComponent,QuizResponseComponent,
                     DialogOverviewExampleDialog, SubmitWarning]

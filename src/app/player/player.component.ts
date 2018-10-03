@@ -33,10 +33,6 @@ export class PlayerComponent implements OnInit {
             this.endQuiz();
           }
         });
-        // var r = confirm("We detected a back button press. Do you want to submit the test ?");
-        // if (r == true) {
-        //   this.endQuiz();
-        // }
     });
    }
    res: MCQOption;
