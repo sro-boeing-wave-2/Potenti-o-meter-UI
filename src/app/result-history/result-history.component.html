@@ -1,97 +1,97 @@
-<app-header [result]="true" [userDetail]="true" ></app-header>
+<!-- <app-header [result]="true" [userDetail]="true" ></app-header> -->
 <mat-card class="page-contianer">
-  <div class="page-header">
-    <h2>{{domain}}</h2>
-  </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <mat-card class="card score-card">
-        <div class="scores">
-          <mat-card-title>
-            <h4>Cumulative Score</h4>
-            <span style="font-size: 50px">{{_result.averagePercentage}}%</span>
-          </mat-card-title>
-          <div *ngIf="changeFirst >= 0; then increasedFirst; else decreasedFirst"> </div>
-          <ng-template #increasedFirst>
-            <mat-card-subtitle>Progress from your first attempt</mat-card-subtitle>
-            <span style="color: green">
-              <i class="fa fa-arrow-up"></i>{{(Math.round(changeFirst * 100))/100}}%</span>
-          </ng-template>
-          <ng-template #decreasedFirst>
-            <mat-card-subtitle>
-              <p>Progress from your first attempt</p>
-              <span style="color: red; font-size: 30px; text-align: left">
-                <i class="fa fa-arrow-down"></i>{{(Math.round(changeFirst * 100))/100}}%</span>
-            </mat-card-subtitle>
-          </ng-template>
-        </div>
-        <mat-tab-group>
-          <mat-tab *ngFor="let quiz of quizResultList" label="{{quiz.quizId}}">
-
-            <h4>Score</h4>
-            <span style="font-size: 40px">{{quiz.obtainedScore}}/{{quiz.totalScore}}</span>
-            <h4>Percentage</h4>
-            <span style="font-size: 25px">{{quiz.percentageScore}}%</span>
-            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  Conceptwise Scores
-                </mat-panel-title>
-                <mat-panel-description>
-                  Click to view
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <mat-grid-list cols="3" rowHeight="3:1">
-                <mat-grid-tile *ngFor="let tag of quiz.tagWiseResults">
-                  <h4>{{tag.tagName}}</h4>
-                  <span style="font-size: 30px"> {{Math.round(tag.tagRating*100)}}%</span>
-                </mat-grid-tile>
-              </mat-grid-list>
-            </mat-expansion-panel>
-          </mat-tab>
-        </mat-tab-group>
-      </mat-card>
+    <div class="page-header">
+      <h2>{{domain}}</h2>
     </div>
-    <div class="col-sm-6">
-      <mat-card class="card progress-card">
-        <div *ngIf="lineGraph">
-          <canvas id="canvasLine">{{ lineGraph }}</canvas>
-        </div>
-      </mat-card>
+    <div class="row">
+      <div class="col-sm-6">
+        <mat-card class="card score-card">
+          <div class="scores">
+            <mat-card-title>
+              <h4>Cumulative Score</h4>
+              <span style="font-size: 50px">{{_result.averagePercentage}}%</span>
+            </mat-card-title>
+            <div *ngIf="changeFirst >= 0; then increasedFirst; else decreasedFirst"> </div>
+            <ng-template #increasedFirst>
+              <mat-card-subtitle>Progress from your first attempt</mat-card-subtitle>
+              <span style="color: green">
+                <i class="fa fa-arrow-up"></i>{{(Math.round(changeFirst * 100))/100}}%</span>
+            </ng-template>
+            <ng-template #decreasedFirst>
+              <mat-card-subtitle>
+                <p>Progress from your first attempt</p>
+                <span style="color: red; font-size: 30px; text-align: left">
+                  <i class="fa fa-arrow-down"></i>{{(Math.round(changeFirst * 100))/100}}%</span>
+              </mat-card-subtitle>
+            </ng-template>
+          </div>
+          <mat-tab-group>
+            <mat-tab *ngFor="let quiz of quizResultList; let i = index" label="Attempt{{i+1}}">
+
+              <h4>Score</h4>
+              <span style="font-size: 40px">{{quiz.obtainedScore}}/{{quiz.totalScore}}</span>
+              <h4>Percentage</h4>
+              <span style="font-size: 25px">{{quiz.percentageScore}}%</span>
+              <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Conceptwise Scores
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    Click to view
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-grid-list cols="3" rowHeight="3:1">
+                  <mat-grid-tile *ngFor="let tag of quiz.tagWiseResults">
+                    <h4>{{tag.tagName}}</h4>
+                    <span style="font-size: 30px"> {{Math.round(tag.tagRating*100)}}%</span>
+                  </mat-grid-tile>
+                </mat-grid-list>
+              </mat-expansion-panel>
+            </mat-tab>
+          </mat-tab-group>
+        </mat-card>
+      </div>
+      <div class="col-sm-6">
+        <mat-card class="progress-card">
+          <div class="progress-graph" *ngIf="lineGraph">
+            <canvas id="canvasLine">{{ lineGraph }}</canvas>
+          </div>
+        </mat-card>
+      </div>
     </div>
-  </div>
 
 
 
-  <mat-card class="cumulative">
-    <mat-card-title>Your Knowledge State</mat-card-title>
-    <mat-card-subtitle>This is a graphical representation of your cumulative scores in each concept in this</mat-card-subtitle>
-    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Cumulative Conceptwise Scores
-        </mat-panel-title>
-        <mat-panel-description>
-          Click to view
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <mat-grid-list cols="3" rowHeight="3:1">
-        <mat-grid-tile *ngFor="let ctag of cumulativeTagWiseResult">
-          <h4>{{ctag.tagName}}</h4>
-          <span style="font-size: 35px;font-weight: bold"> {{Math.round(ctag.tagRating*100)}}%</span>
-        </mat-grid-tile>
-      </mat-grid-list>
-      <!-- <div class="concept-list">
-        <ol class="list-group">
-          <li *ngFor="let ctag of cumulativeTagWiseResult">
-            <p>Concept {{ctag.tagName}}: {{ctag.tagRating}}</p>
-          </li>
-        </ol>
-      </div> -->
-    </mat-expansion-panel>
-    <div *ngIf="cumulativeChart">
-      <canvas id="canva">{{ cumulativeChart }}</canvas>
-    </div>
+    <mat-card class="cumulative">
+      <mat-card-title>Your Knowledge State</mat-card-title>
+      <mat-card-subtitle>This is a graphical representation of your cumulative scores in each concept in this</mat-card-subtitle>
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Cumulative Conceptwise Scores
+          </mat-panel-title>
+          <mat-panel-description>
+            Click to view
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-grid-list cols="3" rowHeight="3:1">
+          <mat-grid-tile *ngFor="let ctag of cumulativeTagWiseResult">
+            <h4>{{ctag.tagName}}</h4>
+            <span style="font-size: 35px;font-weight: bold"> {{Math.round(ctag.tagRating*100)}}%</span>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <!-- <div class="concept-list">
+          <ol class="list-group">
+            <li *ngFor="let ctag of cumulativeTagWiseResult">
+              <p>Concept {{ctag.tagName}}: {{ctag.tagRating}}</p>
+            </li>
+          </ol>
+        </div> -->
+      </mat-expansion-panel>
+      <div *ngIf="cumulativeChart">
+        <canvas id="canva">{{ cumulativeChart }}</canvas>
+      </div>
+    </mat-card>
   </mat-card>
-</mat-card>
 <app-footer></app-footer>

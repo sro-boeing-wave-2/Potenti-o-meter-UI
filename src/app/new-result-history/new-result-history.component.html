@@ -1,0 +1,132 @@
+<app-header [result]="true" [userDetail]="true"></app-header>
+<div class="quiz-result-wrapper">
+
+  <div class="row">
+    <div class="score-card-header col-lg-push-2 col-lg-8">
+      <div class="score-card-title">
+        <h1>
+          Score History
+        </h1>
+      </div>
+      <div class="score-card-details col-lg-3">
+        <div class="score-card-details-description">Score in {{_result?.domainName}}</div>
+        <div>
+          <h1 class="score-card-details-percentage">
+            {{_result.averagePercentage}}%
+          </h1>
+        </div>
+      </div>
+      <div class="score-card-details col-lg-3">
+        <div class="score-card-details-description">Progreess from First Attempt</div>
+        <div>
+          <div *ngIf="changeFirst >= 0; then increasedFirst; else decreasedFirst"> </div>
+          <ng-template #increasedFirst>
+            <h1 class="score-card-details-percentage" style="color: green">
+              <i class="material-icons" style="font-size: 20px">
+                arrow_upward
+              </i>{{(Math.round(changeFirst * 100))/100}}%
+            </h1>
+          </ng-template>
+          <ng-template #decreasedFirst>
+            <h1 class="score-card-details-percentage" style="color: red">
+              {{(Math.round(changeFirst * 100))/100}}%
+              <i class="material-icons" style="font-size: 40px">
+                arrow_downward
+              </i>
+            </h1>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <mat-card class="detail-card col-lg-pull-2 col-lg-push-2 col-lg-8">
+        <mat-card-header>
+          <mat-card-title>
+            <h4 class="detail-card-title">Top Performing Concepts</h4>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <canvas id="barchartid">{{ barChart }}</canvas>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="row">
+      <mat-card class="quiz-tabs col-lg-pull-2 col-lg-push-2 col-lg-8">
+        <mat-card-header>
+          <mat-card-title>
+            <h4 class="quiz-tabs-card-title">Your Attempts</h4>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-tab-group>
+            <mat-tab *ngFor="let quiz of quizResultList; let i = index" label="Attempt{{i+1}}">
+              <div class="quiz-tabs-details col-lg-2">
+                <div class="quiz-tabs-details-description">Score</div>
+                <h1 class="quiz-tabs-details-value">{{quiz.obtainedScore}}/{{quiz.totalScore}}</h1>
+              </div>
+              <div class="quiz-tabs-details col-lg-2">
+                <div class="quiz-tabs-details-description">Percentage</div>
+                <h1 class="quiz-tabs-details-value">{{quiz.percentageScore}}%</h1>
+              </div>
+              <div class="concepts-panel col-lg-8">
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Conceptwise Scores
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      Click to view
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <mat-grid-list cols="2" rowHeight="2:1">
+                    <mat-grid-tile *ngFor="let tag of quiz.tagWiseResults">
+                      <h4 class="tag-name">{{tag.tagName}}</h4>
+                      <h1 class="tag-score"> {{Math.round(tag.tagRating*100)}}%</h1>
+                    </mat-grid-tile>
+                  </mat-grid-list>
+                </mat-expansion-panel>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+        </mat-card-content>
+        <mat-card-content>
+          <canvas id="canvasLine">{{ lineGraph }}</canvas>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="row">
+      <mat-card class="cumulative-card col-lg-pull-2 col-lg-push-2 col-lg-8">
+        <mat-card-header>
+          <mat-card-title>Your Knowledge State</mat-card-title>
+          <mat-card-subtitle>This is a graphical representation of your cumulative scores in each concept in this</mat-card-subtitle>
+        </mat-card-header>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Cumulative Conceptwise Scores
+            </mat-panel-title>
+            <mat-panel-description>
+              Click to view
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-grid-list cols="2" rowHeight="2:1">
+            <mat-grid-tile *ngFor="let ctag of cumulativeTagWiseResult">
+              <h4 class="tag-name">{{ctag.tagName}}</h4>
+              <h1 class="tag-score"> {{Math.round(ctag.tagRating*100)}}%</h1>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </mat-expansion-panel>
+        <mat-card-content>
+          <div *ngIf="cumulativeChart">
+            <canvas id="canva">{{ cumulativeChart }}</canvas>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>
+<!-- <app-footer></app-footer> -->

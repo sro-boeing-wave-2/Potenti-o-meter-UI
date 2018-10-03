@@ -32,10 +32,14 @@ margin-bottom: 10px;
 }
 
 .progress-card{
-  height: 525px;
+  /* height: 525px; */
   /* padding: 100px 100px 100px 100px; */
-  padding-top: 70px;
+  /* padding-top: 70px; */
   border-radius: 8px;
+}
+
+.progress-card #canvasLine{
+  /* height: 1000px; */
 }
 
 mat-grid-tile {
