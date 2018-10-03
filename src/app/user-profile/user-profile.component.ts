@@ -9,6 +9,9 @@ import { SignUpService } from '../sign-up.service';
 export class UserProfileComponent implements OnInit {
 
   @Input() DomainData;
+  public display= true;
+  public domain;
+
   constructor(private signupservice: SignUpService) { }
 
   public UserData;
@@ -17,7 +20,10 @@ export class UserProfileComponent implements OnInit {
     this.signupservice.getName().subscribe(result => {
       this.UserData = result.json();
     });
-    console.log(this.DomainData)
   }
 
+  receiveMessage($event){
+    this.display = $event.render;
+    this.domain = $event.domains;
+  }
 }

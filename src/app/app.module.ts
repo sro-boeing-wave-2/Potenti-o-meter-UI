@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AppComponent } from './app.component';
 import { StartQuizComponent } from './start-quiz/start-quiz.component';
-import { PlayerComponent } from './player/player.component';
+import { PlayerComponent, DialogOverviewExampleDialog, SubmitWarning } from './player/player.component';
 import { McqComponent } from './mcq/mcq.component';
 import { HeaderComponent } from './Shared/header/header.component';
 import { FooterComponent } from './Shared/footer/footer.component';
@@ -44,7 +44,12 @@ import { QuizResponseComponent } from './quiz-response/quiz-response.component';
 import { MmcqComponent } from './mmcq/mmcq.component';
 import { CookieService } from 'ngx-cookie-service';
 import { ChartModule } from 'angular-highcharts';
+
 import { NewResultComponent } from './result/new-result.component';
+
+import { AuthguardGuard, CanDeactivateGuard } from './authguard.guard';
+import { RecommendationsComponent } from './recommendations/recommendations.component';
+
 
 
 
@@ -58,6 +63,7 @@ import { NewResultComponent } from './result/new-result.component';
     McqComponent,
     HeaderComponent,
     FooterComponent,
+    DialogOverviewExampleDialog,
     UserLoginComponent,
     HomeComponent,
     UserSignUpComponent,
@@ -71,10 +77,12 @@ import { NewResultComponent } from './result/new-result.component';
     ResultHistoryComponent,
     ResultdomainComponent,
     QuizInDomainComponent,
+    SubmitWarning,
     UserProfileComponent,
     QuizResponseComponent,
     MmcqComponent,
-    NewResultComponent
+    NewResultComponent,
+    RecommendationsComponent,
 
   ],
   imports: [
@@ -102,8 +110,9 @@ import { NewResultComponent } from './result/new-result.component';
     Ng2Webstorage,
     ChartModule,
   ],
-  providers: [PlayerService, MatDialog, CookieService],
+  providers: [PlayerService, MatDialog, CookieService, AuthguardGuard, CanDeactivateGuard],
   bootstrap: [AppComponent],
-  entryComponents: [UserLoginComponent,UserSignUpComponent,McqComponent,FillInTheBlanksComponent,QuizResponseComponent]
+  entryComponents: [UserLoginComponent,UserSignUpComponent,McqComponent,FillInTheBlanksComponent,QuizResponseComponent,
+                    DialogOverviewExampleDialog, SubmitWarning]
 })
 export class AppModule { }

@@ -10,10 +10,10 @@ export class ResultService {
 
  getUserResult(quizId){
 
-  return this.http.get("https://localhost:44343/api/QuizResult/quizId/"+quizId);
+  //return this.http.get("https://localhost:44343/api/QuizResult/quizId/"+quizId);
   //  return this.http.get("http://localhost/api/QuizResult/quizId/"+quizId);
   // return this.http.get("https://localhost:44343/api/QuizResult/quizId/"+quizId);
-  // return this.http.get("http://13.126.26.172/result/quiz/"+quizId);
+   return this.http.get("http://13.126.26.172/result/quiz/"+quizId);
    //return this.http.get("http://localhost/api/QuizResult/quizId/"+quizId)
 
    //return this.http.get("https://localhost:44343/api/QuizResult?userId="+UserId+"&domainName="+DomainName);

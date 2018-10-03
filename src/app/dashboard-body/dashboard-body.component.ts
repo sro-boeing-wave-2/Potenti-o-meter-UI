@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import {SignUpService} from '../sign-up.service';
 import { Router } from '@angular/router';
 import { DashboardService } from '../dashboard.service';
@@ -16,6 +16,7 @@ export class DashboardBodyComponent implements OnInit {
   }
   @Input() DomainData;
   public UserData;
+  @Output() recommend = new EventEmitter<any>();
   //uniqueItems = Array.from(new Set(this.DomainData))
   ngOnInit() {
     this.signupservice.getName().subscribe(result => {
@@ -29,6 +30,10 @@ export class DashboardBodyComponent implements OnInit {
 
   result(item){
     this.router.navigate(['quizresult',this.UserData.UserID,item]);
+  }
+
+  recommendations(item){
+    this.recommend.emit({render:false,domains:item});
   }
 
   domainstuff = [
