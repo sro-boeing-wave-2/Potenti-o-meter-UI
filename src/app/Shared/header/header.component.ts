@@ -53,6 +53,12 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['home']);
   }
 
+  navbarOpen = false;
+
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
+  }
+
   Message(result: string){
 
   }
