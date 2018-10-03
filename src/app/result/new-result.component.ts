@@ -58,7 +58,7 @@ export class NewResultComponent implements OnInit {
      var heightLeft = imgHeight;
 
      const contentDataURL = canvas.toDataURL('image/jpeg',1)
-     let pdf = new jsPDF('p', 'mm', 'legal'); // legal size page of PDF
+     let pdf = new jsPDF('p', 'mm', 'a4'); // a4 size page of PDF
      var position = 10; // change the margins in the pdf
 
      pdf.addImage(contentDataURL, 'PNG', 10, position, imgWidth, imgHeight)
@@ -127,7 +127,7 @@ export class NewResultComponent implements OnInit {
       this.scoreArray.push(...this._result.quizResults.map(res => res.percentageScore));
       console.log(this.scoreArray);
 
-
+    console.log("Hoi"+this.length);
 
 
 
@@ -181,7 +181,7 @@ export class NewResultComponent implements OnInit {
 
 
 
-      this.chart = new Chart('canvas', {
+      this.chart = new Chart('canvas2', {
         type: 'radar',
 
         options: options,
@@ -246,7 +246,6 @@ export class NewResultComponent implements OnInit {
             }],
           fill: false
         }
-
       });
 
      // Bar Graph for taxonomy
@@ -262,7 +261,7 @@ export class NewResultComponent implements OnInit {
         ticks: {
           min: 0
         },
-        type: 'line',
+        type: 'bar',
         data: {
           labels: this.sortedCumulativeTagWiseResult.map(result => result.tagName),
           datasets: [TaxoData]
