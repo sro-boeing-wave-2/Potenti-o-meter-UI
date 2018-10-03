@@ -55,7 +55,7 @@ main {
 }
 .avatar {
   margin-top: -7.478em;
-  width: 13%;
+  width: 100%;
   height: 10%;
 }
 .icon.icon-follow-button {
@@ -112,7 +112,7 @@ main {
 
 .block-two {
   display: flex;
-  width: 25%;
+  width: 100%;
   flex-flow: row wrap;
   justify-content: space-between;
 }
