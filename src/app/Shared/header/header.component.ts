@@ -19,14 +19,17 @@ export class HeaderComponent implements OnInit {
   @Input() validSignup;
   @Input() userDetail;
   @Input() homePage;
-  @Input() result
+  @Input() result;
+  @Input() loggedin;
   public UserData ;
 
 
   ngOnInit() {
-    this.loginservice.getName().subscribe(result => {
-      this.UserData = result.json();
-    });
+    if(this.loggedin) {
+      this.loginservice.getName().subscribe(result => {
+        this.UserData = result.json();
+      });
+    }
   }
 
   LogIn() {
