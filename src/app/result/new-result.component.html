@@ -40,22 +40,7 @@
       <div *ngIf="length == 0; then onlyOneAttempt ; else moreAttempts"></div>
 
       <!-- When only one attempt is given -->
-      <ng-template #onlyOneAttempt>
-        <div class="row">
-          <mat-card class="detail-card col-lg-pull-2 col-lg-push-2 col-lg-8">
-            <mat-card-header>
-              <mat-card-title>
-                <h4 class="detail-card-title">Concept Wise Score</h4>
-              </mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-
-                  <canvas id="canva">{{ cumulativeChart }}</canvas>
-
-            </mat-card-content>
-          </mat-card>
-        </div>
-      </ng-template>
+      <ng-template #onlyOneAttempt></ng-template>
 
       <!-- When more attempts are given -->
       <ng-template #moreAttempts>
@@ -74,24 +59,6 @@
             </mat-card-header>
             <mat-card-content>
               <canvas id="canvasLine">{{ lineGraph }}</canvas>
-            </mat-card-content>
-          </mat-card>
-        </div>
-        <!-- cumulative spider graph -->
-        <div class="row">
-          <mat-card class="detail-card col-lg-pull-2 col-lg-push-2 col-lg-8">
-            <mat-card-header>
-              <mat-card-title>
-                <h4 class="detail-card-title">Overall Score</h4>
-                <h4 class="detail-card-title">
-                  <span><b>{{_result?.averagePercentage}}</b></span>
-                </h4>
-              </mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <div *ngIf="cumulativeChart">
-                <canvas id="canva">{{ cumulativeChart }}</canvas>
-              </div>
             </mat-card-content>
           </mat-card>
         </div>

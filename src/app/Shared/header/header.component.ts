@@ -26,8 +26,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     if(this.loggedin) {
-      this.loginservice.getName().subscribe(result => {
+      this.loginservice.getName().subscribe({ next: result => {
         this.UserData = result.json();
+      }, error: err => console.error(err)
       });
     }
   }
