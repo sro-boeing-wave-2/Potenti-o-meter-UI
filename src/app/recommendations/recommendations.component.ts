@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recommendations',
@@ -7,9 +8,17 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class RecommendationsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
   @Input() domain;
+  @Input() UserData;
   ngOnInit() {
   }
 
+  startQuiz(){
+    this.router.navigate(['start',this.UserData.UserID,this.domain]);
+  }
+
+  result(){
+    this.router.navigate(['quizresult',this.UserData.UserID,this.domain]);
+  }
 }

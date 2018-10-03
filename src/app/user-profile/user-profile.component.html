@@ -32,7 +32,7 @@
           </div>
         </div>
         <app-dashboard-body (recommend)="receiveMessage($event)" *ngIf="display" [DomainData]="DomainData"></app-dashboard-body>
-        <app-recommendations [domain]="domain" *ngIf="!display"></app-recommendations>
+        <app-recommendations [domain]="domain" [UserData]=[UserData] *ngIf="!display"></app-recommendations>
         <section class="block-two">
             <div class="info-block-one ">
               <h1>{{UserData.FirstName}} {{UserData.LastName}}</h1>
