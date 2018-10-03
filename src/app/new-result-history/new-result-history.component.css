@@ -1,0 +1,85 @@
+.quiz-result-wrapper {
+  font-family: 'Roboto', sans-serif;
+  padding-top: 80px;
+  /* width: 100%; */
+  height: 100vh;
+  background: linear-gradient(180deg, #3f51b5 50%, #fff 50%);
+ }
+ .detail-card {
+  margin-top: 20px;
+  border-radius: 8px;
+ }
+ .score-card-action-btn, .score-card-title, .score-card-details {
+  color: white;
+ }
+ .score-card-details {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
+ }
+ .score-card-details-description {
+  margin-bottom: -15px;
+  text-align: center;
+ }
+ .score-card-details-percentage {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  text-align: center;
+ }
+ .score-card-action-btn {
+  border-color: white;
+  margin-right: 5px;
+ }
+ .detail-card-title {
+  font-family: 'Roboto', sans-serif;
+  color: black;
+ }
+ .quiz-tabs{
+  margin-top: 20px;
+  border-radius: 8px;
+ }
+
+ .quiz-tabs-details{
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
+ }
+ .quiz-tabs-details-description{
+  margin-bottom: -15px;
+  text-align: center;
+ }
+ .quiz-tabs-details-value{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  text-align: center;
+ }
+
+ .concepts-panel{
+   margin-top: 35px;
+ }
+
+ .cumulative-card{
+  margin-top: 20px;
+  border-radius: 8px;
+ }
+
+ .mat-grid-tile{
+   display: block;
+   background-color: #3f51b5;
+   color: white;
+   border-radius: 8px;
+ }
+
+ .tag-name{
+  text-align: center;
+ }
+
+ .tag-score{
+   margin-left: 5%;
+   font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  text-align: center;
+
+ }
