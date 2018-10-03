@@ -44,8 +44,12 @@ import { QuizResponseComponent } from './quiz-response/quiz-response.component';
 import { MmcqComponent } from './mmcq/mmcq.component';
 import { CookieService } from 'ngx-cookie-service';
 import { ChartModule } from 'angular-highcharts';
+
+import { NewResultComponent } from './result/new-result.component';
+
 import { AuthguardGuard, CanDeactivateGuard } from './authguard.guard';
 import { RecommendationsComponent } from './recommendations/recommendations.component';
+
 
 
 
@@ -77,6 +81,7 @@ import { RecommendationsComponent } from './recommendations/recommendations.comp
     UserProfileComponent,
     QuizResponseComponent,
     MmcqComponent,
+    NewResultComponent,
     RecommendationsComponent,
 
   ],

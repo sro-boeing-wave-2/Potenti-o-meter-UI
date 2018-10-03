@@ -1,0 +1,55 @@
+<div class="quiz-result-wrapper">
+
+  <div class="row">
+    <div class="score-card-header col-lg-push-2 col-lg-8">
+      <div class="score-card-title">
+        <h1>
+          Score Card
+        </h1>
+      </div>
+      <div class="score-card-actions">
+        <button class="score-card-action-btn" mat-stroked-button (click)="viewResponse()">View Responses</button>
+        <button class="score-card-action-btn" mat-stroked-button (click)="downLoadResult()">Download Score Card</button>
+      </div>
+    </div>
+    <div class="score-card-details col-lg-2">
+      <div class="score-card-details-description">Score in {{_result?.domainName}}</div>
+      <div>
+       <h1 class="score-card-details-percentage">
+         {{_result?.quizResults[length]?.percentageScore}}%
+       </h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <mat-card class="detail-card col-lg-pull-2 col-lg-push-2 col-lg-8">
+      <mat-card-header>
+        <mat-card-title>
+          <h4 class="detail-card-title">Top Performing Concepts</h4>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <canvas id="barchartid">{{ barChart }}</canvas>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="row">
+    <mat-card class="detail-card col-lg-pull-2 col-lg-push-2 col-lg-8">
+      <mat-card-header>
+        <mat-card-title>
+          <h4 class="detail-card-title">Progress over previous attempts</h4>
+          <h4 class="detail-card-title">
+            <span *ngIf="changeFirst >= 0">Rise in </span>
+            <span *ngIf="changeFirst <= 0">Drop in </span>
+            <span><b>{{(Math.round(changeFirst * 100))/100}}%</b> from the previous attempt</span>
+          </h4>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <canvas id="canvasLine">{{ lineGraph }}</canvas>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
