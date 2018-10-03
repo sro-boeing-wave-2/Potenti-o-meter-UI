@@ -19,7 +19,7 @@ import { NewResultComponent } from './result/new-result.component';
 const routes: Routes = [
   { path: '',redirectTo: 'home',  pathMatch: 'full'},
   { path: 'new/quizresult/:quizId', component: NewResultComponent},
-  { path:'start/:id/:domain', component:StartQuizComponent , canActivate:[AuthguardGuard]},
+  { path:'start/:id/:domain', component:StartQuizComponent, canActivate:[AuthguardGuard]},
   { path:'player/:id', component:PlayerComponent, canActivate:[AuthguardGuard], canDeactivate: [CanDeactivateGuard]},
   { path: 'home', component: HomeComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate:[AuthguardGuard]},
