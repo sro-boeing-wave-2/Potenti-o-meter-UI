@@ -31,8 +31,8 @@
             </a>
           </div>
         </div>
-        <app-dashboard-body (recommend)="receiveMessage($event)" *ngIf="display" [DomainData]="DomainData"></app-dashboard-body>
-        <app-recommendations [domain]="domain" [UserData]=[UserData] *ngIf="!display"></app-recommendations>
+        <h4 *ngIf="display">Choose Quiz Topic</h4>
+        <h4 *ngIf="!display">Learning Recommendations</h4>
         <section class="block-two">
             <div class="info-block-one ">
               <h1>{{UserData.FirstName}} {{UserData.LastName}}</h1>
@@ -45,28 +45,10 @@
                 <span class="info-block-one__joined__text">{{UserData.Contact}}</span>
               </p>
             </div>
-            <!-- <div class="info-block-two">
-              <app-dashboard-body></app-dashboard-body>
-            </div> -->
+            <app-dashboard-body (recommend)="receiveMessage($event)" *ngIf="display" [DomainData]="DomainData"></app-dashboard-body>
+            <app-recommendations [domain]="domain" [UserData]=[UserData] *ngIf="!display"></app-recommendations>
         </section>
       </section>
-      <!-- <section class="block-two">
-        <div class="info-block-one ">
-          <h1>{{UserData.FirstName}} {{UserData.LastName}}</h1>
-          <p class="info-block-one__place">
-            <i class="fa fa-envelope user-text"></i>
-            <span class="info-block-one__place__text">{{UserData.Email}}</span>
-          </p>
-          <p class="info-block-one__joined">
-            <i class="fa fa-phone user-text" aria-hidden="true"></i>
-            <span class="info-block-one__joined__text">{{UserData.Contact}}</span>
-          </p>
-        </div>
-        <div class="info-block-two">
-          <h3>Quiz Domains</h3>
-          <app-dashboard-body></app-dashboard-body>
-        </div>
-      </section> -->
     </main>
   </section>
   <footer>

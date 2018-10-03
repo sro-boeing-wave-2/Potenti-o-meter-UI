@@ -18,7 +18,7 @@ import { NewResultComponent } from './result/new-result.component';
 
 const routes: Routes = [
   { path: '',redirectTo: 'home',  pathMatch: 'full'},
-  { path: 'new/quizresult/:quizId', component: NewResultComponent},
+  { path: 'new/quizresult/:quizId', component: NewResultComponent , canActivate:[AuthguardGuard]},
   { path:'start/:id/:domain', component:StartQuizComponent , canActivate:[AuthguardGuard]},
   { path:'player/:id', component:PlayerComponent, canActivate:[AuthguardGuard], canDeactivate: [CanDeactivateGuard]},
   { path: 'home', component: HomeComponent },
@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'quizresult/:quizId', component: ResultComponent, canActivate:[AuthguardGuard]},
   { path: 'question',component: QuestionmcqComponent, canActivate:[AuthguardGuard]},
 
-  { path: 'quizresult/:id/:domain', component:NewResultHistoryComponent, canActivate:[AuthguardGuard], canDeactivate: [CanDeactivateGuard]},
+  { path: 'quizresult/:id/:domain', component:NewResultHistoryComponent, canActivate:[AuthguardGuard]},
   // {path: 'resultdomain/:userId',component : ResultdomainComponent, canActivate:[AuthguardGuard]},
   // {path :'domainWisequiz/:userId/:domainName',component : QuizInDomainComponent , canActivate:[AuthguardGuard]},
 
