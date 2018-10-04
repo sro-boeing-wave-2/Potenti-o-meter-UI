@@ -15,7 +15,7 @@ export class RecommendationsComponent implements OnInit {
   @Output() dashbaord = new EventEmitter();
   ngOnInit() {
     this.dashboardsservice.getRecommendations(this.UserData.UserID,this.domain).subscribe(result =>
-      console.log(result.status));
+      console.log(result));
   }
 
   startQuiz(){
