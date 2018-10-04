@@ -63,7 +63,7 @@
   }
 
   .card-content{
-    width: 90%;
+    width: 80%;
     position: absolute;
     bottom: 5%;
   }
@@ -78,4 +78,13 @@
 
   #recommendations {
     margin-bottom: 5%;
+  }
+
+  .domain {
+    width:fit-content !important;
+  }
+
+  button {
+    width:100%;
+    margin-left: 5px;
   }

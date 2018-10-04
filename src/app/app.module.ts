@@ -23,6 +23,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
+import {MatListModule} from '@angular/material/list';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { DashboardBodyComponent } from './dashboard-body/dashboard-body.component';
@@ -104,6 +105,7 @@ import { NewUserProfileComponent } from './new-user-profile/new-user-profile.com
     MatMenuModule,
     MatTabsModule,
     MatDialogModule,
+    MatListModule,
     MatGridListModule,
     MatFormFieldModule,
     ReactiveFormsModule,
@@ -112,7 +114,7 @@ import { NewUserProfileComponent } from './new-user-profile/new-user-profile.com
     Ng2Webstorage,
     ChartModule,
   ],
-  providers: [PlayerService, MatDialog, CookieService],
+  providers: [PlayerService, MatDialog, CookieService, AuthguardGuard],
   bootstrap: [AppComponent],
   entryComponents: [UserLoginComponent,UserSignUpComponent,McqComponent,FillInTheBlanksComponent,QuizResponseComponent,
                     DialogOverviewExampleDialog, SubmitWarning]

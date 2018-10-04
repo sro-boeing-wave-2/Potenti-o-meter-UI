@@ -301,9 +301,9 @@ footer {
   margin-right: 4%;
 } */
 
-app-dashboard-body {
+app-dashboard-body, app-recommendations {
   float: right;
-  width: 70%;
+  width: 75%;
 }
 
 i {

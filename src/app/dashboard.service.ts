@@ -12,6 +12,11 @@ export class DashboardService {
     return this.http.get("http://13.126.26.172/conceptmap/domain");
   }
 
+  getRecommendations(id,domain)
+  {
+    return this.http.get("http://13.126.26.172/api/contentrecommender/id/"+id+"/"+domain);
+  }
+
   // getDomainDetails()
   // {
   //   return this.http.get("E:\Potenti-o-meter-UI\src\assets\data\domain.json");

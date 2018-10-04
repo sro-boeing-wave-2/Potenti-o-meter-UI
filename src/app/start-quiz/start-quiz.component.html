@@ -1,24 +1,88 @@
 <app-header [userDetail]="true"></app-header>
-<div class="card">
-  <h3 class="card-header">{{domain}} test</h3>
-  <div class="card-body">
-    <h4 class="card-title">Instructions</h4>
-    <ul class="list-group">
-      <li class="list-group-item">The test consists of 10 question</li>
-      <li class="list-group-item">Click on the 'Next' button after submiting your response to get the next question</li>
-      <li class="list-group-item">Clicking on 'Next' button without providing any response will be considered as an incorect response</li>
-      <li class="list-group-item">You can not get back and change responses of previous questions atteempted</li>
-      <li class="list-group-item">The test makes use of an Adaptive Algorithm and the next question you get is based on your response of the previous
-        question</li>
-      <li class="list-group-item">Click on the 'Submit' button after finishing all the questions</li>
-      <li class="list-group-item">Clicking on the 'Submit' button during the test will end your quiz and only the questions attempted till then will
-        be considered</li>
-
-    </ul>
-    <p class="card-text">Click on the "Start Quiz" button to start your quiz</p>
-    <a class="btn btn-primary" (click)="startQuiz()">Start Quiz</a>
+<div class="start-page-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="start-page-header col-lg-push-2 col-lg-3">
+        <div class="start-page-title">
+          <h1>
+            {{domain}} TEST
+          </h1>
+        </div>
+      </div>
+      <div class="start-page-details col-lg-push-2 col-lg-3">
+        <div class="start-page-details-description">No. of Questions</div>
+        <div>
+          <h1 class="start-page-details-value">
+            10
+          </h1>
+        </div>
+      </div>
+      <div class="start-page-details col-lg-push-2 col-lg-3">
+        <div class="start-page-details-description">Test Duration</div>
+        <div>
+          <h1 class="start-page-details-value">
+            10 Mins
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <mat-card class="instructions-card col-lg-pull-2 col-lg-push-2 col-lg-8">
+        <mat-card-header>
+          <mat-card-title>
+            <h2 class="instructions-card-title">Instructions</h2>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item>
+              <p>
+                <mat-icon mat-list-icon>check_circle</mat-icon> The test conatins of 10 questions and the duration is 10 mins.</p>
+            </mat-list-item>
+            <mat-list-item>
+              <p>
+                <mat-icon mat-list-icon>check_circle</mat-icon> Click on the Next button after providing a response to the question to get the next
+                question.</p>
+            </mat-list-item>
+            <mat-list-item>
+              <p>
+                <mat-icon mat-list-icon>check_circle</mat-icon> Clicking on Next without any responsee will be considered as wrong response.</p>
+            </mat-list-item>
+            <mat-list-item>
+              <p>
+                <mat-icon mat-list-icon>check_circle</mat-icon>Click on the Submit button when you are finished with all the questions to end your
+                test.</p>
+            </mat-list-item>
+            <mat-list-item>
+              <p>
+                <mat-icon mat-list-icon>check_circle</mat-icon>Clicking the submit button at any point during the test will end your test.</p>
+            </mat-list-item>
+            <mat-list-item>
+              <p>
+                <mat-icon mat-list-icon>check_circle</mat-icon>The test will be be auto submitted once the allotted time gets over.</p>
+            </mat-list-item>
+            <mat-list-item>
+              <p>
+                <mat-icon mat-list-icon>check_circle</mat-icon>You can not navigate back to your previous question during the test.</p>
+            </mat-list-item>
+            <mat-list-item>
+              <p>
+                <mat-icon mat-list-icon>check_circle</mat-icon>Do not switch tabs during the test. It will result in a warning followed by auto submission
+                of the test.</p>
+            </mat-list-item>
+            <mat-list-item>
+              <p>
+                <mat-icon mat-list-icon>check_circle</mat-icon>You should not navigate to different pages during the test as it will also cause auto
+                submission of the test.</p>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+        <div class="instructions-card-actions">
+          <button class="instructions-card-action-btn" mat-stroked-button (click)="startQuiz()">Start Quiz</button>
+        </div>
+      </mat-card>
+    </div>
   </div>
+  <app-footer></app-footer>
 </div>
-<app-footer></app-footer>
-
 
