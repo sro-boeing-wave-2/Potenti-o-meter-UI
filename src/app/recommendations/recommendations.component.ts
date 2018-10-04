@@ -19,9 +19,9 @@ export class RecommendationsComponent implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-    console.log(this.UserData);
     this.dashboardsservice.getRecommendations(this.UserData.UserID,this.domain).subscribe(result =>
       this.RecommendationData.push(...result.json()));
+    console.log(this.RecommendationData);
   }
   startQuiz(){
     this.router.navigate(['start',this.UserData.UserID,this.domain]);

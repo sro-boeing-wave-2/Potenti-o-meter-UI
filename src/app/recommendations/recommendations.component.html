@@ -10,10 +10,10 @@
       <div class="col s12 m4 l4" *ngFor="let item of RecommendationData;let i = index">
         <div class="card-panel small blue">
           <div class="card-panel-header">
-            <span class="card-panel-caption">{{item}}</span>
+            <span class="card-panel-caption">{{item.title}}</span>
           </div>
           <div class="card-panel-content embed-responsive embed-responsive-4by3">
-              <iframe class="embed-responsive-item" src="{{source}}"></iframe>
+              <iframe class="embed-responsive-item" src="{{item.url}}"></iframe>
           </div>
         </div>
       </div>
