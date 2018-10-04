@@ -105,12 +105,13 @@ export class NewResultComponent implements OnInit {
       let cumulativeTaxonomyScore = this.cumulativeTagWiseResult.map(res => res.taxonomyScore);
 
       //current-taxonomy-score details
-      this.currentQuiz = this._result.quizResults[length];
-      this.sortedCurrentTagWiseList = this.currentQuiz.tagWiseResults.sort((a,b)=> b.taxonomyScore - a.taxonomyScore);
+
+      this.currentQuiz = this._result.quizResults[this.length];
+      this.sortedCurrentTagWiseList = this.currentQuiz.tagWiseResults.sort((a, b) => b.taxonomyScore - a.taxonomyScore);
       let currentTaxonomyScore = this.sortedCurrentTagWiseList.map(res => res.taxonomyScore);
       let currentTaxonomyConcept = this.sortedCurrentTagWiseList.map(res => res.tagName);
-      var currentConceptLength = this.sortedCurrentTagWiseList.map(res => res.taxonomyScore).slice(0,10).filter(Number).length;
-      /////
+      var currentConceptLength = currentTaxonomyScore.slice(0,10).filter(Number).length;
+
 
       // Added
       const tagList = this._result.quizResults[this.length].tagWiseResults;
