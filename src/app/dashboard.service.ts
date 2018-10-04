@@ -14,7 +14,9 @@ export class DashboardService {
 
   getRecommendations(id,domain)
   {
-    return this.http.get("http://13.126.26.172/api/contentrecommender/id/"+id+"/"+domain);
+    var url = "http://13.126.26.172/api/contentrecommender/id/" +id+"/"+domain;
+    console.log(url);
+    return this.http.get(url);
   }
 
   // getDomainDetails()
