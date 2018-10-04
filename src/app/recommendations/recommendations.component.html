@@ -6,7 +6,7 @@
   <button  id = "showResult" mat-flat-button color="primary" (click)="result()"> Click Here to see Result</button>
   <button  id="startQuiz" mat-flat-button color="primary" (click)="startQuiz()"> Click Here to Take Quiz</button>
 </div>
-<div class="skill-card" style="margin-top:50px">
+<div class="skill-card" style="margin-top:50px" *ngFor="let item of RecommendationData">
   <header class="skill-card__header"><img class="skill-card__icon" src="https://upload.wikimedia.org/wikipedia/commons/3/38/HTML5_Badge.svg" alt="HTML5 Logo"/></header>
   <section class="skill-card__body">
     <h2 class="skill-card__title">html</h2><span class="skill-card__duration">6 ans d'expérience</span>
