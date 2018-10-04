@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
   @Input() homePage;
   @Input() result;
   @Input() loggedin;
-  public UserData ;
+  public UserData = [];
 
 
   ngOnInit() {

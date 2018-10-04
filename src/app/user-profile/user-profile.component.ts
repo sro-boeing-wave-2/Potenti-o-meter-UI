@@ -14,7 +14,7 @@ export class UserProfileComponent implements OnInit {
 
   constructor(private signupservice: SignUpService) { }
 
-  public UserData;
+  public UserData = [];
 
   ngOnInit() {
     this.signupservice.getName().subscribe(result => {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, AfterViewChecked } from '@angular/core';
 import { Router } from '@angular/router';
 import { DashboardService } from '../dashboard.service';
 import { SignUpService } from '../sign-up.service';
@@ -8,22 +8,21 @@ import { SignUpService } from '../sign-up.service';
   templateUrl: './recommendations.component.html',
   styleUrls: ['./recommendations.component.css']
 })
-export class RecommendationsComponent implements OnInit {
+export class RecommendationsComponent implements OnInit, AfterViewChecked {
 
-  constructor(private router: Router, private dashboardsservice: DashboardService,
-    private signupservice: SignUpService) { }
+  constructor(private router: Router, private dashboardsservice: DashboardService) { }
   @Input() domain;
   @Input() UserData;
-  public user;
   @Output() dashbaord = new EventEmitter();
+  public RecommendationData = []
   ngOnInit() {
-    this.dashboardsservice.getRecommendations(this.user.UserID,this.domain).subscribe(result =>
-      console.log(result));
-    this.signupservice.getName().subscribe(result => {
-      this.user = result.json();
-    });
   }
 
+  ngAfterViewChecked() {
+    console.log(this.UserData);
+    this.dashboardsservice.getRecommendations(this.UserData.UserID,this.domain).subscribe(result =>
+      this.RecommendationData.push(...result.json()));
+  }
   startQuiz(){
     this.router.navigate(['start',this.UserData.UserID,this.domain]);
   }
