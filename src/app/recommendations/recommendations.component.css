@@ -9,5 +9,23 @@
 }
 
 #showResult {
+  margin-left: 5%;
   margin-bottom: 5%;
+  float: right;
 }
+#startQuiz {
+  float: right;
+}
+
+#dashboard {
+  float: left;
+}
+
+#title {
+  float:right;
+}
+
+.container {
+  width: 100% !important;
+}
+
