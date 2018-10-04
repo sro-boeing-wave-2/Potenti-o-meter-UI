@@ -1,8 +1,10 @@
-<div>
-  <a><i class="fa fa-arrow-left">Back to Domains</i></a>
+<div class="container">
+  <h5 id="dashboard"><a><i class="fa fa-arrow-left">  Back to Domains</i></a></h5>
+  <h5 id="title">Learning Recommendations for {{domain}}</h5>
+</div>
+<div class="container buttons">
   <button  id = "showResult" mat-stroked-button (click)="result()"> Click Here to see Result</button>
-  <button  mat-stroked-button (click)="startQuiz()"> Click Here to Take Quiz</button>
-  <h4>Learning Recommendations for {{domain}}</h4>
+  <button  id="startQuiz" mat-stroked-button (click)="startQuiz()"> Click Here to Take Quiz</button>
 </div>
     <div class="row" style="margin-top: 50px">
       <div class="col s12 m4 l4" *ngFor="let item of DomainData;let i = index">
