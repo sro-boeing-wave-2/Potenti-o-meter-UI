@@ -1,9 +1,9 @@
 .quiz-result-wrapper {
   font-family: 'Roboto', sans-serif;
   padding-top: 80px;
-  /* width: 100%; */
-  height: 100vh;
   background: linear-gradient(180deg, #3f51b5 50%, #fff 50%);
+  max-width: 100%;
+  overflow-x: hidden;
  }
  .detail-card {
   margin-top: 20px;
@@ -63,6 +63,7 @@
  .cumulative-card{
   margin-top: 20px;
   border-radius: 8px;
+  margin-bottom: 30px;
  }
 
  .mat-grid-tile{
@@ -83,3 +84,6 @@
   text-align: center;
 
  }
+
+
+
