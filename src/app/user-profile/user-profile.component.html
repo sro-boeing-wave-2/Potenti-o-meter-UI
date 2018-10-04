@@ -45,7 +45,7 @@
               </p>
             </div>
             <app-dashboard-body (recommend)="receiveMessage($event)" *ngIf="display" [DomainData]="DomainData"></app-dashboard-body>
-            <app-recommendations (dashbaord)="sendMessage($event)" [domain]="domain" [UserData]=[UserData] *ngIf="!display"></app-recommendations>
+            <app-recommendations (dashbaord)="sendMessage($event)" [domain]="domain" [UserData]="UserData" *ngIf="!display"></app-recommendations>
         </section>
     </main>
   </section>
