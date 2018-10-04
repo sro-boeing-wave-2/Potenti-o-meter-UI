@@ -1,8 +1,15 @@
+#content{
+  max-width: 100%;
+  overflow-x: hidden;
+  /* height: 100vh; */
+}
+
 .quiz-result-wrapper {
   font-family: 'Roboto', sans-serif;
   padding-top: 80px;
-  height: 100vh;
+
   background: linear-gradient(180deg,#3f51b5 50%, #fff 50%);
+
 }
 
 .detail-card {
