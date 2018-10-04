@@ -12,9 +12,9 @@ export class DashboardService {
     return this.http.get("http://13.126.26.172/conceptmap/domain");
   }
 
-  getRecommendations()
+  getRecommendations(id,domain)
   {
-    return this.http.get("http://localhost:9100/api/contentrecommender/id/4/science");
+    return this.http.get("http://13.126.26.172/api/contentrecommender/id/"+id+"/"+domain);
   }
 
   // getDomainDetails()

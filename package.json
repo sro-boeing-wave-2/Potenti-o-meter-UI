@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start-prod": "./node_modules/.bin/http-server ./dist/Potenti-o-meter-UI -p 80 -a 0.0.0.0 -d false -i true",
-    "start": "ng serve --host 0.0.0.0",
+    "start": "ng serve --host 0.0.0.0 --live-reload false",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

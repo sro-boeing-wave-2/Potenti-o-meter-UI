@@ -1,21 +1,19 @@
 <div class="container">
-  <h5 id="dashboard"><a> (click)= "dashboard()" <i class="fa fa-arrow-left">  Back to Domains</i></a></h5>
+  <h5 id="dashboard"><a (click)= "dashboard()" ><i class="fa fa-arrow-left">  Back to Domains</i></a></h5>
   <h5 id="title">Learning Recommendations for {{domain}}</h5>
 </div>
 <div class="container buttons">
-  <button  id = "showResult" mat-stroked-button (click)="result()"> Click Here to see Result</button>
-  <button  id="startQuiz" mat-stroked-button (click)="startQuiz()"> Click Here to Take Quiz</button>
+  <button  id = "showResult" mat-flat-button color="primary" (click)="result()"> Click Here to see Result</button>
+  <button  id="startQuiz" mat-flat-button color="primary" (click)="startQuiz()"> Click Here to Take Quiz</button>
 </div>
     <div class="row" style="margin-top: 50px">
       <div class="col s12 m4 l4" *ngFor="let item of DomainData;let i = index">
-        <div class="card-panel hoverable small blue">
+        <div class="card-panel small blue">
           <div class="card-panel-header">
-            <span class="card-panel-icon"><i class="material-icons">{{domainstuff[i].icon}}</i></span>
             <span class="card-panel-caption">{{item}}</span>
           </div>
-          <p class="card-panel-content">{{domainstuff[i].tagline}}</p>
-          <div class="card-content card-panel-content">
-
+          <div class="card-panel-content embed-responsive embed-responsive-4by3">
+              <iframe class="embed-responsive-item" src="{{source}}"></iframe>
           </div>
         </div>
       </div>

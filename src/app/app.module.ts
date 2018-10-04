@@ -114,7 +114,7 @@ import { NewUserProfileComponent } from './new-user-profile/new-user-profile.com
     Ng2Webstorage,
     ChartModule,
   ],
-  providers: [PlayerService, MatDialog, CookieService],
+  providers: [PlayerService, MatDialog, CookieService, AuthguardGuard],
   bootstrap: [AppComponent],
   entryComponents: [UserLoginComponent,UserSignUpComponent,McqComponent,FillInTheBlanksComponent,QuizResponseComponent,
                     DialogOverviewExampleDialog, SubmitWarning]
