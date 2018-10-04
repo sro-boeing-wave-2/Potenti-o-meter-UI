@@ -14,12 +14,13 @@ export class RecommendationsComponent implements OnInit, AfterViewChecked {
   @Input() domain;
   @Input() UserData;
   @Output() dashbaord = new EventEmitter();
+  public RecommendationData = []
   ngOnInit() {
   }
 
   ngAfterViewChecked() {
     this.dashboardsservice.getRecommendations(this.UserData.UserID,this.domain).subscribe(result =>
-      console.log(result));
+      this.RecommendationData.push(...result.json()));
   }
   startQuiz(){
     this.router.navigate(['start',this.UserData.UserID,this.domain]);
