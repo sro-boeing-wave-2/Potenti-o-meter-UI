@@ -36,6 +36,7 @@ export class NewResultComponent implements OnInit {
   prevQuizElement: QuizResult;
   cumulativeTagWiseResult: CumulativeTagScore[] = [];
   sortedCumulativeTagWiseResult: CumulativeTagScore[] = [];
+  sortedCurrentTagWiseList =[];
   cumulativeChart = [];
   changePrevious: number;
   changeFirst: number;
@@ -43,6 +44,8 @@ export class NewResultComponent implements OnInit {
   scoreArray = [];
   barChart = [];
   taxonomyScore = [];
+  currentQuiz : QuizResult;
+
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private resultService: ResultService, public dialog: MatDialog) { }
   @ViewChild('content') content:ElementRef;
@@ -88,20 +91,26 @@ export class NewResultComponent implements OnInit {
       const questionsListArray = this._result.quizResults[length].questionsAttempted
       this.question.push(...questionsListArray);
 
-
+       //Cumulative Taxonomy Score
       const cumulativeTagWiseList = this._result.tagWiseCumulativeScore;
       this.cumulativeTagWiseResult.push(...cumulativeTagWiseList);
       this.sortedCumulativeTagWiseResult = this.cumulativeTagWiseResult.sort((a, b) => b.taxonomyScore - a.taxonomyScore);
 
-      //the length after removing values '0' from top 5 concept list
-       var conceptLength = this.sortedCumulativeTagWiseResult.map(res => res.taxonomyScore).slice(0,10).filter(Number).length;
+      //the length after removing values '0' from top 10 concept list
+      var conceptLength = this.sortedCumulativeTagWiseResult.map(res => res.taxonomyScore).slice(0,10).filter(Number).length;
 
-
+      //This is used in radar graph
       let cumulativeConcept = this.cumulativeTagWiseResult.map(res => res.tagName);
       let cumulativeScore = this.cumulativeTagWiseResult.map(res => res.tagRating);
-      //Taxonomy Score
-      let taxonomyScore = this.cumulativeTagWiseResult.map(res => res.taxonomyScore);
+      let cumulativeTaxonomyScore = this.cumulativeTagWiseResult.map(res => res.taxonomyScore);
 
+      //current-taxonomy-score details
+      this.currentQuiz = this._result.quizResults[length];
+      this.sortedCurrentTagWiseList = this.currentQuiz.tagWiseResults.sort((a,b)=> b.taxonomyScore - a.taxonomyScore);
+      let currentTaxonomyScore = this.sortedCurrentTagWiseList.map(res => res.taxonomyScore);
+      let currentTaxonomyConcept = this.sortedCurrentTagWiseList.map(res => res.tagName);
+      var currentConceptLength = this.sortedCurrentTagWiseList.map(res => res.taxonomyScore).slice(0,10).filter(Number).length;
+      /////
 
       // Added
       const tagList = this._result.quizResults[this.length].tagWiseResults;
@@ -255,7 +264,7 @@ export class NewResultComponent implements OnInit {
        var TaxoData =
        {
           label: 'Taxonomy Score',
-          data: this.sortedCumulativeTagWiseResult.map(result => result.taxonomyScore).slice(0,conceptLength),
+          data: currentTaxonomyScore.slice(0,currentConceptLength),
           backgroundColor: "rgba(255, 150, 21, 1)"
        };
 
@@ -271,7 +280,7 @@ export class NewResultComponent implements OnInit {
           }
       },
         data: {
-          labels: this.sortedCumulativeTagWiseResult.map(result => result.tagName).slice(0,conceptLength),
+          labels: currentTaxonomyConcept.slice(0,currentConceptLength),
           datasets: [TaxoData]
         }
       });
