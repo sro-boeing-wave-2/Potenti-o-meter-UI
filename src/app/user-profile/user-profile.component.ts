@@ -26,4 +26,8 @@ export class UserProfileComponent implements OnInit {
     this.display = $event.render;
     this.domain = $event.domains;
   }
+
+  sendMessage($event){
+    this.display = $event;
+  }
 }

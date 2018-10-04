@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,6 +11,7 @@ export class RecommendationsComponent implements OnInit {
   constructor(private router: Router) { }
   @Input() domain;
   @Input() UserData;
+  @Output() dashbaord = new EventEmitter();
   ngOnInit() {
   }
 
@@ -20,5 +21,9 @@ export class RecommendationsComponent implements OnInit {
 
   result(){
     this.router.navigate(['quizresult',this.UserData.UserID,this.domain]);
+  }
+
+  dashboard(){
+    this.dashbaord.emit(true);
   }
 }
