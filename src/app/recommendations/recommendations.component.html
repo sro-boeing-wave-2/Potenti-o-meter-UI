@@ -8,15 +8,11 @@
 </div>
     <div class="row" style="margin-top: 50px">
       <div class="col s12 m4 l4" *ngFor="let item of DomainData;let i = index">
-        <div class="card-panel hoverable small blue">
+        <div class="card-panel small blue">
           <div class="card-panel-header">
-            <span class="card-panel-icon"><i class="material-icons">{{domainstuff[i].icon}}</i></span>
             <span class="card-panel-caption">{{item}}</span>
           </div>
           <p class="card-panel-content">{{domainstuff[i].tagline}}</p>
-          <div class="card-content card-panel-content">
-
-          </div>
         </div>
       </div>
     </div>
