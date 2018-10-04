@@ -1,38 +1,28 @@
-*{
-  /* font-family: 'Signika', Courier, monospace; */
+.quiz-player-wrapper {
+  font-family: 'Roboto', sans-serif;
+  padding-top: 80px;
+  height: 90vh;
+  background: linear-gradient(180deg, #3f51b5 50%, #fff 50%);
 }
-
-.page-contianer{
-  background-color: #FBFCFC;
-  margin-top: 50px;
-  text-align: center;
-  padding: 25px 50px 25px 50px;
-  /* height: 100vh; */
-
-
-}
-
 .player-card{
   margin-top: 10px;
   border-radius: 8px;
+  /* width: 100%; */
 }
 
-.progress-bar{
+.progress-bar {
   background-color: #1a73e8;
   color: #ffffff;
   font-size: 20px;
   font-weight: bold;
+  width: 100%;
 }
 
 .progress{
-  height: 30px;
+  /* height: 30px; */
+  width: 100%;
 }
 
-.next-button{
-  background-color: #1a73e8;
-  border-radius: 6px;
-  font-weight: bold;
-}
 app-footer {
   position: absolute;
   bottom: 0;
@@ -68,7 +58,7 @@ margin: auto;
 	z-index: 1;
   text-shadow: 1px 1px 0px #ccc;
 	display: inline-block;
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
 	text-align: center;
 
   padding: 20px;
@@ -98,3 +88,24 @@ margin: auto;
   margin-top: auto;
   margin-bottom: auto;
 }
+
+.player-buttons-lg{
+  margin-top: 30px;
+  float: right;
+}
+
+.next-button-sm{
+  float: right;
+  width: 50%;
+  height: 50px;
+}
+
+.next-button-lg{
+  margin-left: 30px;
+}
+
+.submit-button-sm{
+  width: 50%;
+  height: 50px;
+}
+

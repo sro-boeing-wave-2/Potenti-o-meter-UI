@@ -1,0 +1,23 @@
+.dashboard {
+  font-family: 'Roboto', sans-serif;
+  padding-top: 80px;
+  height: 100vh;
+  background: linear-gradient(180deg, #3f51b5 50%, #fff 50%);
+}
+
+.user-detail-card {
+  margin: 40px;
+  min-height: 300px;
+  position: relative;
+  background: linear-gradient(180deg, orange 50%, #fff 50%);
+}
+
+.user-profile-image {
+  top: 30%;
+  left: 40%;
+  background: mediumslateblue;
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  border-radius: 50px;
+}
