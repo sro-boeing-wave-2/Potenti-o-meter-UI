@@ -1,7 +1,53 @@
-.card{
+.start-page-wrapper {
+  font-family: 'Roboto', sans-serif;
+  padding-top: 80px;
+  /* width: 100%; */
+  height: 100vh;
+  background: linear-gradient(180deg, #3f51b5 50%, #fff 50%);
+}
+.start-page-title, .start-page-details{
+  color: white;
+}
+.start-page-details {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
+ }
+ .start-page-details-description {
+  margin-bottom: -15px;
+  text-align: center;
+ }
+ .start-page-details-value {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  text-align: center;
+ }
+ .instructions-card {
+  margin-top: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+ }
+ .instructions-card-title {
+  font-family: 'Roboto', sans-serif;
+  color: black;
+ }
+
+ mat-list-item
+ {
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 25px;
+ }
+
+ .instructions-card-action-btn{
+   width: 100%;
+   margin: auto;
+ }
+
+/* .card{
   margin-top: 52px;
   background-color: #FBFCFC;
-  /* background-color: #89cff0 ; */
+  background-color: #89cff0 ;
   text-align: center;
   padding: 25px 50px 75px 50px;
 }
@@ -10,13 +56,13 @@
 }
 
 .list-group-item{
-  /* background-color: #E4DFDA; */
+  background-color: #E4DFDA;
   background-color: burlywood;
-  /* background-color: black; */
+  background-color: black;
   color: black;
   text-align: left;
   font-size: 16px;
 }
 h4{
   text-align: left;
-}
+} */
