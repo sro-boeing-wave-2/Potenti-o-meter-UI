@@ -159,6 +159,12 @@ whatWeDo p{
 }
 
 
+.how_pot_works{
+  opacity: 0.8 !important;
+}
+
+
+
 @keyframes fade-first {
   0% {opacity:0; visibility:hidden;}
   3% {opacity:1; visibility:visible;}
