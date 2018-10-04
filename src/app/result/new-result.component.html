@@ -1,20 +1,21 @@
 <app-header [result]="true" [userDetail]="true"></app-header>
 <div id="content" #content>
-  <div class="container-fluid">
-    <div class="quiz-result-wrapper">
+  <!-- <div class="container-fluid"> -->
+  <div class="quiz-result-wrapper">
+    <div class="container">
       <div class="row">
-        <div class="score-card-header col-lg-push-2 col-lg-8">
-          <div class="score-card-title">
+        <div class="score-card-header col-lg-push-2 col-lg-8 col-md-6 col-sm-12 col-md-12">
+          <div class="score-card-title col-sm-12 ">
             <h1>
               Score Card
             </h1>
           </div>
-          <div class="score-card-actions">
-            <button class="score-card-action-btn" mat-stroked-button (click)="viewResponse()">View Responses</button>
+          <div class="score-card-actions col-sm-12">
+            <button class="score-card-action-btn " mat-stroked-button (click)="viewResponse()">View Responses</button>
             <button class="score-card-action-btn" mat-stroked-button (click)="downLoadResult()">Download Score Card</button>
           </div>
         </div>
-        <div class="score-card-details col-lg-2">
+        <div class="score-card-details col-lg-2 col-sm-6 col-md-4">
           <div class="score-card-details-description">Score in {{_result?.domainName}}</div>
           <div>
             <h1 class="score-card-details-percentage">
@@ -23,7 +24,6 @@
           </div>
         </div>
       </div>
-
       <div class="row">
         <mat-card class="detail-card col-lg-pull-2 col-lg-push-2 col-lg-8">
           <mat-card-header>
