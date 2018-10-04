@@ -39,7 +39,7 @@ export class DashboardBodyComponent implements OnInit {
   domainstuff = [
     {"color":"pink","tagline":"Java: write once, run away!","icon":"code"},
     {"color":"blue","tagline":"Know the reason behind every fiction","icon":"nature_people"},
-    {"color":"red","tagline":"Know the reason behind every fiction","icon":"nature_people"},
+    {"color":"red","tagline":"Priceless' became a viral","icon":"language"},
     {"color":"green","tagline":"An algorithm must be seen to be believed","icon":"code"},
   ]
 
