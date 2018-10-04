@@ -23,7 +23,7 @@ const routes: Routes = [
   { path:'start/:id/:domain', component:StartQuizComponent , canActivate:[AuthguardGuard]},
   { path:'player/:id', component:PlayerComponent, canActivate:[AuthguardGuard], canDeactivate: [CanDeactivateGuard]},
   { path: 'home', component: HomeComponent },
-  { path: 'dashboard', component: DashboardComponent, canActivate:[AuthguardGuard], canDeactivate: [CanDeactivateGuard]},
+  { path: 'dashboard', component: DashboardComponent, canActivate:[AuthguardGuard]},
   { path: 'new/dashboard', component: NewUserProfileComponent },
   // { path: 'quizresult/:quizId', component: ResultComponent, canActivate:[AuthguardGuard]},
   { path: 'question',component: QuestionmcqComponent, canActivate:[AuthguardGuard]},
