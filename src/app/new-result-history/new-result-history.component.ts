@@ -21,7 +21,6 @@ export class NewResultHistoryComponent implements OnInit {
   quizScoreList: number[] = [];
   length: number;
   changeFirst: number;
-  changePrevious: number;
   lineGraph = [];
   cumulativeChart = [];
   cumulativeTagWiseResult: CumulativeTagScore[] = [];
@@ -44,15 +43,20 @@ export class NewResultHistoryComponent implements OnInit {
     //fetch data of a user in the given domain
     this.resultService.getByUserId_Domain(this.userId,this.domain).subscribe(data => {
       this._result = data.json();
-      console.log(JSON.stringify(this._result.quizResults));
 
       this.quizResultList.push(...this._result.quizResults);
-      console.log(this.quizResultList);
 
-      this.length = this.quizResultList.length;
+       this.length = this.quizResultList.length;
+
+
+
+
+
+
+
+
       console.log(this._result.quizResults[this.length-1].percentageScore);
       this.changeFirst = Math.fround((this._result.quizResults[this.length-1].percentageScore - this._result.quizResults[0].percentageScore) / this._result.quizResults[0].percentageScore) * 100;
-      this.changePrevious = Math.fround((this._result.quizResults[this.length-1].percentageScore - this._result.quizResults[this.length-2].percentageScore) / this._result.quizResults[this.length-2].percentageScore) * 100;
       for(var i = 0; i<this.length; i++)
       {
         this.quizlist[i] = "Attempt"+(i+1);
@@ -66,7 +70,7 @@ export class NewResultHistoryComponent implements OnInit {
       console.log(this.quizScoreList);
 
       const cumulativeTagWiseList = this._result.tagWiseCumulativeScore;
-      //console.log("Result" + JSON.stringify(this._result));
+      console.log(cumulativeTagWiseList);
       console.log("cumulativeTagWiseList:" + cumulativeTagWiseList);
       this.cumulativeTagWiseResult.push(...cumulativeTagWiseList);
       let cumulativeConcept = this.cumulativeTagWiseResult.map(res => res.tagName);

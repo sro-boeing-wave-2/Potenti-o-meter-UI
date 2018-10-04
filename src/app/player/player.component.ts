@@ -114,7 +114,7 @@ export class PlayerComponent implements OnInit {
      this.questionComponents = this.playerService.getComponents();
      this.startTime = new Date();
      this.timer = setInterval(() => { this.tick(); }, 1000);
-     this.duration = this.parseTime(300);
+     this.duration = this.parseTime(600);
   }
   question : any;
   mcqQuestion : MCQModel;
@@ -183,15 +183,16 @@ export class PlayerComponent implements OnInit {
       this.ellapsedTime = this.parseTime(diff);
       const endTime = this.ellapsedTime.split(":",2);
       const minutes = +endTime[0];
-    if(minutes > 2)
+      const fixedtime = +this.duration.split(":",2)[0];
+    if(minutes > fixedtime/2)
     {
       this.half= true;
       this.full = false;
     }
-    if(minutes > 3){
+    if(minutes > 3*fixedtime/4){
       this.half = false;
       this.empty= true;
-    }if(minutes == 5){
+    }if(minutes == 10){
       this.endQuiz();
     }
 

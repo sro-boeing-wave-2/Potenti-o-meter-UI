@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { DashboardService } from '../dashboard.service';
+import { SignUpService } from '../sign-up.service';
 
 @Component({
   selector: 'app-recommendations',
@@ -9,13 +10,18 @@ import { DashboardService } from '../dashboard.service';
 })
 export class RecommendationsComponent implements OnInit {
 
-  constructor(private router: Router, private dashboardsservice: DashboardService) { }
+  constructor(private router: Router, private dashboardsservice: DashboardService,
+    private signupservice: SignUpService) { }
   @Input() domain;
   @Input() UserData;
+  public user;
   @Output() dashbaord = new EventEmitter();
   ngOnInit() {
-    this.dashboardsservice.getRecommendations(this.UserData.UserID,this.domain).subscribe(result =>
+    this.dashboardsservice.getRecommendations(this.user.UserID,this.domain).subscribe(result =>
       console.log(result));
+    this.signupservice.getName().subscribe(result => {
+      this.user = result.json();
+    });
   }
 
   startQuiz(){

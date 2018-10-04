@@ -3,8 +3,8 @@
   <h5 id="title">Learning Recommendations for {{domain}}</h5>
 </div>
 <div class="container buttons">
-  <button  id = "showResult" mat-stroked-button (click)="result()"> Click Here to see Result</button>
-  <button  id="startQuiz" mat-stroked-button (click)="startQuiz()"> Click Here to Take Quiz</button>
+  <button  id = "showResult" mat-flat-button color="primary" (click)="result()"> Click Here to see Result</button>
+  <button  id="startQuiz" mat-flat-button color="primary" (click)="startQuiz()"> Click Here to Take Quiz</button>
 </div>
     <div class="row" style="margin-top: 50px">
       <div class="col s12 m4 l4" *ngFor="let item of DomainData;let i = index">
