@@ -19,6 +19,7 @@ export class QuizResponseComponent implements OnInit {
 
   ngOnInit() {
     console.log("inside popup");
+    console.log(this.data);
     this.length = this.data.length;
     this.quizResponse = this.data[this.length - 1];
     this.noOfQuestions = this.quizResponse.questionsAttempted.length

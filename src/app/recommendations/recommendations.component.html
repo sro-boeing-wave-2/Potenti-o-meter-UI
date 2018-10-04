@@ -6,16 +6,15 @@
   <button  id = "showResult" mat-flat-button color="primary" (click)="result()"> Click Here to see Result</button>
   <button  id="startQuiz" mat-flat-button color="primary" (click)="startQuiz()"> Click Here to Take Quiz</button>
 </div>
-    <div class="row" style="margin-top: 50px">
-      <div class="col s12 m4 l4" *ngFor="let item of DomainData;let i = index">
-        <div class="card-panel small blue">
-          <div class="card-panel-header">
-            <span class="card-panel-caption">{{item}}</span>
-          </div>
-          <div class="card-panel-content embed-responsive embed-responsive-4by3">
-              <iframe class="embed-responsive-item" src="{{source}}"></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" rel="stylesheet">
+<div class="skill-card" style="margin-top:50px" *ngFor="let item of RecommendationData">
+  <header class="skill-card__header"><img class="skill-card__icon" src="https://upload.wikimedia.org/wikipedia/commons/3/38/HTML5_Badge.svg" alt="HTML5 Logo"/></header>
+  <section class="skill-card__body">
+    <h2 class="skill-card__title">html</h2><span class="skill-card__duration">6 ans d'expérience</span>
+    <ul class="skill-card__knowledge">
+      <li>HTML5</li>
+      <li>Sémantique</li>
+      <li>SVG</li>
+      <li>Canvas</li>
+    </ul>
+  </section>
+</div>

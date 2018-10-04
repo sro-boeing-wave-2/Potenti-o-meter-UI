@@ -1,25 +1,34 @@
 <mat-dialog-content class="card">
-<div class="quiz-container" *ngFor="let qR of questionResponse">
-    <div class="question box">
-      <p><span>{{qR.questionNumber}}.</span>{{qR.questionText}}</p>
-    </div>
-    <ul class="answers">
-      <li class="answer box" *ngFor="let opt of qR.options" >
-        <p><span><i class="fa fa-angle-right"></i></span>{{opt}}</p>
-      </li>
-    </ul>
-    <div class="response">
-      <h4>Your response: {{qR.response}}</h4>
-      <div *ngIf="qR.isCorrect == true; then correct; else wrong"> </div>
-      <ng-template #correct>
+  <h1 class="response-header">Responses</h1>
+  <!-- <div class="popup-wrapper"> -->
+  <div class="container" *ngFor="let qR of questionResponse">
+    <mat-card class="popup-card">
+      <div class="question-text">
+        <h2>
+          <span>{{qR.questionNumber}}.</span>{{qR.questionText}}
+        </h2>
+      </div>
+      <ul class="options">
+        <li class="option" *ngFor="let opt of qR.options">
+          <p><span><i class="fa fa-angle-right"></i></span>
+            {{opt}}
+          </p>
+        </li>
+      </ul>
+      <div class="response">
+        <h4>Your response: {{qR.response}}</h4>
+        <div *ngIf="qR.isCorrect == true; then correct; else wrong"> </div>
+        <ng-template #correct>
           <p style="color: green">Correct<i class="fa fa-check"></i></p>
-      </ng-template>
-      <ng-template #wrong>
+        </ng-template>
+        <ng-template #wrong>
           <p style="color: red">Wrong<i class="fa fa-close"></i></p>
-      </ng-template>
-    </div>
-    <div class="correctAns">
-      <h4>Correct option: {{qR.correctAns}}</h4>
-    </div>
+        </ng-template>
+      </div>
+      <div class="correctAns">
+        <h4>Correct option: {{qR.correctAns}}</h4>
+      </div>
+    </mat-card>
+    <!-- </div> -->
   </div>
 </mat-dialog-content>
