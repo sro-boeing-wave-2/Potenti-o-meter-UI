@@ -79,3 +79,7 @@
   #recommendations {
     margin-bottom: 5%;
   }
+
+  .domain {
+    width:fit-content;
+  }
