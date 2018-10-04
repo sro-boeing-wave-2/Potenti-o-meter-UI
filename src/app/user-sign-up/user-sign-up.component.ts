@@ -19,6 +19,7 @@ export class UserSignUpComponent implements OnInit {
   public dialogForm: FormGroup;
   public loginForm: FormGroup;
   public login = false;
+  public SignupFail = false;
   @Output() success = new EventEmitter<boolean>();
 
   constructor( private fb: FormBuilder,private dialog: MatDialog,
@@ -49,20 +50,14 @@ export class UserSignUpComponent implements OnInit {
 
   this.UserSignUpService.USerSignUp(this.dialogForm.value as User)
   .subscribe(result=>
-    result.status == 201?this.GoBack(): this.Message())
+    result.status == 201?this.GoBack(): this.SignupFailure(),
+    error => error.status != 400?this.GoBack(): this.SignupFailure())
   }
 
   LoginSubmit(): void {
     this.loginservice.USerLogIn(this.loginForm.value as Login)
-    .subscribe(result=> {
-      if(result.status == 200){
-        this.AfterLogin()
-      }
-      if(result.status == 401)
-      {
-         this.Message()
-      }
-      });
+    .subscribe(result=> result.status == 200?this.AfterLogin(): this.LoginFailure(),
+    error => error.status != 401?this.AfterLogin(): this.LoginFailure())
   }
 
   GoBack(){
@@ -78,12 +73,17 @@ export class UserSignUpComponent implements OnInit {
   // this.router.navigate(['dashboard']);
   }
 
-  Message(){
-    alert("unauthorized entry");
+  LoginFailure(){
     this.login = true;
-  setTimeout(() => {
-    this.login = false;
-  },2000)
+    setTimeout(() => {
+      this.login = false;
+    },4000)
   }
 
+  SignupFailure(){
+    this.SignupFail = true;
+    setTimeout(() => {
+      this.SignupFail= false;
+    },4000)
+  }
 }
