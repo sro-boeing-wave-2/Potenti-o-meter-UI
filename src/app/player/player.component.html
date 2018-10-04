@@ -1,40 +1,25 @@
 <app-header></app-header>
-<mat-card class="page-contianer">
-
-  <div id="countdown">
-    <div id='tiles' [ngClass]="{'color-full': full, 'color-half':half, 'color-empty':empty}">
-      <h4 id="timer">
-        <i class="fa fa-hourglass-half"></i> {{ellapsedTime}} / {{duration}}</h4>
-    </div>
-    <div class="countdown-label">Time Remaining</div>
-  </div>
-  <mat-card class="player-card">
-    <h4 class="card-title">Question {{count}}/10</h4>
-    <div class="progress">
-      <div class="progress-bar progress-bar-striped" role="progressbar" [attr.aria-valuenow]="progress" aria-valuemin="0" aria-valuemax="30"
-        style="min-width: 2em;" [style.width]="(progress/100)*100 + '%'">
-        Question {{count}}
+<div class="quiz-player-wrapper">
+  <div class="container">
+    <div id="countdown">
+      <div id='tiles' [ngClass]="{'color-full': full, 'color-half':half, 'color-empty':empty}">
+        <h4 id="timer">
+          <i class="fa fa-hourglass-half"></i> {{ellapsedTime}} / {{duration}}</h4>
       </div>
+      <div class="countdown-label">Time Remaining</div>
     </div>
+    <mat-card class="player-card">
+      <h4 class="card-title">Question {{count}}/10</h4>
+      <ng-template class="question-template" question-host></ng-template>
 
-    <ng-template question-host></ng-template>
-    <div *ngIf="count < 10; then activeQuiz; else lastQuestion"> </div>
-    <ng-template #activeQuiz>
-      <mat-card-actions align="right">
-        <button mat-raised-button color="primary" class="next-button" (click)="getNextQuestion()">Next Question
-          <i class="material-icons">skip_next</i>
-        </button>
-      </mat-card-actions>
-    </ng-template>
-    <ng-template #lastQuestion>
-      <mat-card-actions align="right">
-        <button mat-raised-button color="primary" class="next-button" disabled (click)="getNextQuestion()">Next Question
-          <i class="material-icons">skip_next</i>
-        </button>
-      </mat-card-actions>
-    </ng-template>
-    <button mat-raised-button color="warn" (click)="endQuiz() ">Submit Quiz
-      <i class="material-icons">done</i>
-    </button>
-  </mat-card>
-</mat-card>
+    </mat-card>
+    <div *ngIf="isMobileResolution == false" class="player-buttons-lg">
+        <button class="submit-button-lg" mat-stroked-button (click)="endQuiz()">Submit Quiz</button>
+        <button class="next-button-lg" mat-stroked-button [disabled]="count >= 10" (click)="getNextQuestion()">Next Question</button>
+      </div>
+  </div>
+</div>
+<div class="fixed-bottom player-buttons-sm" *ngIf="isMobileResolution == true">
+  <button class="submit-button-sm" mat-stroked-button (click)=" endQuiz() ">Submit Quiz</button>
+  <button class="next-button-sm" mat-stroked-button [disabled]="count>= 10" (click)="getNextQuestion()">Next Question</button>
+</div>

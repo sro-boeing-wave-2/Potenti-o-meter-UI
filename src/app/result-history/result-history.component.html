@@ -81,13 +81,6 @@
             <span style="font-size: 35px;font-weight: bold"> {{Math.round(ctag.tagRating*100)}}%</span>
           </mat-grid-tile>
         </mat-grid-list>
-        <!-- <div class="concept-list">
-          <ol class="list-group">
-            <li *ngFor="let ctag of cumulativeTagWiseResult">
-              <p>Concept {{ctag.tagName}}: {{ctag.tagRating}}</p>
-            </li>
-          </ol>
-        </div> -->
       </mat-expansion-panel>
       <div *ngIf="cumulativeChart">
         <canvas id="canva">{{ cumulativeChart }}</canvas>

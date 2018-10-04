@@ -25,6 +25,14 @@ export class PlayerComponent implements OnInit {
 
   constructor(public dialog: MatDialog, private componentFactoryResolver: ComponentFactoryResolver,private playerService: PlayerService, private activatedRoute: ActivatedRoute, private localStorage: LocalStorageService,
     private location: PlatformLocation, private router: Router) {
+      if (window.innerWidth < 768) {
+        this.isMobileResolution = true;
+        console.log(this.isMobileResolution);
+      } else {
+        this.isMobileResolution = false;
+        console.log(this.isMobileResolution);
+
+      }
       location.onPopState(() => {
         const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
         });
@@ -36,6 +44,7 @@ export class PlayerComponent implements OnInit {
     });
    }
    res: MCQOption;
+   isMobileResolution: boolean;
   userId: number;
   domainName: string;
   timer: any = null;
@@ -215,8 +224,9 @@ export class PlayerComponent implements OnInit {
       break;
       case "MMCQ":
       {
+      console.log("loading mmcq");
       this.mmcqQuestion = question;
-      adItem = this.questionComponents[0];
+      adItem = this.questionComponents[1];
       let componentFactory = this.componentFactoryResolver.resolveComponentFactory(adItem.component);
       let viewContainerRef = this.questionHost.viewContainerRef;
       viewContainerRef.clear();
