@@ -51,7 +51,6 @@ private url="";
     // this._connection.on('EndQuiz', this.onQuizEnded.bind(this));
     this._connection.start().then(() => {
       console.log(this._connection);
-
       this._connection.invoke('StartQuiz', userId, domain);
     });
     //this.playerComponent.loadComponent();
@@ -75,26 +74,23 @@ private url="";
   }
 
   endQuiz(question : any) {
-    this._connection.invoke('EndQuiz', question);
     this._connection.on('EndQuiz', msg => {
-         this.result = msg;
-         this._connection.stop();
-          // this.url = "http://172.23.238.183:4301/start/" + this.result.userId + "/" + this.result.domainName;
-          // this.document.location.href = this.url;
+      this.result = msg;
+      this._connection.stop();
+      // this.url = "http://172.23.238.183:4301/start/" + this.result.userId + "/" + this.result.domainName;
+      // this.document.location.href = this.url;
 
-          this.url = "http://13.126.26.172/quizresult/" + this.result.quizId;
-          this.document.location.href = this.url;
-          });
-
+      this.url = "http://13.126.26.172/quizresult/" + this.result.quizId;
+      this.document.location.href = this.url;
+    });
+    this._connection.invoke('EndQuiz', question);
   }
 
 
   getComponents() {
     return [
       new AdItem(McqComponent),
-      new AdItem(MmcqComponent)
-
+      new AdItem(MmcqComponent),
     ];
-
    }
 }
