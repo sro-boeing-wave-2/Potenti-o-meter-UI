@@ -51,9 +51,11 @@
               <mat-card-title>
                 <h4 class="detail-card-title">Progress over previous attempts</h4>
                 <h4 class="detail-card-title">
-                  <span *ngIf="changeFirst >= 0">Rise in </span>
-                  <span *ngIf="changeFirst <= 0">Drop in </span>
-                  <span><b>{{(Math.round(changeFirst * 100))/100}}%</b> from the previous attempt</span>
+                  <span *ngIf="changePrevious > 0">Rise in </span>
+                  <span *ngIf="changePrevious < 0">Drop in </span>
+                  <span *ngIf="changePrevious == 0">You have scored similar to the previous result </span>
+
+                 <span *ngIf="changePrevious != 0"><b>{{(Math.round(changePrevious * 100))/100}}%</b> from the previous attempt</span>
                 </h4>
               </mat-card-title>
             </mat-card-header>
