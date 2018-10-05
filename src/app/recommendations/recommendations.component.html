@@ -7,9 +7,9 @@
   <button id="startQuiz" mat-flat-button color="primary" (click)="startQuiz()"> Click Here to Take Quiz</button>
 </div>
 <div class="mdl-layout mdl-js-layout">
-  <main class="mdl-layout__content">
-    <div class="mdl-grid">
-      <div class="mdl-card mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-shadow--2dp" *ngFor="let item of RecommendationData">
+  <main class="mdl-layout__content container">
+    <div class="row">
+      <div class="mdl-card col-sm-4 mdl-shadow--2dp" *ngFor="let item of RecommendationData">
         <figure class="mdl-card__media">
           <img src="../../assets/images/recommend.jpg" alt="" />
         </figure>
