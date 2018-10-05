@@ -7,10 +7,6 @@
 	margin: 0;
 }
 
-main {
-  overflow-y: hidden !important;
-}
-
 .mdl-card__media > img {
 	max-width: 100%;
 }
