@@ -4,6 +4,10 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+.blue, .page-footer {
+  background-color: none;
+}
+
 ul{
   font-family: 'Open Sans', sans-serif;
 }
