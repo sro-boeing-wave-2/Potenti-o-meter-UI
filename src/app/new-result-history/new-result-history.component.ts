@@ -59,15 +59,6 @@ export class NewResultHistoryComponent implements OnInit {
       this.quizResultList.push(...this._result.quizResults);
 
        this.length = this.quizResultList.length;
-
-
-
-
-
-
-
-
-      console.log(this._result.quizResults[this.length-1].percentageScore);
       this.changeFirst = Math.fround((this._result.quizResults[this.length-1].percentageScore - this._result.quizResults[0].percentageScore) / this._result.quizResults[0].percentageScore) * 100;
       for(var i = 0; i<this.length; i++)
       {
@@ -78,19 +69,13 @@ export class NewResultHistoryComponent implements OnInit {
       {
         this.quizScoreList[i] = this._result.quizResults[i].percentageScore;
       }
-      console.log(this.quizlist);
-      console.log(this.quizScoreList);
 
       const cumulativeTagWiseList = this._result.tagWiseCumulativeScore;
-      console.log(cumulativeTagWiseList);
-      console.log("cumulativeTagWiseList:" + cumulativeTagWiseList);
       this.cumulativeTagWiseResult.push(...cumulativeTagWiseList);
       let cumulativeConcept = this.cumulativeTagWiseResult.map(res => res.tagName);
       let cumulativeScore = this.cumulativeTagWiseResult.map(res => res.tagRating);
-      console.log(JSON.stringify(this.cumulativeTagWiseResult));
 
       this.noConcepts = this._result.tagWiseCumulativeScore.length;
-      console.log("here"+ JSON.stringify(this._result.tagWiseCumulativeScore[0].taxonomyListAndScores));
       for(var i = 0; i<this.noConcepts; i++)
       {
         this.mulFactor[i] = this._result.tagWiseCumulativeScore[i].tagRating / (this._result.tagWiseCumulativeScore[i].taxonomyListAndScores[0].taxonomyScoreNumber + this._result.tagWiseCumulativeScore[i].taxonomyListAndScores[1].taxonomyScoreNumber + this._result.tagWiseCumulativeScore[i].taxonomyListAndScores[2].taxonomyScoreNumber + this._result.tagWiseCumulativeScore[i].taxonomyListAndScores[3].taxonomyScoreNumber + this._result.tagWiseCumulativeScore[i].taxonomyListAndScores[4].taxonomyScoreNumber + this._result.tagWiseCumulativeScore[i].taxonomyListAndScores[5].taxonomyScoreNumber);
@@ -122,15 +107,6 @@ export class NewResultHistoryComponent implements OnInit {
 
        var barChart = new Chart('barchartid', {
         type: 'bar',
-        //   options: {
-        //     scales: {
-        //         yAxes: [{
-        //             ticks: {
-        //                 beginAtZero: true
-        //             }
-        //         }]
-        //     }
-        // },
         options: {
           scales: {
             xAxes: [{ stacked: true }],
@@ -138,9 +114,7 @@ export class NewResultHistoryComponent implements OnInit {
           }
         },
         data: {
-          // labels: currentTaxonomyConcept.slice(0, currentConceptLength),
           labels: this.conceptList,
-          // datasets: [TaxoData]
           datasets: [
             {
               label: 'Remember',

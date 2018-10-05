@@ -27,7 +27,6 @@ export class StartQuizComponent implements OnInit {
   startQuiz() {
     this.playerService.startQuiz(this.userId, this.domain);
     console.log("inside start method file");
-    //this.playerService.onConnectionMapping(this.userId);
 
     this.router.navigate(['/player', this.userId])
 

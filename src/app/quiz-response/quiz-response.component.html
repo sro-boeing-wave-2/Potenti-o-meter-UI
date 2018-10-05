@@ -1,6 +1,5 @@
 <mat-dialog-content class="card">
   <h1 class="response-header">Responses</h1>
-  <!-- <div class="popup-wrapper"> -->
   <div class="container" *ngFor="let qR of questionResponse">
     <mat-card class="popup-card">
       <div class="question-text">
@@ -29,6 +28,5 @@
         <h4>Correct option: {{qR.correctAns}}</h4>
       </div>
     </mat-card>
-    <!-- </div> -->
   </div>
 </mat-dialog-content>

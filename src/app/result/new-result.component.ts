@@ -15,8 +15,6 @@ import { QuizResponseComponent } from '../quiz-response/quiz-response.component'
 })
 export class NewResultComponent implements OnInit {
 
-  // userId : number;
-  // domain : string;
   quizId: string;
   Math: any;
   _result: UserResult;
@@ -109,19 +107,15 @@ export class NewResultComponent implements OnInit {
 
 
       this.noConcepts = this._result.quizResults[this.length].tagWiseResults.length;
-      console.log("No of Concepts:" + this.noConcepts);
 
       for (var i = 0; i < this.noConcepts; i++) {
         this.tagWiseResultsList[i] = this._result.quizResults[this.length].tagWiseResults[i];
         this.conceptList[i] = this._result.quizResults[this.length].tagWiseResults[i].tagName;
       }
-      // this._result.quizResults[this.length].tagWiseResults.push(...this.tagWiseResultsList);
-      console.log(JSON.stringify(this.tagWiseResultsList));
 
       for (var j = 0; j < this.noConcepts; j++) {
-        // console.log(this.tagWiseResultsList[j].taxonomyListAndScores[0].taxonomyScoreNumber);
        this.mulFactor[j] = this.tagWiseResultsList[j].tagRating / (this.tagWiseResultsList[j].taxonomyListAndScores[0].taxonomyScoreNumber + this.tagWiseResultsList[j].taxonomyListAndScores[1].taxonomyScoreNumber + this.tagWiseResultsList[j].taxonomyListAndScores[2].taxonomyScoreNumber + this.tagWiseResultsList[j].taxonomyListAndScores[3].taxonomyScoreNumber + this.tagWiseResultsList[j].taxonomyListAndScores[4].taxonomyScoreNumber + this.tagWiseResultsList[j].taxonomyListAndScores[5].taxonomyScoreNumber);
-       console.log(this.mulFactor[j]);
+
       }
 
       for(var k = 0; k < this.noConcepts; k++)
@@ -134,13 +128,6 @@ export class NewResultComponent implements OnInit {
         this.create[k] = this.tagWiseResultsList[k].taxonomyListAndScores[5].taxonomyScoreNumber * this.mulFactor[k];
 
       }
-
-      console.log("Remeber" + this.remember);
-      console.log("understand" + this.understand);
-      console.log("apply" + this.apply);
-      console.log("analyze" + this.analyze);
-      console.log("evaluate" + this.evaluate);
-      console.log("create" + this.create);
 
 
 
@@ -313,15 +300,6 @@ export class NewResultComponent implements OnInit {
 
       var barChart = new Chart('barchartid', {
         type: 'bar',
-        //   options: {
-        //     scales: {
-        //         yAxes: [{
-        //             ticks: {
-        //                 beginAtZero: true
-        //             }
-        //         }]
-        //     }
-        // },
         options: {
           scales: {
             xAxes: [{ stacked: true }],
@@ -329,9 +307,7 @@ export class NewResultComponent implements OnInit {
           }
         },
         data: {
-          // labels: currentTaxonomyConcept.slice(0, currentConceptLength),
           labels: this.conceptList,
-          // datasets: [TaxoData]
           datasets: [
             {
               label: 'Remember',
@@ -383,7 +359,6 @@ export class NewResultComponent implements OnInit {
 
   viewResponse() {
     let dialogRef = this.dialog.open(QuizResponseComponent, {
-      // width: '1500px',
       data: this._result.quizResults
     });
   }

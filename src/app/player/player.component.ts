@@ -27,10 +27,8 @@ export class PlayerComponent implements OnInit {
     private location: PlatformLocation, private router: Router) {
       if (window.innerWidth < 768) {
         this.isMobileResolution = true;
-        console.log(this.isMobileResolution);
       } else {
         this.isMobileResolution = false;
-        console.log(this.isMobileResolution);
 
       }
       location.onPopState(() => {
@@ -147,9 +145,6 @@ export class PlayerComponent implements OnInit {
       return this.playerService.getNextQuestion(this.mmcqQuestion);
       }
     }
-
-
-    // this.loadComponent();
   }
 
   endQuiz() {
@@ -177,8 +172,6 @@ export class PlayerComponent implements OnInit {
   tick() {
       const now = new Date();
       const diff = (now.getTime() - this.startTime.getTime()) / 1000;
-      // if (diff >= 300 && diff< 301) {
-      //   this.endQuiz();
       // }
       this.ellapsedTime = this.parseTime(diff);
       const endTime = this.ellapsedTime.split(":",2);
@@ -237,15 +230,6 @@ export class PlayerComponent implements OnInit {
       break;
 
     }
-    // if(question.questionType == "MCQType")
-    // {
-    //    adItem = this.questionComponents[0];
-    // }
-    // else {
-    //    adItem = this.questionComponents[1];
-    // }
-
-
   }
 
 

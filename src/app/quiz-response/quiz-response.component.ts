@@ -18,8 +18,6 @@ export class QuizResponseComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: QuizResult[]) { }
 
   ngOnInit() {
-    console.log("inside popup");
-    console.log(this.data);
     this.length = this.data.length;
     this.quizResponse = this.data[this.length - 1];
     this.noOfQuestions = this.quizResponse.questionsAttempted.length
@@ -27,7 +25,6 @@ export class QuizResponseComponent implements OnInit {
     {
       this.questionResponse[i] = this.quizResponse.questionsAttempted[i];
     }
-    console.log(this.questionResponse);
 
   }
 
