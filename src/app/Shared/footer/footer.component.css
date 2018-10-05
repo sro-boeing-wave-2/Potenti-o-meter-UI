@@ -4,8 +4,8 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-.blue, .page-footer {
-  background-color: none;
+footer {
+  background-color: #454545 !important;
 }
 
 ul{
