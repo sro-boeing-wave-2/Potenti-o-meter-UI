@@ -43,6 +43,7 @@ export class NewResultComponent implements OnInit {
   labelsArray = [];
   scoreArray = [];
   barChart = [];
+  quizlist: string[] = [];
   taxonomyScore = [];
   currentQuiz : QuizResult;
 
@@ -130,24 +131,19 @@ export class NewResultComponent implements OnInit {
 
       var tagCorrectPc = this.tags.map(res => res.tagRating);
 
-        for (var i = 1; i <= this._result.quizResults.length; i++) {
-          this.labelsArray.push(i);
-          console.log(i);
-      }
-      console.log("q--"+this.labelsArray);
-
       ////Score Array
       this.scoreArray.push(...this._result.quizResults.map(res => res.percentageScore));
-      console.log(this.scoreArray);
 
-    console.log("Hoi"+this.length);
-
-
-
+     //x-axis data for progress graph
+     for(var i = 0; i<=this.length; i++)
+     {
+       this.quizlist[i] = "Attempt"+(i+1);
+     }
+      // Progress graph
       this.lineGraph = new Chart('canvasLine', {
         type: 'line',
         data: {
-          labels: this.labelsArray,
+          labels:this.quizlist,
           datasets: [{
             data: this.scoreArray,
             label: this._result.domainName,
@@ -296,10 +292,7 @@ export class NewResultComponent implements OnInit {
       this.changePrevious = Math.fround((this._result.quizResults[this.length].percentageScore - this._result.quizResults[this.length - 1].percentageScore) / this._result.quizResults[this.length - 1].percentageScore) * 100;
       this.changeFirst = Math.fround((this._result.quizResults[this.length].percentageScore - this._result.quizResults[0].percentageScore) / this._result.quizResults[0].percentageScore) * 100;
       }
-      for (var j= 1; i <= this._result.quizResults.length; j++) {
 
-        console.log(i);
-    }
 
     });
   }
