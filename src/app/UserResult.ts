@@ -54,4 +54,5 @@ export class CumulativeTagScore
         tagRating : number ;
         taxonomyLevelReached : string;
         taxonomyScore :number;
+        taxonomyListAndScores : TaxonomyListAndScores[]
     }

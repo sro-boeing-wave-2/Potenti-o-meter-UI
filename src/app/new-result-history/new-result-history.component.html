@@ -24,7 +24,7 @@
           <div>
             <div *ngIf="changeFirst >= 0; then increasedFirst; else decreasedFirst"> </div>
             <ng-template #increasedFirst>
-              <h1 class="score-card-details-percentage" style="color: green">
+              <h1 class="score-card-details-percentage" style="color: #7CFC00">
                 <i class="material-icons" style="font-size: 20px">
                   arrow_upward
                 </i>{{(Math.round(changeFirst * 100))/100}}%
@@ -50,7 +50,7 @@
             </mat-card-title>
           </mat-card-header>
           <mat-card-content>
-            <canvas id="barchartid">{{ barChart }}</canvas>
+              <canvas id="barchartid">{{ barChart }}</canvas>
           </mat-card-content>
         </mat-card>
       </div>
