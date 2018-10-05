@@ -6,19 +6,26 @@
   <button  id = "showResult" mat-flat-button color="primary" (click)="result()"> Click Here to see Result</button>
   <button  id="startQuiz" mat-flat-button color="primary" (click)="startQuiz()"> Click Here to Take Quiz</button>
 </div>
-<div class="row">
-<div class="col s12 m4 l4">
-<div class="skill-card" *ngFor="let item of RecommendationData">
-  <header class="skill-card__header"><img class="skill-card__icon" src="https://upload.wikimedia.org/wikipedia/commons/3/38/HTML5_Badge.svg" alt="HTML5 Logo"/></header>
-  <section class="skill-card__body">
-    <h2 class="skill-card__title">html</h2><span class="skill-card__duration">6 ans d'expérience</span>
-    <ul class="skill-card__knowledge">
-      <li>HTML5</li>
-      <li>Sémantique</li>
-      <li>SVG</li>
-      <li>Canvas</li>
-    </ul>
-  </section>
-</div>
-</div>
-</div>
+<div class="mdl-layout mdl-js-layout mdl-color--grey-100">
+    <main class="mdl-layout__content">
+      <div class="mdl-grid">
+        <div class="mdl-card mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-shadow--2dp" *ngFor="let item of RecommendationData">
+          <figure class="mdl-card__media">
+            <img src="https://tfirdaus.github.io/mdl/images/html5.jpg" alt="" />
+          </figure>
+          <div class="mdl-card__title">
+            <h1 class="mdl-card__title-text">Learning {{domain}}</h1>
+          </div>
+          <div class="mdl-card__supporting-text">
+            <p>Title : {{item.title}}</p>
+            <p>Concept : {{item.Loops}}</p>
+          </div>
+                  <div class="mdl-card__actions mdl-card--border">
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="{{item.url}}">Read More</a>
+      <div class="mdl-layout-spacer"></div>
+        <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">favorite</i></button>
+        <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">share</i></button>
+      </div>
+        </div>
+    </main>
+  </div>
