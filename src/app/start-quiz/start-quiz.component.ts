@@ -9,8 +9,6 @@ import { PlayerService } from '../player.service';
 export class StartQuizComponent implements OnInit {
   userId: number;
   domain: string;
-
-
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private playerService: PlayerService) { }
 
   ngOnInit() {
