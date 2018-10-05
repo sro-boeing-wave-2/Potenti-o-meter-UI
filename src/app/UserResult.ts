@@ -39,7 +39,15 @@ export class TagWiseResult{
   tagRating : number;
   taxonomyLevel : string;
   taxonomyScore : number;
+  taxonomyListAndScores : TaxonomyListAndScores[]
 }
+
+export class TaxonomyListAndScores
+{
+  taxonomyName : string;
+  taxonomyScoreNumber : number;
+}
+
 export class CumulativeTagScore
     {
         tagName : string ;
