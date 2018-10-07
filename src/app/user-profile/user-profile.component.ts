@@ -23,11 +23,8 @@ export class UserProfileComponent implements OnInit {
       console.log("This is result " + result.json());
       console.log("This is result values " + result.json().values);
       console.log("This is Userdata "+ this.UserData);
-      console.log("This is userdata values0 "+ this.UserData[0]);
-      console.log("This is userdata values1 "+ this.UserData[1]);
-      console.log("This is userdata values2 "+ this.UserData[2]);
-      console.log("This is userdata values3 "+ this.UserData[3]);
-      console.log("This is userdata values4 "+ this.UserData[4]);
+      this.id = result.json().UserID;
+      console.log(this.id);
       // console.log("This is Userid "+ this.UserData.userID);
       // this.id = this.UserData.userID;
     });
