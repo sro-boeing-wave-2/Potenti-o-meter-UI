@@ -43,6 +43,7 @@
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <span class="info-block-one__joined__text">{{UserData.Contact}}</span>
               </p>
+              <a id="inference" target="_blank" color="primary" mat-flat-button (click)="inference()">Inference</a>
             </div>
             <app-dashboard-body (recommend)="receiveMessage($event)" *ngIf="display" [DomainData]="DomainData"></app-dashboard-body>
             <app-recommendations (dashbaord)="sendMessage($event)" [domain]="domain" [UserData]="UserData" *ngIf="!display"></app-recommendations>

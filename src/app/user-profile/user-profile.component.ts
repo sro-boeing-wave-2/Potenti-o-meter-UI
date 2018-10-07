@@ -15,10 +15,14 @@ export class UserProfileComponent implements OnInit {
   constructor(private signupservice: SignUpService) { }
 
   public UserData = [];
+  public id;
 
   ngOnInit() {
     this.signupservice.getName().subscribe(result => {
       this.UserData = result.json();
+      console.log("This is result " + result.json());
+      console.log("This is Userdata "+ this.UserData);
+      // this.id = this.UserData.userID;
     });
   }
 
@@ -29,5 +33,10 @@ export class UserProfileComponent implements OnInit {
 
   sendMessage($event){
     this.display = $event;
+  }
+
+  inference() {
+    this.id = this.UserData
+    window.location.href="https://www.google.com";
   }
 }
