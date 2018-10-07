@@ -35,7 +35,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   inference() {
-    this.url = "http://13.126.26.172/̥inference/?userid="+ this.id;
+    this.url = "http://13.126.26.172/inferencer/?userid=" + this.id;
     window.location.href=this.url;
   }
 }
