@@ -22,6 +22,7 @@ export class UserProfileComponent implements OnInit {
     this.signupservice.getName().subscribe(result => {
       this.UserData = result.json();
       this.id = result.json().UserID;
+      this.url = "http://13.126.26.172/inferencer/?userid=" + this.id;
     });
   }
 
@@ -32,10 +33,5 @@ export class UserProfileComponent implements OnInit {
 
   sendMessage($event){
     this.display = $event;
-  }
-
-  inference() {
-    this.url = "http://13.126.26.172/inferencer/?userid=" + this.id;
-    window.location.href=this.url;
   }
 }
