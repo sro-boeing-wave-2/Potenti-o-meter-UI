@@ -318,3 +318,8 @@ i {
 	line-height: 30px;
 	text-align: center;
 }
+
+#inference {
+  margin-top: 10%;
+  margin-left: 5%;
+}

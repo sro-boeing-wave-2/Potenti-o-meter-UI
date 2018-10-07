@@ -21,7 +21,9 @@ export class UserProfileComponent implements OnInit {
     this.signupservice.getName().subscribe(result => {
       this.UserData = result.json();
       console.log("This is result " + result.json());
+      console.log("This is result values " + result.json().values);
       console.log("This is Userdata "+ this.UserData);
+      console.log("This is userdata values "+ this.UserData.values);
       // this.id = this.UserData.userID;
     });
   }
