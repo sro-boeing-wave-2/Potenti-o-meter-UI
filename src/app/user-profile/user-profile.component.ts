@@ -16,17 +16,12 @@ export class UserProfileComponent implements OnInit {
 
   public UserData = [];
   public id;
+  public url;
 
   ngOnInit() {
     this.signupservice.getName().subscribe(result => {
       this.UserData = result.json();
-      console.log("This is result " + result.json());
-      console.log("This is result values " + result.json().values);
-      console.log("This is Userdata "+ this.UserData);
       this.id = result.json().UserID;
-      console.log(this.id);
-      // console.log("This is Userid "+ this.UserData.userID);
-      // this.id = this.UserData.userID;
     });
   }
 
@@ -40,7 +35,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   inference() {
-    this.id = this.UserData
-    window.location.href="https://www.google.com";
+    this.url = "http://13.126.26.172/̥inference/?userid="+ this.id;
+    window.location.href=this.url;
   }
 }
